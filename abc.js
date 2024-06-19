@@ -3593,14 +3593,13 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-                                  console.log('new-posttttt')
+          
                                 const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
-                                    localtion: o.ship_order,
                                     created_at: new Date()
                                 }
                                 socket.emit('message', data)
