@@ -3600,8 +3600,8 @@
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
-                                    localtionStart: ship_order?.pick_up,
-                                    localtionEnd: ship_order?.drop_off,
+                                    localtionStart: o?.ship_order?.pick_up,
+                                    localtionEnd: o?.ship_order?.drop_off,
                                     created_at: new Date()
                                 }
                                 socket.emit('message', data)
