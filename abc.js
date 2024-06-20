@@ -3600,8 +3600,12 @@
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
+                                    locationStart: o.ship_order.pick_up,
+                                    locationEnd: o.ship_order.drop_off,
+                                    startNavigator: o.ship_order.pick_up_geo,
                                     created_at: new Date()
                                 }
+
                                 socket.emit('message', data)
                                 w.default.emit("new-post", o)
                             }
