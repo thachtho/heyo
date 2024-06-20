@@ -3593,10 +3593,10 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-          
+          			console.log(11, o)
                                 const data = {
                                     name: o.title,
-                                    content: o.desc,
+                                    content: o.duy,
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
@@ -3605,7 +3605,7 @@
                                     startNavigator: o.ship_order.pick_up_geo,
                                     created_at: new Date()
                                 }
-
+			
                                 socket.emit('message', data)
                                 w.default.emit("new-post", o)
                             }
