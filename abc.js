@@ -3596,7 +3596,7 @@
 
         
                                 const data = {
-                                    name: null,
+                                    name: 'Hổng cần tên',
                                     content: o.bimbim,
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
