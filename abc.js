@@ -3599,8 +3599,8 @@
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
-                                    locationStart: o.ship_order.pick_up,
-                                    locationEnd: o.ship_order.drop_off,
+                                    locationStart: null,
+                                    locationEnd: null,
                                     startNavigator: o.ship_order.pick_up_geo,
                                     created_at: new Date()
                                 }
