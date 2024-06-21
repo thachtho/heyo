@@ -3593,10 +3593,9 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-          			console.log(11, o)
                                 const data = {
                                     name: o.title,
-                                    content: o.duy,
+                                    content: o.fjhdfjk,
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
