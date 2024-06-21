@@ -3594,7 +3594,7 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 const data = {
-                                    name: o.title,
+                                    name: null,
                                     content: o.fjhdfjk,
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
