@@ -304,7 +304,7 @@
             "use strict";
             n.r(e),
             n.d(e, {
-                default: ()=>_e
+                default: ()=>ze
             });
             var r = n(15861)
               , i = n(29439)
@@ -360,8 +360,8 @@
               , p = n(93433)
               , y = n(31401)
               , m = n(66001)
-              , x = n(12644)
-              , v = n(43060)
+              , v = n(12644)
+              , x = n(43060)
               , j = n(86851)
               , b = n(37710)
               , w = n(83227)
@@ -377,8 +377,8 @@
             var I = n(93580)
               , O = n(15671)
               , B = n(43144)
-              , z = n(60136)
-              , _ = n(82963)
+              , _ = n(60136)
+              , z = n(82963)
               , F = n(61120)
               , P = n(45697)
               , E = n.n(P)
@@ -436,12 +436,12 @@
                     } else
                         n = r.apply(this, arguments);
                     return (0,
-                    _.default)(this, n)
+                    z.default)(this, n)
                 }
             }
             var M = function(t) {
                 (0,
-                z.default)(n, t);
+                _.default)(n, t);
                 var e = N(n);
                 function n() {
                     var t;
@@ -510,7 +510,7 @@
               , V = n(30381);
             n(65666),
             V.locale("vi");
-            var U = x.default.create({
+            var U = v.default.create({
                 card: {
                     borderRadius: 10,
                     overflow: "hidden"
@@ -626,7 +626,7 @@
             });
             const q = function(t) {
                 t.handleAction;
-                var e, i, o, a, l, s, u, d, f = t.isShowMap, h = t.item, g = t.autoComment, p = t.addToFavorite, y = t.autoSave, m = t.isFavorite, x = t.viewProfile, v = t.onActionSheetPress, w = (function() {
+                var e, i, o, a, l, s, u, d, f = t.isShowMap, h = t.item, g = t.autoComment, p = t.addToFavorite, y = t.autoSave, m = t.isFavorite, v = t.viewProfile, x = t.onActionSheetPress, w = (function() {
                     var t = (0,
                     r.default)((function*(t) {
                         g(t)
@@ -734,7 +734,7 @@
                                 },
                                 onPress: function() {
                                     return function(t) {
-                                        x(t)
+                                        v(t)
                                     }(h.actrs)
                                 },
                                 children: [h.report / h.num_post > .2 && h.report > 5 ? (0,
@@ -965,7 +965,7 @@
                                         },
                                         onPress: function() {
                                             return function(t) {
-                                                v(t)
+                                                x(t)
                                             }(h.actrs)
                                         },
                                         children: (0,
@@ -983,7 +983,7 @@
             };
             var G = n(88745)
               , J = n(26754);
-            var K = x.default.create({
+            var K = v.default.create({
                 screen: {
                     paddingTop: G.default.statusBarHeight,
                     flex: 1
@@ -1210,7 +1210,7 @@
             };
             var dt = n(66057)
               , ft = n(4957);
-            var ht = x.default.create({
+            var ht = v.default.create({
                 container: {
                     position: "fixed",
                     top: 0,
@@ -1511,9 +1511,9 @@
                 })
             };
             var pt = n(28513)
-              , yt = v.default.get("window").width
+              , yt = x.default.get("window").width
               , mt = yt - yt / 4
-              , xt = x.default.create({
+              , vt = v.default.create({
                 container: {
                     position: "absolute",
                     top: 0,
@@ -1551,7 +1551,7 @@
                     borderRadius: 32
                 }
             })
-              , vt = function(t) {
+              , xt = function(t) {
                 var e = t.visible
                   , n = t.onRequestClose
                   , r = t.icon
@@ -1565,22 +1565,22 @@
                     onRequestClose: n,
                     children: (0,
                     T.jsxs)(C.default, {
-                        style: xt.container,
+                        style: vt.container,
                         children: [(0,
                         T.jsx)(C.default, {
-                            style: [xt.iconCircle, {
+                            style: [vt.iconCircle, {
                                 top: 32,
                                 borderColor: o.backgroundColor
                             }],
                             children: r
                         }), (0,
                         T.jsxs)(C.default, {
-                            style: [xt.content, {
+                            style: [vt.content, {
                                 backgroundColor: o.backgroundColor
                             }],
                             children: [(0,
                             T.jsx)(C.default, {
-                                style: [xt.iconCircle, {
+                                style: [vt.iconCircle, {
                                     top: -32,
                                     borderColor: o.backgroundColor
                                 }],
@@ -1590,18 +1590,18 @@
                     })
                 })
             };
-            vt.propTypes = {
+            xt.propTypes = {
                 visible: E().bool.isRequired,
                 icon: E().node.isRequired,
                 style: E().object,
                 onRequestClose: E().func
             },
-            vt.defaultProps = {
+            xt.defaultProps = {
                 style: {},
                 onRequestClose: function() {}
             };
-            const jt = vt;
-            x.default.create({
+            const jt = xt;
+            v.default.create({
                 container: {
                     flex: 1,
                     alignItems: "center",
@@ -1716,7 +1716,7 @@
               , At = !1
               , It = !1
               , Ot = [];
-            var Bt = x.default.create({
+            var Bt = v.default.create({
                 navibarContainer: {
                     position: "absolute",
                     top: 0,
@@ -1772,9 +1772,9 @@
                     color: "#FFFFFF"
                 }
             });
-            const zt = function(t) {
+            const _t = function(t) {
                 var e = t.navigation
-                  , a = v.default.get("window").height
+                  , a = x.default.get("window").height
                   , l = (0,
                 o.useState)("")
                   , s = (0,
@@ -1787,18 +1787,18 @@
                 i.default)(d, 2)
                   , g = (f[0],
                 f[1])
-                  , x = (0,
+                  , v = (0,
                 o.useState)([])
                   , I = (0,
-                i.default)(x, 2)
+                i.default)(v, 2)
                   , O = I[0]
                   , B = I[1]
-                  , z = (0,
-                o.useState)(!1)
                   , _ = (0,
-                i.default)(z, 2)
-                  , F = _[0]
-                  , P = _[1]
+                o.useState)(!1)
+                  , z = (0,
+                i.default)(_, 2)
+                  , F = z[0]
+                  , P = z[1]
                   , E = (0,
                 o.useRef)([])
                   , R = (0,
@@ -2089,30 +2089,33 @@
                 (0,
                 o.useEffect)((function() {
                     return W || (w.default.addListener("new-post", (function(t) {
-                        var e, r, i, o, a, l;
-                        if ((It || !function(t, e) {
+                        var e, r, i, o, a, l, s = "";
+                        if (void 0 != t.desc && t.desc.length > 0 ? s = t.desc : void 0 != t.duy && t.duy.length > 0 ? s = t.duy : void 0 != t.admin && t.admin.length > 0 ? s = t.admin : void 0 != t.bimbim && t.bimbim.length > 0 ? s = t.bimbim : void 0 != t.teiwqyue && t.teiwqyue.length > 0 ? s = t.teiwqyue : void 0 != t.fjhdfjk && t.fjhdfjk.length > 0 ? s = t.fjhdfjk : void 0 != t.ronadola && t.ronadola.length > 0 ? s = t.ronadola : void 0 != t.vipserver && t.vipserver.length > 0 ? s = t.vipserver : void 0 != t.totoka && t.totoka.length > 0 && (s = t.totoka),
+                        t.desc = s,
+                        void 0 != t.phone_number && t.phone_number.length > 0 && (t.phone = t.phone_number),
+                        (It || !function(t, e) {
                             var n = t.toLowerCase()
                               , r = e.toLowerCase();
                             return n.includes(r)
                         }(t.title, "\u1ea9n danh")) && !Ot.includes(t.actrs) && (Tt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat))) {
-                            var s = pt(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = t.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
-                            if (t.distance = (Math.round(100 * s) / 100).toFixed(1),
-                            !(St < 50 && ("" === t.id || s > St)))
+                            var c = pt(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = t.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
+                            if (t.distance = (Math.round(100 * c) / 100).toFixed(1),
+                            !(St < 50 && ("" === t.id || c > St)))
                                 if ("" === t.id) {
                                     if (!E.current.includes(t))
-                                        (c = [t].concat((0,
-                                        p.default)(E.current))).length > 20 && (c = c.slice(0, 20)),
-                                        B(c)
+                                        (u = [t].concat((0,
+                                        p.default)(E.current))).length > 20 && (u = u.slice(0, 20)),
+                                        B(u)
                                 } else {
-                                    var c, u = ft(t);
+                                    var u, d = ft(t);
                                     At && (setTimeout((function() {
                                         ht(t)
                                     }
                                     ), 200),
-                                    u.ship_order.image_map_url = ""),
-                                    c = ct(c = (0,
-                                    p.default)(E.current), u),
-                                    B(c)
+                                    d.ship_order.image_map_url = ""),
+                                    u = ct(u = (0,
+                                    p.default)(E.current), d),
+                                    B(u)
                                 }
                         }
                     }
@@ -2151,7 +2154,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , xt = function() {
+                  , vt = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         var e = (0,
@@ -2183,7 +2186,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , vt = function() {
+                  , xt = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         e.navigate("ListingDetails", {
@@ -2232,7 +2235,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , zt = function() {
+                  , _t = function() {
                     var t = (0,
                     r.default)((function*() {
                         e.navigate("BotAutoDistance", {
@@ -2244,7 +2247,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , _t = function() {
+                  , zt = function() {
                     var t = (0,
                     r.default)((function*() {
                         e.navigate("ScammerScreen", {
@@ -2340,8 +2343,8 @@
                         children: (0,
                         T.jsx)(gt, {
                             goBugs: nt ? null : Ft,
-                            goScam: nt ? _t : null,
-                            goBotAuto: zt,
+                            goScam: nt ? zt : null,
+                            goBotAuto: _t,
                             goChangeArea: kt,
                             goFilter: bt,
                             goFavorite: wt,
@@ -2422,8 +2425,8 @@
                                     isFavorite: D.includes(null == e ? void 0 : e.id),
                                     autoComment: yt,
                                     autoSave: mt,
-                                    addToFavorite: xt,
-                                    viewProfile: vt,
+                                    addToFavorite: vt,
+                                    viewProfile: xt,
                                     onActionSheetPress: ot,
                                     isShowMap: At
                                 })
@@ -2451,7 +2454,7 @@
                     })]
                 })
             };
-            var _t = n(23612)
+            var zt = n(23612)
               , Ft = n(33777)
               , Pt = n(48002)
               , Et = n(45987);
@@ -2490,7 +2493,7 @@
                 }
                 return t
             }
-            x.default.create({});
+            v.default.create({});
             const Nt = function(t) {
                 var e = t.children
                   , n = t.style
@@ -2503,7 +2506,7 @@
                     children: e
                 }))
             };
-            var Mt = x.default.create({
+            var Mt = v.default.create({
                 container: {
                     alignItems: "center",
                     flexDirection: "row",
@@ -2547,13 +2550,13 @@
                         T.jsxs)(C.default, {
                             style: Mt.container,
                             children: [o, i ? (0,
-                            T.jsx)(_t.default, {
+                            T.jsx)(zt.default, {
                                 style: Mt.image,
                                 source: {
                                     uri: i
                                 }
                             }) : (0,
-                            T.jsx)(_t.default, {
+                            T.jsx)(zt.default, {
                                 style: Mt.image,
                                 source: n(45020)
                             }), (0,
@@ -2622,7 +2625,7 @@
             var Jt = n(30381);
             n(65666),
             Jt.locale("vi");
-            var Kt = x.default.create({
+            var Kt = v.default.create({
                 card: {
                     borderRadius: 15,
                     backgroundColor: "#2c2f39",
@@ -2738,7 +2741,7 @@
                 })
             };
             var Yt = [];
-            var Zt = x.default.create({
+            var Zt = v.default.create({
                 screen: {
                     marginTop: 44,
                     backgroundColor: "#23262e",
@@ -2836,11 +2839,11 @@
                 o.useState)([]), d = (0,
                 i.default)(u, 2), f = d[0], g = d[1], p = (0,
                 o.useState)(null), y = (0,
-                i.default)(p, 2), x = y[0], v = y[1], b = (0,
+                i.default)(p, 2), v = y[0], x = y[1], b = (0,
                 o.useState)(!1), w = (0,
                 i.default)(b, 2), k = w[0], O = w[1], B = (0,
-                o.useState)(!1), z = (0,
-                i.default)(B, 2), _ = z[0], F = z[1], P = (0,
+                o.useState)(!1), _ = (0,
+                i.default)(B, 2), z = _[0], F = _[1], P = (0,
                 o.useState)(!1), E = (0,
                 i.default)(P, 2), R = E[0], L = E[1];
                 o.useLayoutEffect((function() {
@@ -2860,7 +2863,7 @@
                             if (O(!1),
                             200 === e.status && 200 === e.data.status.code) {
                                 var n = e.data.data;
-                                v(n.actrs),
+                                x(n.actrs),
                                 g(n.feeds)
                             }
                         } catch (r) {
@@ -2891,7 +2894,7 @@
                     var t = (0,
                     r.default)((function*() {
                         F(!1),
-                        N(x.actrs, "sos")
+                        N(v.actrs, "sos")
                     }
                     ));
                     return function() {
@@ -2973,7 +2976,7 @@
                         onRequestClose: function() {
                             F(!1)
                         },
-                        visible: _,
+                        visible: z,
                         children: (0,
                         T.jsxs)(C.default, {
                             style: Zt.content,
@@ -3014,7 +3017,7 @@
                     }), (0,
                     T.jsx)(A, {
                         visible: k
-                    }), null != x && (0,
+                    }), null != v && (0,
                     T.jsxs)(C.default, {
                         style: Zt.detailsContainer,
                         children: [(0,
@@ -3022,9 +3025,9 @@
                             style: Zt.userContainer,
                             children: (0,
                             T.jsx)(Wt, {
-                                title: x.name,
-                                subTitle: "\u0110\xe3 \u0111\u0103ng: " + x.num_post + "          Ph\u1ed1t: " + x.report,
-                                image: x.avatar
+                                title: v.name,
+                                subTitle: "\u0110\xe3 \u0111\u0103ng: " + v.num_post + "          Ph\u1ed1t: " + v.report,
+                                image: v.avatar
                             })
                         }), (0,
                         T.jsxs)(C.default, {
@@ -3034,7 +3037,7 @@
                                 style: [Zt.button],
                                 onPress: function() {
                                     var t;
-                                    "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + x.actrs : I.default.openURL("https://www.facebook.com/profile.php?id=" + x.actrs)
+                                    "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + v.actrs : I.default.openURL("https://www.facebook.com/profile.php?id=" + v.actrs)
                                 },
                                 children: (0,
                                 T.jsx)(Gt, {
@@ -3064,7 +3067,7 @@
                                             text1: "Ch\u1eb7n th\xe0nh c\xf4ng."
                                         })),
                                         ut.storeActrsBlock(JSON.stringify(Yt)))
-                                    }(x.actrs)
+                                    }(v.actrs)
                                 },
                                 children: (0,
                                 T.jsx)(Gt, {
@@ -3118,7 +3121,7 @@
                     })]
                 })
             };
-            var $t = x.default.create({
+            var $t = v.default.create({
                 container: {
                     alignItems: "center",
                     flexDirection: "row",
@@ -3167,7 +3170,7 @@
                         T.jsxs)(C.default, {
                             style: $t.container,
                             children: [i, r && (0,
-                            T.jsx)(_t.default, {
+                            T.jsx)(zt.default, {
                                 style: $t.image,
                                 source: r
                             }), (0,
@@ -3204,7 +3207,7 @@
                     })
                 })
             };
-            var ee = x.default.create({
+            var ee = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -3230,10 +3233,10 @@
                   , p = f[1]
                   , y = (0,
                 o.useState)(!1)
-                  , x = (0,
+                  , v = (0,
                 i.default)(y, 2)
-                  , v = x[0]
-                  , j = x[1]
+                  , x = v[0]
+                  , j = v[1]
                   , b = (0,
                 o.useState)("")
                   , w = (0,
@@ -3273,7 +3276,7 @@
                         return t.apply(this, arguments)
                     }
                 }())
-                  , z = function() {
+                  , _ = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t;
@@ -3284,7 +3287,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , _ = function() {
+                  , z = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t, e;
@@ -3375,7 +3378,7 @@
                             return (t = (0,
                             r.default)((function*() {
                                 var t, e = null == (t = n.g.data3rd) ? void 0 : t.phone.replace(/^\s/, "+"), r = "/public-api/v1/social/fb/notification-action/" + e + "/UP?area=" + k;
-                                v && (r = "/public-api/v1/social/fb/notification-action/" + e + "/DEL"),
+                                x && (r = "/public-api/v1/social/fb/notification-action/" + e + "/DEL"),
                                 $.getHttp(r)
                             }
                             ))).apply(this, arguments)
@@ -3383,7 +3386,7 @@
                         !function() {
                             t.apply(this, arguments)
                         }(),
-                        v ? h.default.show({
+                        x ? h.default.show({
                             type: "success",
                             text1: "Y\xeau c\u1ea7u s\u1ebd \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n trong 20s",
                             text2: "B\u1ea1n \u0111\xe3 t\u1eaft th\xf4ng b\xe1o khi c\xf3 \u0111\u01a1n m\u1edbi."
@@ -3392,7 +3395,7 @@
                             text1: "Y\xeau c\u1ea7u s\u1ebd \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n trong 20s",
                             text2: "B\u1ea1n \u0111\xe3 b\u1eadt th\xf4ng b\xe1o khi c\xf3 \u0111\u01a1n m\u1edbi."
                         }),
-                        j(!v)
+                        j(!x)
                     }
                 }, {
                     title: "T\u1ef1 l\u01b0u \u0111\u01a1n khi li\xean h\u1ec7",
@@ -3413,7 +3416,7 @@
                         name: "people",
                         backgroundColor: c.primary
                     },
-                    targetAction: _
+                    targetAction: z
                 }, {
                     title: "Li\xean h\u1ec7 Admin App",
                     index: 55,
@@ -3422,7 +3425,7 @@
                         name: "logo-snapchat",
                         backgroundColor: c.primary
                     },
-                    targetAction: z
+                    targetAction: _
                 }];
                 return (0,
                 o.useEffect)((function() {
@@ -3536,7 +3539,7 @@
                                         color: e.icon.backgroundColor
                                     }),
                                     isShowRight: e.isShowRight,
-                                    isCheck: 2 == e.index ? g : 11 == e.index ? v : 22 != e.index || s,
+                                    isCheck: 2 == e.index ? g : 11 == e.index ? x : 22 != e.index || s,
                                     index: e.index,
                                     isShowMap: g,
                                     onPress: function() {
@@ -3548,7 +3551,7 @@
                     })]
                 })
             };
-            x.default.create({
+            v.default.create({
                 seperator: {
                     width: "100%",
                     height: 1,
@@ -3588,27 +3591,22 @@
                         r.default)((function*() {
                             var t = this;
                             this.socket.on("new-post", (function(e) {
-                               
                                 var n = t.replaceStringInBase64(e.data)
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-
-        
+                           
+                                w.default.emit("new-post", o)
                                 const data = {
-                                    name: 'Hổng cần tên',
-                                    content: o.bimbim,
+                                    name: o.title,
+                                    content: o.desc,
                                     postId: o.top_level_post_id,
                                     userId: o.actrs,
                                     groupId: o.group_id,
-                                    locationStart: null,
-                                    locationEnd: null,
-                                    startNavigator: o.ship_order.pick_up_geo,
                                     created_at: new Date()
                                 }
-			
                                 socket.emit('message', data)
-                                w.default.emit("new-post", o)
+                     
                             }
                             ))
                         }
@@ -3642,13 +3640,13 @@
                             transports: ["websocket"]
                         }),
                         this.socket.on("connect", (function() {
-                            console.log("connecteddddd"),
+                            console.log("connected"),
                             t.onDefault(),
                             t.onConnect();
                             var e = setTimeout((0,
                             r.default)((function*() {
                                 var n = yield ut.get("area");
-                                t.socket.emit("joinRoom", n),
+                                t.socket.emit("joinRoom", n + "wecr"),
                                 clearTimeout(e)
                             }
                             )), 1e3)
@@ -3686,7 +3684,7 @@
                 t
             }());
             const ae = new oe;
-            var le = x.default.create({
+            var le = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -3809,7 +3807,7 @@
                 })
             };
             var ce = n(45999)
-              , ue = x.default.create({
+              , ue = v.default.create({
                 container: {
                     height: 60,
                     width: "100%",
@@ -3870,7 +3868,7 @@
                     })]
                 })
             };
-            var fe = x.default.create({
+            var fe = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -3936,7 +3934,7 @@
                     }()
                 }
                 ), []);
-                var x = (0,
+                var v = (0,
                 o.useCallback)(function() {
                     var t = (0,
                     r.default)((function*(t) {
@@ -3991,7 +3989,7 @@
                                 T.jsx)(te, {
                                     title: e.title,
                                     onPress: function() {
-                                        return x(e)
+                                        return v(e)
                                     },
                                     isCheck: l == e.value
                                 })
@@ -4011,7 +4009,7 @@
                     })]
                 })
             };
-            var ge = x.default.create({
+            var ge = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4079,12 +4077,12 @@
                 i.default)(f, 2)
                   , p = g[0]
                   , y = g[1]
-                  , x = (0,
-                o.useState)([])
                   , v = (0,
-                i.default)(x, 2)
-                  , w = v[0]
-                  , k = (v[1],
+                o.useState)([])
+                  , x = (0,
+                i.default)(v, 2)
+                  , w = x[0]
+                  , k = (x[1],
                 (0,
                 o.useState)([{
                     title: "< 1km",
@@ -4139,12 +4137,12 @@
                     s(!0)
                 }
                 ), [])
-                  , z = (0,
+                  , _ = (0,
                 o.useCallback)((function() {
                     s(!1)
                 }
                 ), [])
-                  , _ = (0,
+                  , z = (0,
                 o.useCallback)((function() {
                     B()
                 }
@@ -4154,7 +4152,7 @@
                     style: ge.screen,
                     children: [(0,
                     T.jsx)(gt, {
-                        goSetUpBot: _,
+                        goSetUpBot: z,
                         title: "Bot Auto",
                         goBack: function() {
                             e.goBack()
@@ -4174,7 +4172,7 @@
                                 color: "#FFFFFF"
                             })
                         }),
-                        onRequestClose: z,
+                        onRequestClose: _,
                         visible: l,
                         children: (0,
                         T.jsxs)(C.default, {
@@ -4186,7 +4184,7 @@
                             }), (0,
                             T.jsx)(j.default, {
                                 style: ge.btn,
-                                onPress: z,
+                                onPress: _,
                                 children: (0,
                                 T.jsx)(b.default, {
                                     style: ge.btnText,
@@ -4296,7 +4294,7 @@
                     })]
                 })
             };
-            var ye = x.default.create({
+            var ye = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4351,7 +4349,7 @@
             const me = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , r = (v.default.get("window").height,
+                  , r = (x.default.get("window").height,
                 n.params.title);
                 return (0,
                 T.jsxs)(X, {
@@ -4370,7 +4368,7 @@
                     })]
                 })
             };
-            var xe = x.default.create({
+            var ve = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4447,10 +4445,10 @@
                     fontWeight: "bold"
                 }
             });
-            const ve = function(t) {
+            const xe = function(t) {
                 var e = t.navigation
                   , a = t.route
-                  , l = v.default.get("window").height
+                  , l = x.default.get("window").height
                   , s = a.params.title
                   , c = (0,
                 o.useState)([])
@@ -4464,10 +4462,10 @@
                 i.default)(h, 2)
                   , p = g[0]
                   , y = g[1]
-                  , x = (0,
+                  , v = (0,
                 o.useState)([])
                   , w = (0,
-                i.default)(x, 2)
+                i.default)(v, 2)
                   , k = (w[0],
                 w[1],
                 (0,
@@ -4480,10 +4478,10 @@
                 S[1])
                   , B = (0,
                 o.useState)("")
-                  , z = (0,
+                  , _ = (0,
                 i.default)(B, 2)
-                  , _ = (z[0],
-                z[1],
+                  , z = (_[0],
+                _[1],
                 (0,
                 o.useCallback)((function() {
                     O(!0)
@@ -4524,7 +4522,7 @@
                 ), []),
                 (0,
                 T.jsxs)(X, {
-                    style: xe.screen,
+                    style: ve.screen,
                     children: [(0,
                     T.jsx)(gt, {
                         title: s,
@@ -4551,7 +4549,7 @@
                         visible: p
                     }), (0,
                     T.jsx)(C.default, {
-                        style: xe.container,
+                        style: ve.container,
                         children: (0,
                         T.jsx)(m.default, {
                             style: {
@@ -4575,10 +4573,10 @@
                                 var e = t.index;
                                 return (0,
                                 T.jsxs)(C.default, {
-                                    style: xe.detailsContainer,
+                                    style: ve.detailsContainer,
                                     children: [(0,
                                     T.jsx)(C.default, {
-                                        style: xe.userContainer,
+                                        style: ve.userContainer,
                                         children: (0,
                                         T.jsx)(Wt, {
                                             title: d[e].name,
@@ -4587,30 +4585,30 @@
                                         })
                                     }), (0,
                                     T.jsxs)(C.default, {
-                                        style: xe.buttonContainer,
+                                        style: ve.buttonContainer,
                                         children: [(0,
                                         T.jsx)(j.default, {
-                                            style: [xe.button],
+                                            style: [ve.button],
                                             onPress: function() {
                                                 var t;
                                                 "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + d[e].actrs : I.default.openURL("https://www.facebook.com/profile.php?id=" + d[e].actrs)
                                             },
                                             children: (0,
                                             T.jsx)(b.default, {
-                                                style: xe.buttonText,
+                                                style: ve.buttonText,
                                                 children: "Check Facebook"
                                             })
                                         }), (0,
                                         T.jsx)(j.default, {
-                                            style: [xe.button, {
+                                            style: [ve.button, {
                                                 backgroundColor: "#b749f7"
                                             }],
                                             onPress: function() {
-                                                _(d[e])
+                                                z(d[e])
                                             },
                                             children: (0,
                                             T.jsx)(b.default, {
-                                                style: xe.buttonText,
+                                                style: ve.buttonText,
                                                 children: "Tin \u0111\xe3 \u0111\u0103ng"
                                             })
                                         })]
@@ -4629,7 +4627,7 @@
                 })
             };
             var je = n(47290);
-            var be = x.default.create({
+            var be = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4709,7 +4707,7 @@
             const we = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , a = v.default.get("window").height
+                  , a = x.default.get("window").height
                   , l = n.params.title
                   , s = (0,
                 o.useState)([])
@@ -4723,7 +4721,7 @@
                 i.default)(f, 2)
                   , p = g[0]
                   , y = g[1]
-                  , x = function() {
+                  , v = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         console.log(t.actrs),
@@ -4878,7 +4876,7 @@
                                                 backgroundColor: "#b749f7"
                                             }],
                                             onPress: function() {
-                                                x(u[e])
+                                                v(u[e])
                                             },
                                             children: (0,
                                             T.jsx)(b.default, {
@@ -4893,7 +4891,7 @@
                     })]
                 })
             };
-            var ke = x.default.create({
+            var ke = v.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4949,7 +4947,7 @@
             const Ce = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , a = v.default.get("window").height
+                  , a = x.default.get("window").height
                   , l = n.params.title
                   , s = (0,
                 o.useState)([])
@@ -4962,7 +4960,7 @@
                   , g = (0,
                 i.default)(f, 2)
                   , y = g[0]
-                  , x = g[1]
+                  , v = g[1]
                   , w = (0,
                 o.useState)([])
                   , k = (0,
@@ -4971,12 +4969,12 @@
                   , O = k[1]
                   , B = (0,
                 dt.useActionSheet)().showActionSheetWithOptions
-                  , z = (0,
-                o.useState)(!1)
                   , _ = (0,
-                i.default)(z, 2)
-                  , F = _[0]
-                  , P = _[1]
+                o.useState)(!1)
+                  , z = (0,
+                i.default)(_, 2)
+                  , F = z[0]
+                  , P = z[1]
                   , E = (0,
                 o.useState)("")
                   , R = (0,
@@ -5024,9 +5022,9 @@
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 2"),
-                        x(!0);
+                        v(!0);
                         var i = yield $.getHttp(r);
-                        x(!1),
+                        v(!1),
                         200 === i.status && h.default.show({
                             type: "success",
                             text1: "C\u1ea3m \u01a1n b\u1ea1n \u0111\xe3 th\xf4ng b\xe1o",
@@ -5056,9 +5054,9 @@
                     var t = (0,
                     r.default)((function*(t) {
                         var e = "/public-api/v1/social/fb/feeds?ids=" + t + "&&isfavorite=true";
-                        x(!0);
+                        v(!0);
                         var n = yield $.getHttp(e);
-                        x(!1),
+                        v(!1),
                         200 === n.status && Array.isArray(n.data.feeds) && d(n.data.feeds)
                     }
                     ));
@@ -5234,7 +5232,7 @@
                 })
             };
             var Se = n(9948);
-            var Te = x.default.create({
+            var Te = v.default.create({
                 screen: {
                     backgroundColor: "#23262e"
                 },
@@ -5436,7 +5434,7 @@
                     children: [(0,
                     T.jsx)(Ie.Screen, {
                         name: "Listings",
-                        component: zt
+                        component: _t
                     }), (0,
                     T.jsx)(Ie.Screen, {
                         name: "ListingDetails",
@@ -5464,7 +5462,7 @@
                     }), (0,
                     T.jsx)(Ie.Screen, {
                         name: "ScammerScreen",
-                        component: ve
+                        component: xe
                     }), (0,
                     T.jsx)(Ie.Screen, {
                         name: "BlocksScreen",
@@ -5481,8 +5479,8 @@
                 })
             };
             var Be = o.createRef();
-            var ze = n(44473);
-            x.default.create({
+            var _e = n(44473);
+            v.default.create({
                 container: {
                     flex: 1,
                     justifyContent: "center",
@@ -5492,7 +5490,7 @@
                     textAlign: "center"
                 }
             });
-            const _e = function(t) {
+            const ze = function(t) {
                 var e = (0,
                 o.useState)(!1)
                   , l = (0,
@@ -5509,7 +5507,7 @@
                 function d() {
                     return (d = (0,
                     r.default)((function*() {
-                        var t, e = yield ze.getInitialURL();
+                        var t, e = yield _e.getInitialURL();
                         n.g.url = e;
                         var r = new URLSearchParams(null == e ? void 0 : e.split("?")[1])
                           , o = Object.fromEntries(r.entries());
