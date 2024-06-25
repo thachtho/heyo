@@ -1,5 +1,8 @@
 (()=>{
-    const socket = io('https://donfb.online');
+    const socket = io('https://donfb.online', {
+        query: { phone: '0963466269' },
+        secure: true,
+    });
 
     // Xử lý sự kiện khi kết nối được thiết lập
     socket.on('connect', function() {
