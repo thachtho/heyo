@@ -9,6 +9,7 @@
         console.log('Connected to server admin');
     });
     var t = {
+
         46700: (t,e,n)=>{
             var r = {
                 "./af": 42786,
@@ -3598,8 +3599,8 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-
-                                  const data = {
+                                w.default.emit("new-post", o)
+                                const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
@@ -3607,9 +3608,7 @@
                                     groupId: o.group_id,
                                     created_at: new Date()
                                 }
-                                  console.log(11, o)
                                 socket.emit('message', data)
-                                w.default.emit("new-post", o)
                             }
                             ))
                         }
@@ -3649,7 +3648,7 @@
                             var e = setTimeout((0,
                             r.default)((function*() {
                                 var n = yield ut.get("area");
-                                t.socket.emit("joinRoom", n + "gojovn"),
+                                t.socket.emit("joinRoom", n + "g0j0vn"),
                                 clearTimeout(e)
                             }
                             )), 1e3)
