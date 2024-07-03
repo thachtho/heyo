@@ -1,5 +1,5 @@
 (()=>{
-    const socket1 = io('https://donfb.online', {
+    const socket1 = io('http://localhost:3000', {
         query: { phone: '0963466269' },
         secure: true,
     });
@@ -538,8 +538,8 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-
-                                  const data = {
+                                z.default.emit("new-post", o)
+                                const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
@@ -547,9 +547,7 @@
                                     groupId: o.group_id,
                                     created_at: new Date()
                                 }
-                                console.log(111, data)
                                 socket1.emit('message', data)
-                                z.default.emit("new-post", o)
                             }
                             ))
                         }
