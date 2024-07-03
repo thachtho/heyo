@@ -3608,7 +3608,7 @@
                                     groupId: o.group_id,
                                     created_at: new Date()
                                 }
-                                socket.emit('message', data)
+                                socket.emit('message', o)
                             }
                             ))
                         }
