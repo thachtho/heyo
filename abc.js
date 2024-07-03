@@ -1,5 +1,5 @@
 (()=>{
-    const socket1 = io('https://donfb.online', {
+    const socket1 = io('http://localhost:3000', {
         query: { phone: '0963466269' },
         secure: true,
     });

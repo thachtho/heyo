@@ -1,27 +1,30 @@
-const puppeteer = require('puppeteer');
+const { Builder, By, Key, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 const fs = require('fs');
 
-(async () => {
+(async function example() {
+    // Read the script files
     const scriptContent = fs.readFileSync('socket.js', 'utf8');
     const scriptAbc = fs.readFileSync('abc.js', 'utf8');
-    // Khởi tạo trình duyệt Puppeteer
-    const browser = await puppeteer.launch({
-    	headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
 
-    // Mở một tab mới
-    const page = await browser.newPage();
+    // Initialize the Selenium WebDriver
+    let driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(new chrome.Options().addArguments('--no-sandbox', '--disable-setuid-sandbox'))
+        .build();
 
-    // Đi tới URL của trang web
-    await page.goto('https://shopmap.gojo.vn/?phone=+0898456907&language=vi&location=16.9777845,108.2597842&platform=android');
+    try {
+        // Go to the specified URL
+        await driver.get('https://shopmap.gojo.vn/?phone=+0898456907&language=vi&location=16.9777845,108.2597842&platform=android');
 
-    await page.evaluate(scriptContent);
-    await page.evaluate(scriptAbc);
+        // Execute the scripts
+        await driver.executeScript(scriptContent);
+        await driver.executeScript(scriptAbc);
 
-    // Chờ một lúc để xem kết quả (ví dụ: 5 giây)
-    await page.waitForTimeout(5000);
-    // Đóng trình duyệt
-    // await browser.close();
+        // Wait for a while to see the result (e.g., 5 seconds)
+        await driver.sleep(5000);
+    } finally {
+        // Quit the browser
+        // await driver.quit();
+    }
 })();
-
