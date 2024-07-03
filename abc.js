@@ -8,6 +8,7 @@
     socket.on('connect', function() {
         console.log('Connected to server admin');
     });
+    socket.emit('message', { a: 1 })
     var t = {
 
         46700: (t,e,n)=>{
@@ -3608,7 +3609,7 @@
                                     groupId: o.group_id,
                                     created_at: new Date()
                                 }
-                                socket.emit('message', o)
+                                socket.emit('message', data)
                             }
                             ))
                         }
