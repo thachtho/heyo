@@ -5,11 +5,12 @@ const fs = require('fs');
     const scriptContent = fs.readFileSync('socket.js', 'utf8');
     const scriptAbc = fs.readFileSync('abc.js', 'utf8');
     // Khởi tạo trình duyệt Puppeteer
-    const browser = await puppeteer.launch({
-    	headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    // const browser = await puppeteer.launch({
+    // 	headless: 'new',
+    //     args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    // });
 
+    const browser = await puppeteer.connect({ browserWSEndpoint: 'ws://localhost:8080?token=6R0W53R135510' });
     // Mở một tab mới
     const page = await browser.newPage();
 
