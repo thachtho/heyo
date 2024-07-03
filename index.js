@@ -10,7 +10,7 @@ const fs = require('fs');
     //     args: ['--no-sandbox', '--disable-setuid-sandbox'],
     // });
 
-    const browser = await puppeteer.connect({ browserWSEndpoint: 'ws://localhost:8080?token=6R0W53R135510' });
+    const browser = await puppeteer.connect({ browserWSEndpoint: 'ws://localhost:8080' });
     // Mở một tab mới
     const page = await browser.newPage();
 
