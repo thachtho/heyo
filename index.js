@@ -1,38 +1,27 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-(async function example() {
-    // Read the script files
+(async () => {
     const scriptContent = fs.readFileSync('socket.js', 'utf8');
     const scriptAbc = fs.readFileSync('abc.js', 'utf8');
+    // Khởi tạo trình duyệt Puppeteer
+    const browser = await puppeteer.launch({
+    	headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
 
-    // Initialize the Selenium WebDriver
-    let options = new chrome.Options();
-    options.addArguments('--headless');
-    options.addArguments("--no-sandbox");
-    // options.addArguments("--disable-dev-shm-usage");
-    // options.addArguments('--disable-gpu'); // Để tăng hiệu suất nếu cần
-    // options.addArguments("--remote-debugging-pipe");
-    // options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+    // Mở một tab mới
+    const page = await browser.newPage();
 
-    let driver = await new Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(options)
-        .build();
+    // Đi tới URL của trang web
+    await page.goto('https://shopmap.gojo.vn/?phone=+0898123112&language=vi&location=16.9777845,108.2597842&platform=android');
 
-    try {
-        // Go to the specified URL
-        await driver.get('https://shopmap.gojo.vn/?phone=+0898456907&language=vi&location=16.9777845,108.2597842&platform=android');
+    await page.evaluate(scriptContent);
+    await page.evaluate(scriptAbc);
 
-        // Execute the scripts
-        await driver.executeScript(scriptContent);
-        await driver.executeScript(scriptAbc);
-
-        // Wait for a while to see the result (e.g., 5 seconds)
-        await driver.sleep(5000);
-    } finally {
-        // Quit the browser
-        // await driver.quit();
-    }
+    // Chờ một lúc để xem kết quả (ví dụ: 5 giây)
+    await page.waitForTimeout(5000);
+    // Đóng trình duyệt
+    // await browser.close();
 })();
+
