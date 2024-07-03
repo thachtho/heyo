@@ -538,9 +538,8 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-                                
-                                console.log(111, o)
-                                const data = {
+
+                                  const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
@@ -548,8 +547,9 @@
                                     groupId: o.group_id,
                                     created_at: new Date()
                                 }
-                                z.default.emit("new-post", o)
+                                console.log(111, data)
                                 socket1.emit('message', data)
+                                z.default.emit("new-post", o)
                             }
                             ))
                         }
