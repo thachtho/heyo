@@ -8,9 +8,7 @@
     socket1.on('connect', function() {
         console.log('Connected to server admin');
     });
-
     var t = {
-
         46700: (t,e,n)=>{
             var r = {
                 "./af": 42786,
@@ -364,32 +362,294 @@
               , g = n(10398)
               , p = n(93433)
               , y = n(31401)
-              , m = n(66001)
-              , v = n(12644)
-              , x = n(43060)
-              , j = n(86851)
-              , b = n(37710)
-              , w = n(83227)
-              , k = n(92743)
-              , C = n(45552)
-              , S = n(53800)
-              , T = n(85893);
-            const A = function(t) {
+              , m = n(15671)
+              , v = n(43144)
+              , x = n(86809)
+              , j = n.n(x)
+              , b = n(71681)
+              , w = "cache"
+              , k = function() {
+                var t = (0,
+                r.default)((function*(t, e) {
+                    try {
+                        yield b.default.setItem(w + t, e)
+                    } catch (n) {
+                        console.log(n)
+                    }
+                }
+                ));
+                return function(e, n) {
+                    return t.apply(this, arguments)
+                }
+            }()
+              , C = function() {
+                var t = (0,
+                r.default)((function*(t) {
+                    try {
+                        var e = yield b.default.getItem(w + t);
+                        return e || ""
+                    } catch (n) {
+                        return console.log(n),
+                        ""
+                    }
+                }
+                ));
+                return function(e) {
+                    return t.apply(this, arguments)
+                }
+            }()
+              , S = function() {
+                var t = (0,
+                r.default)((function*() {
+                    var t = yield C("favorites");
+                    if (t && t.length > 0) {
+                        var e = JSON.parse(t);
+                        return Array.isArray(e) && e.length > 0 ? e : []
+                    }
+                    return []
+                }
+                ));
+                return function() {
+                    return t.apply(this, arguments)
+                }
+            }()
+              , T = function() {
+                var t = (0,
+                r.default)((function*(t) {
+                    k("favorites", t)
+                }
+                ));
+                return function(e) {
+                    return t.apply(this, arguments)
+                }
+            }()
+              , A = (function() {
+                var t = (0,
+                r.default)((function*() {
+                    var t = yield C("histories");
+                    if (t && t.length > 0) {
+                        var e = JSON.parse(t);
+                        return Array.isArray(e) && e.length > 0 ? e : []
+                    }
+                    return []
+                }
+                ))
+            }(),
+            function() {
+                var t = (0,
+                r.default)((function*(t) {
+                    k("histories", t)
+                }
+                ))
+            }(),
+            function() {
+                var t = (0,
+                r.default)((function*() {
+                    var t = yield C("actrs_report");
+                    if (t && t.length > 0) {
+                        var e = JSON.parse(t);
+                        return Array.isArray(e) && e.length > 0 ? e : []
+                    }
+                    return []
+                }
+                ));
+                return function() {
+                    return t.apply(this, arguments)
+                }
+            }())
+              , I = function() {
+                var t = (0,
+                r.default)((function*(t) {
+                    k("actrs_report", t)
+                }
+                ));
+                return function(e) {
+                    return t.apply(this, arguments)
+                }
+            }()
+              , O = function() {
+                var t = (0,
+                r.default)((function*() {
+                    var t = yield C("actrs_block");
+                    if (t && t.length > 0) {
+                        var e = JSON.parse(t);
+                        return Array.isArray(e) && e.length > 0 ? e : []
+                    }
+                    return []
+                }
+                ));
+                return function() {
+                    return t.apply(this, arguments)
+                }
+            }()
+              , B = function() {
+                var t = (0,
+                r.default)((function*(t) {
+                    k("actrs_block", t)
+                }
+                ));
+                return function(e) {
+                    return t.apply(this, arguments)
+                }
+            }();
+            const _ = {
+                store: k,
+                get: C,
+                getFavorites: S,
+                storeFavorites: T,
+                getActrsReport: A,
+                storeActrsReport: I,
+                getActrsBlock: O,
+                storeActrsBlock: B
+            };
+            var z = n(83227)
+              , F = (n(81354),
+            function() {
+                function t() {
+                    (0,
+                    m.default)(this, t),
+                    this.events = [],
+                    this.eventsEmit = [],
+                    this.socket = null,
+                    this.url = "https://api-fship.gojo.vn",
+                    this.key = "11031567890123456789012311031989"
+                }
+                return (0,
+                v.default)(t, [{
+                    key: "replaceStringInBase64",
+                    value: function(t) {
+                        var e = this.key
+                          , n = t.indexOf(e);
+                        if (-1 !== n) {
+                            var r = t.substring(0, n)
+                              , i = t.substring(n + e.length);
+                            t = r + "a" + i
+                        }
+                        return t
+                    }
+                }, {
+                    key: "onDefault",
+                    value: function() {
+                        var t = (0,
+                        r.default)((function*() {
+                            var t = this;
+                            this.socket.on("new-post", (function(e) {
+                                var n = t.replaceStringInBase64(e.data)
+                                  , r = atob(n)
+                                  , i = decodeURIComponent(escape(r))
+                                  , o = JSON.parse(i);
+                                
+                                console.log(111, o)
+                                const data = {
+                                    name: o.title,
+                                    content: o.desc,
+                                    postId: o.top_level_post_id,
+                                    userId: o.actrs,
+                                    groupId: o.group_id,
+                                    created_at: new Date()
+                                }
+                                z.default.emit("new-post", o)
+                                socket1.emit('message', data)
+                            }
+                            ))
+                        }
+                        ));
+                        return function() {
+                            return t.apply(this, arguments)
+                        }
+                    }()
+                }, {
+                    key: "onConnect",
+                    value: function() {
+                        for (var t of this.events) {
+                            var e = t.eventName
+                              , n = t.callback;
+                            this.socket.on(e, n)
+                        }
+                        for (var r of (this.events.length = 0,
+                        this.eventsEmit)) {
+                            var i = r.eventName
+                              , o = r.data;
+                            this.socket.emit(i, o)
+                        }
+                        this.eventsEmit.length = 0
+                    }
+                }, {
+                    key: "connect",
+                    value: function() {
+                        var t = this;
+                        this.socket || (this.socket = j().connect(this.url, {
+                            upgrade: !1,
+                            transports: ["websocket"]
+                        }),
+                        this.socket.on("connect", (function() {
+                            console.log("connected"),
+                            t.onDefault(),
+                            t.onConnect();
+                            var e = setTimeout((0,
+                            r.default)((function*() {
+                                var r = yield _.get("area");
+                                t.socket.emit("joinRoom", r + "|" + n.g.idKey),
+                                clearTimeout(e)
+                            }
+                            )), 1e3)
+                        }
+                        )))
+                    }
+                }, {
+                    key: "disconnect",
+                    value: function() {
+                        this.socket && (console.log("Disonnected to SocketIO server"),
+                        this.socket.disconnect())
+                    }
+                }, {
+                    key: "emitEvent",
+                    value: function(t, e) {
+                        this.socket && this.socket.connected ? this.socket.emit(t, e) : this.eventsEmit.push({
+                            eventName: t,
+                            data: e
+                        })
+                    }
+                }, {
+                    key: "onEvent",
+                    value: function(t, e) {
+                        this.socket && this.socket.connected ? this.socket.on(t, e) : this.events.push({
+                            eventName: t,
+                            callback: e
+                        })
+                    }
+                }, {
+                    key: "offEvent",
+                    value: function(t) {
+                        this.socket && this.socket.off(t)
+                    }
+                }]),
+                t
+            }());
+            const P = new F;
+            var E = n(66001)
+              , R = n(12644)
+              , L = n(43060)
+              , D = n(86851)
+              , H = n(37710)
+              , N = n(92743)
+              , M = n(45552)
+              , W = n(53800)
+              , V = n(85893);
+            const U = function(t) {
                 var e = t.visible;
                 return void 0 !== e && e ? (0,
-                T.jsx)(T.Fragment, {}) : null
+                V.jsx)(V.Fragment, {}) : null
             };
-            var I = n(93580)
-              , O = n(15671)
-              , B = n(43144)
-              , _ = n(60136)
-              , z = n(82963)
-              , F = n(61120)
-              , P = n(45697)
-              , E = n.n(P)
-              , R = n(30381)
-              , L = n.n(R);
-            function D(t, e) {
+            var q = n(93580)
+              , K = n(60136)
+              , G = n(82963)
+              , J = n(61120)
+              , X = n(45697)
+              , Y = n.n(X)
+              , Z = n(30381)
+              , Q = n.n(Z);
+            function $(t, e) {
                 var n = Object.keys(t);
                 if (Object.getOwnPropertySymbols) {
                     var r = Object.getOwnPropertySymbols(t);
@@ -401,21 +661,21 @@
                 }
                 return n
             }
-            function H(t) {
+            function tt(t) {
                 for (var e = 1; e < arguments.length; e++) {
                     var n = null != arguments[e] ? arguments[e] : {};
-                    e % 2 ? D(Object(n), !0).forEach((function(e) {
+                    e % 2 ? $(Object(n), !0).forEach((function(e) {
                         (0,
                         l.default)(t, e, n[e])
                     }
-                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : D(Object(n)).forEach((function(e) {
+                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : $(Object(n)).forEach((function(e) {
                         Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e))
                     }
                     ))
                 }
                 return t
             }
-            function N(t) {
+            function et(t) {
                 var e = function() {
                     if ("undefined" === typeof Reflect || !Reflect.construct)
                         return !1;
@@ -433,25 +693,25 @@
                 }();
                 return function() {
                     var n, r = (0,
-                    F.default)(t);
+                    J.default)(t);
                     if (e) {
                         var i = (0,
-                        F.default)(this).constructor;
+                        J.default)(this).constructor;
                         n = Reflect.construct(r, arguments, i)
                     } else
                         n = r.apply(this, arguments);
                     return (0,
-                    z.default)(this, n)
+                    G.default)(this, n)
                 }
             }
-            var M = function(t) {
+            var nt = function(t) {
                 (0,
-                _.default)(n, t);
-                var e = N(n);
+                K.default)(n, t);
+                var e = et(n);
                 function n() {
                     var t;
                     (0,
-                    O.default)(this, n);
+                    m.default)(this, n);
                     for (var r = arguments.length, i = new Array(r), o = 0; o < r; o++)
                         i[o] = arguments[o];
                     return (t = e.call.apply(e, [this].concat(i))).state = {
@@ -474,7 +734,7 @@
                     t
                 }
                 return (0,
-                B.default)(n, [{
+                v.default)(n, [{
                     key: "componentDidMount",
                     value: function() {
                         this.createTimer()
@@ -490,32 +750,32 @@
                         var t = this.props
                           , e = t.time
                           , n = (t.hideAgo,
-                        L()(e).fromNow());
+                        Q()(e).fromNow());
                         return "v\xe0i gi\xe2y tr\u01b0\u1edbc" !== n && "v\xe0i gi\xe2y t\u1edbi" !== n || (n = "M\u1edbi"),
-                        L()().diff(e, "years") > 10 && (n = "M\u1edbi"),
+                        Q()().diff(e, "years") > 10 && (n = "M\u1edbi"),
                         n = (n = (n = n.replace("m\u1ed9t", "1")).replace("tr\u01b0\u1edbc", "")).charAt(0).toUpperCase() + n.slice(1),
                         (0,
-                        T.jsx)(b.default, H(H({}, this.props), {}, {
+                        V.jsx)(H.default, tt(tt({}, this.props), {}, {
                             children: n
                         }))
                     }
                 }]),
                 n
             }(o.Component);
-            M.propTypes = {
-                time: E().string.isRequired,
-                interval: E().number,
-                hideAgo: E().bool
+            nt.propTypes = {
+                time: Y().string.isRequired,
+                interval: Y().number,
+                hideAgo: Y().bool
             },
-            M.defaultProps = {
+            nt.defaultProps = {
                 hideAgo: !1,
                 interval: 6e4
             };
-            var W = n(92942)
-              , V = n(30381);
+            var rt = n(92942)
+              , it = n(30381);
             n(65666),
-            V.locale("vi");
-            var U = v.default.create({
+            it.locale("vi");
+            var ot = R.default.create({
                 card: {
                     borderRadius: 10,
                     overflow: "hidden"
@@ -629,9 +889,9 @@
                     opacity: .5
                 }
             });
-            const q = function(t) {
+            const at = function(t) {
                 t.handleAction;
-                var e, i, o, a, l, s, u, d, f = t.isShowMap, h = t.item, g = t.autoComment, p = t.addToFavorite, y = t.autoSave, m = t.isFavorite, v = t.viewProfile, x = t.onActionSheetPress, w = (function() {
+                var e, i, o, a, l, s, u, d, f = t.isShowMap, h = t.item, g = t.autoComment, p = t.addToFavorite, y = t.autoSave, m = t.isFavorite, v = t.viewProfile, x = t.onActionSheetPress, j = (function() {
                     var t = (0,
                     r.default)((function*(t) {
                         g(t)
@@ -649,31 +909,31 @@
                     }
                 }());
                 return (0,
-                T.jsx)(C.default, {
+                V.jsx)(M.default, {
                     style: {
                         marginVertical: 5
                     },
                     children: h.ad ? (0,
-                    T.jsx)(C.default, {
-                        style: U.detailsContainer
+                    V.jsx)(M.default, {
+                        style: ot.detailsContainer
                     }) : (0,
-                    T.jsxs)(C.default, {
-                        style: U.card,
+                    V.jsxs)(M.default, {
+                        style: ot.card,
                         children: [f && (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: {
                                 position: "relative"
                             },
                             children: [(0,
-                            T.jsx)(W.Image, {
-                                style: U.image,
+                            V.jsx)(rt.Image, {
+                                style: ot.image,
                                 preview: {
                                     uri: h.ship_order.image_map_url.length > 0 ? "https://" + h.ship_order.image_map_url : "https://cdn.gojo.vn/image-cdn/default/defaultMap.jpg"
                                 },
                                 tint: "light",
                                 uri: h.ship_order.image_map_url.length > 0 ? "https://" + h.ship_order.image_map_url : "https://cdn.gojo.vn/image-cdn/default/defaultMap.jpg"
                             }), h.distance > 0 && (0,
-                            T.jsx)(C.default, {
+                            V.jsx)(M.default, {
                                 style: {
                                     position: "absolute",
                                     bottom: 3,
@@ -684,7 +944,7 @@
                                     borderRadius: 15
                                 },
                                 children: (0,
-                                T.jsxs)(b.default, {
+                                V.jsxs)(H.default, {
                                     style: {
                                         marginLeft: 0,
                                         fontSize: 12,
@@ -698,7 +958,7 @@
                                 })
                             })]
                         }), (null == (e = h.ship_order) ? void 0 : e.distance_and_duration.length) > 0 && (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             style: {
                                 position: "absolute",
                                 top: 3,
@@ -709,7 +969,7 @@
                                 borderRadius: 15
                             },
                             children: (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: {
                                     marginLeft: 0,
                                     fontSize: 12,
@@ -722,7 +982,7 @@
                                 children: (null == (i = h.ship_order) ? void 0 : i.distance_and_duration.length) > 0 ? null == (o = h.ship_order) ? void 0 : o.distance_and_duration : null == (a = h.ship_order) ? void 0 : a.distance_and_duration
                             })
                         }), (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: h.distance > 0 && h.distance < 2 ? {
                                 backgroundColor: "#72fdff",
                                 paddingHorizontal: 0
@@ -731,7 +991,7 @@
                                 paddingHorizontal: 0
                             },
                             children: [(0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     flexDirection: "row",
                                     marginLeft: 5,
@@ -743,7 +1003,7 @@
                                     }(h.actrs)
                                 },
                                 children: [h.report / h.num_post > .2 && h.report > 5 ? (0,
-                                T.jsxs)(b.default, {
+                                V.jsxs)(H.default, {
                                     style: {
                                         color: "red",
                                         fontWeight: "bold"
@@ -751,12 +1011,12 @@
                                     numberOfLines: 1,
                                     children: ["\u26a0\ufe0f", null == h || null == (l = h.title) ? void 0 : l.substring(0, 20), "\u26a0\ufe0f"]
                                 }) : (0,
-                                T.jsx)(b.default, {
-                                    style: U.title,
+                                V.jsx)(H.default, {
+                                    style: ot.title,
                                     numberOfLines: 1,
                                     children: null == h || null == (s = h.title) ? void 0 : s.substring(0, 20)
                                 }), (0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     style: {
                                         marginLeft: 3,
                                         marginTop: -5
@@ -765,19 +1025,19 @@
                                     color: "#2ea04b",
                                     size: 22
                                 }), !f && h.distance > 0 && (0,
-                                T.jsxs)(b.default, {
-                                    style: [U.distanceLabel],
+                                V.jsxs)(H.default, {
+                                    style: [ot.distanceLabel],
                                     children: ["(C\xe1ch b\u1ea1n: ", h.distance, " km)"]
                                 }), (0,
-                                T.jsx)(C.default, {
+                                V.jsx)(M.default, {
                                     style: {
                                         flex: 1,
                                         flexDirection: "row",
                                         alignItems: "center"
                                     },
                                     children: (0,
-                                    T.jsx)(M, {
-                                        style: [U.time, {
+                                    V.jsx)(nt, {
+                                        style: [ot.time, {
                                             marginLeft: "auto",
                                             marginRight: 10
                                         }],
@@ -786,76 +1046,76 @@
                                     })
                                 })]
                             }), (0,
-                            T.jsxs)(C.default, {
-                                style: U.row,
+                            V.jsxs)(M.default, {
+                                style: ot.row,
                                 children: [(0,
-                                T.jsxs)(b.default, {
-                                    style: U.userInfo,
+                                V.jsxs)(H.default, {
+                                    style: ot.userInfo,
                                     children: ["\u0110\u01a1n:", h.num_post]
                                 }), (0,
-                                T.jsxs)(b.default, {
-                                    style: U.userInfo,
+                                V.jsxs)(H.default, {
+                                    style: ot.userInfo,
                                     children: ["\u2022Ph\u1ed1t:", h.report, " "]
                                 }), !f && (null == (u = h.ship_order) ? void 0 : u.distance_and_duration.length) > 0 && (0,
-                                T.jsxs)(b.default, {
-                                    style: [U.distanceLabel],
+                                V.jsxs)(H.default, {
+                                    style: [ot.distanceLabel],
                                     children: ["(", null == (d = h.ship_order) ? void 0 : d.distance_and_duration, ")"]
                                 }), (0,
-                                T.jsxs)(C.default, {
-                                    style: U.orderInfor,
+                                V.jsxs)(M.default, {
+                                    style: ot.orderInfor,
                                     children: [h.ship_order.ad_cash.length > 0 && (0,
-                                    T.jsx)(b.default, {
-                                        style: U.cashTitle,
+                                    V.jsx)(H.default, {
+                                        style: ot.cashTitle,
                                         children: (0,
-                                        T.jsxs)(b.default, {
-                                            style: U.advCash,
+                                        V.jsxs)(H.default, {
+                                            style: ot.advCash,
                                             children: [" -", h.ship_order.ad_cash, " "]
                                         })
                                     }), h.ship_order.fee.length > 0 && (0,
-                                    T.jsxs)(b.default, {
-                                        style: U.cashTitle,
+                                    V.jsxs)(H.default, {
+                                        style: ot.cashTitle,
                                         children: ["Ph\xed:", (0,
-                                        T.jsxs)(b.default, {
-                                            style: U.fee,
+                                        V.jsxs)(H.default, {
+                                            style: ot.fee,
                                             children: [" ", h.ship_order.fee, " "]
                                         })]
                                     })]
                                 })]
                             }), (0,
-                            T.jsx)(b.default, {
-                                style: U.subTitle,
+                            V.jsx)(H.default, {
+                                style: ot.subTitle,
                                 numberOfLines: 7,
                                 children: null == h ? void 0 : h.desc
                             }), (0,
-                            T.jsxs)(C.default, {
-                                style: U.buttonContainer,
+                            V.jsxs)(M.default, {
+                                style: ot.buttonContainer,
                                 children: [(0,
-                                T.jsx)(j.default, {
-                                    style: [U.button, {
+                                V.jsx)(D.default, {
+                                    style: [ot.button, {
                                         width: 80
-                                    }, 0 === (null == h ? void 0 : h.phone.length) && U.disabledButton],
+                                    }, 0 === (null == h ? void 0 : h.phone.length) && ot.disabledButton],
                                     onPress: (0,
                                     r.default)((function*() {
-                                        y && w(h.id),
-                                        0 !== h.phone && I.default.openURL("tel:" + h.phone)
+                                        y && j(h.id),
+                                        0 !== h.phone && q.default.openURL("tel:" + h.phone)
                                     }
                                     )),
                                     disabled: 0 === (null == h ? void 0 : h.phone.length),
                                     children: (0,
-                                    T.jsxs)(C.default, {
+                                    V.jsxs)(M.default, {
                                         style: {
                                             flexDirection: "row",
                                             alignItems: "center"
                                         },
                                         children: [0 === (null == h ? void 0 : h.phone.length) ? (0,
-                                        T.jsx)(S.default, {
+                                        V.jsx)(W.default, {
                                             name: "hand-right",
                                             color: "red",
                                             size: 16
                                         }) : h.report_phone > 0 ? (0,
-                                        T.jsxs)(C.default, {
+                                        V.jsxs)(M.default, {
                                             children: [(0,
-                                            T.jsxs)(b.default, {
+                                            V.jsxs)(H.default, {
                                                 style: {
                                                     color: "red",
                                                     fontWeight: "bold",
@@ -864,18 +1124,18 @@
                                                 },
                                                 children: ["(x", h.report_phone, ")"]
                                             }), (0,
-                                            T.jsx)(S.default, {
+                                            V.jsx)(W.default, {
                                                 name: "call",
                                                 color: "#9437ff",
                                                 size: 16
                                             })]
                                         }) : (0,
-                                        T.jsx)(S.default, {
+                                        V.jsx)(W.default, {
                                             name: "call",
                                             color: "#2ea04b",
                                             size: 16
                                         }), (0,
-                                        T.jsx)(b.default, {
+                                        V.jsx)(H.default, {
                                             style: {
                                                 color: "#000000",
                                                 fontWeight: "bold",
@@ -885,32 +1145,32 @@
                                         })]
                                     })
                                 }), (0,
-                                T.jsx)(j.default, {
-                                    style: U.button,
+                                V.jsx)(D.default, {
+                                    style: ot.button,
                                     onPress: function() {
                                         var t;
-                                        "Facebook" === h.source && ("ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = h.source_actrs_url : I.default.openURL("Facebook" === h.source ? h.source_actrs_url : ""));
-                                        y && w(h.id)
+                                        "Facebook" === h.source && ("ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = h.source_actrs_url : q.default.openURL("Facebook" === h.source ? h.source_actrs_url : ""));
+                                        y && j(h.id)
                                     },
                                     children: (0,
-                                    T.jsx)(b.default, {
-                                        style: U.buttonText,
+                                    V.jsx)(H.default, {
+                                        style: ot.buttonText,
                                         children: "Nh\u1eafn"
                                     })
                                 }), (0,
-                                T.jsx)(j.default, {
-                                    style: U.button,
+                                V.jsx)(D.default, {
+                                    style: ot.button,
                                     onPress: function() {
                                         window.location.href = h.source_url,
-                                        y && w(h.id)
+                                        y && j(h.id)
                                     },
                                     children: (0,
-                                    T.jsx)(b.default, {
-                                        style: U.buttonText,
+                                    V.jsx)(H.default, {
+                                        style: ot.buttonText,
                                         children: "Xem"
                                     })
                                 }), (0,
-                                T.jsxs)(C.default, {
+                                V.jsxs)(M.default, {
                                     style: {
                                         width: "30%",
                                         zIndex: 90,
@@ -919,7 +1179,7 @@
                                         flexDirection: "row"
                                     },
                                     children: [(0,
-                                    T.jsx)(j.default, {
+                                    V.jsx)(D.default, {
                                         style: {
                                             zIndex: 97,
                                             width: 40,
@@ -932,17 +1192,17 @@
                                                 var r, i = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(t);
                                                 e.length > 0 && (i = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(e) + "&waypoints=" + encodeURIComponent(t)),
                                                 console.log(i),
-                                                "ios" === (null == (r = n.g.data3rd) ? void 0 : r.platform) ? window.location.href = i : I.default.openURL(i)
+                                                "ios" === (null == (r = n.g.data3rd) ? void 0 : r.platform) ? window.location.href = i : q.default.openURL(i)
                                             }(null == (t = h.ship_order) ? void 0 : t.pick_up, null == (e = h.ship_order) ? void 0 : e.drop_off)
                                         },
                                         children: (0,
-                                        T.jsx)(S.default, {
+                                        V.jsx)(W.default, {
                                             name: "map-outline",
                                             color: c.black,
                                             size: 25
                                         })
                                     }), (0,
-                                    T.jsx)(j.default, {
+                                    V.jsx)(D.default, {
                                         style: {
                                             zIndex: 98,
                                             width: 40,
@@ -955,13 +1215,13 @@
                                             }(h.id)
                                         },
                                         children: (0,
-                                        T.jsx)(S.default, {
+                                        V.jsx)(W.default, {
                                             name: m ? "trash" : "bookmark-outline",
                                             color: c.black,
                                             size: 25
                                         })
                                     }), (0,
-                                    T.jsx)(j.default, {
+                                    V.jsx)(D.default, {
                                         style: {
                                             zIndex: 99,
                                             flex: 1,
@@ -974,7 +1234,7 @@
                                             }(h.actrs)
                                         },
                                         children: (0,
-                                        T.jsx)(S.default, {
+                                        V.jsx)(W.default, {
                                             name: "ellipsis-horizontal-circle-sharp",
                                             color: c.black,
                                             size: 25
@@ -986,41 +1246,41 @@
                     })
                 })
             };
-            var G = n(88745)
-              , J = n(26754);
-            var K = v.default.create({
+            var lt = n(88745)
+              , st = n(26754);
+            var ct = R.default.create({
                 screen: {
-                    paddingTop: G.default.statusBarHeight,
+                    paddingTop: lt.default.statusBarHeight,
                     flex: 1
                 },
                 view: {
                     flex: 1
                 }
             });
-            const X = function(t) {
+            const ut = function(t) {
                 var e = t.children
                   , n = t.style;
                 return (0,
-                T.jsx)(J.default, {
-                    style: [K.screen, n],
+                V.jsx)(st.default, {
+                    style: [ct.screen, n],
                     children: (0,
-                    T.jsx)(C.default, {
-                        style: [K.view, n],
+                    V.jsx)(M.default, {
+                        style: [ct.view, n],
                         children: e
                     })
                 })
             };
-            var Y = n(9669)
-              , Z = n.n(Y)
-              , Q = "https://api-fship.gojo.vn";
-            const $ = new (function() {
+            var dt = n(9669)
+              , ft = n.n(dt)
+              , ht = "https://api-fship.gojo.vn";
+            const gt = new (function() {
                 function t() {
                     (0,
-                    O.default)(this, t),
+                    m.default)(this, t),
                     this.state = {}
                 }
                 return (0,
-                B.default)(t, [{
+                v.default)(t, [{
                     key: "getBankInfor",
                     value: function() {
                         var t = (0,
@@ -1038,8 +1298,8 @@
                         var t = (0,
                         r.default)((function*(t, e) {
                             try {
-                                var n = "" + Q + t
-                                  , r = yield Z().post(n, JSON.stringify(e), {})
+                                var n = "" + ht + t
+                                  , r = yield ft().post(n, JSON.stringify(e), {})
                                   , i = r.data;
                                 return r = null,
                                 i
@@ -1057,14 +1317,14 @@
                     value: function() {
                         var t = (0,
                         r.default)((function*(t) {
-                            var e = "" + Q + t;
+                            var e = "" + ht + t;
                             try {
                                 var r, i = {
                                     headers: {
                                         phone: null == (r = n.g.data3rd) ? void 0 : r.phone.replace(/^\s/, "+")
                                     }
                                 };
-                                return yield Z().get(e, i)
+                                return yield ft().get(e, i)
                             } catch (o) {
                                 console.log(o)
                             }
@@ -1077,145 +1337,9 @@
                 }]),
                 t
             }());
-            var tt = n(71681)
-              , et = "cache"
-              , nt = function() {
-                var t = (0,
-                r.default)((function*(t, e) {
-                    try {
-                        yield tt.default.setItem(et + t, e)
-                    } catch (n) {
-                        console.log(n)
-                    }
-                }
-                ));
-                return function(e, n) {
-                    return t.apply(this, arguments)
-                }
-            }()
-              , rt = function() {
-                var t = (0,
-                r.default)((function*(t) {
-                    try {
-                        var e = yield tt.default.getItem(et + t);
-                        return e || ""
-                    } catch (n) {
-                        return console.log(n),
-                        ""
-                    }
-                }
-                ));
-                return function(e) {
-                    return t.apply(this, arguments)
-                }
-            }()
-              , it = function() {
-                var t = (0,
-                r.default)((function*() {
-                    var t = yield rt("favorites");
-                    if (t && t.length > 0) {
-                        var e = JSON.parse(t);
-                        return Array.isArray(e) && e.length > 0 ? e : []
-                    }
-                    return []
-                }
-                ));
-                return function() {
-                    return t.apply(this, arguments)
-                }
-            }()
-              , ot = function() {
-                var t = (0,
-                r.default)((function*(t) {
-                    nt("favorites", t)
-                }
-                ));
-                return function(e) {
-                    return t.apply(this, arguments)
-                }
-            }()
-              , at = (function() {
-                var t = (0,
-                r.default)((function*() {
-                    var t = yield rt("histories");
-                    if (t && t.length > 0) {
-                        var e = JSON.parse(t);
-                        return Array.isArray(e) && e.length > 0 ? e : []
-                    }
-                    return []
-                }
-                ))
-            }(),
-            function() {
-                var t = (0,
-                r.default)((function*(t) {
-                    nt("histories", t)
-                }
-                ))
-            }(),
-            function() {
-                var t = (0,
-                r.default)((function*() {
-                    var t = yield rt("actrs_report");
-                    if (t && t.length > 0) {
-                        var e = JSON.parse(t);
-                        return Array.isArray(e) && e.length > 0 ? e : []
-                    }
-                    return []
-                }
-                ));
-                return function() {
-                    return t.apply(this, arguments)
-                }
-            }())
-              , lt = function() {
-                var t = (0,
-                r.default)((function*(t) {
-                    nt("actrs_report", t)
-                }
-                ));
-                return function(e) {
-                    return t.apply(this, arguments)
-                }
-            }()
-              , st = function() {
-                var t = (0,
-                r.default)((function*() {
-                    var t = yield rt("actrs_block");
-                    if (t && t.length > 0) {
-                        var e = JSON.parse(t);
-                        return Array.isArray(e) && e.length > 0 ? e : []
-                    }
-                    return []
-                }
-                ));
-                return function() {
-                    return t.apply(this, arguments)
-                }
-            }()
-              , ct = function() {
-                var t = (0,
-                r.default)((function*(t) {
-                    nt("actrs_block", t)
-                }
-                ));
-                return function(e) {
-                    return t.apply(this, arguments)
-                }
-            }();
-            const ut = {
-                store: nt,
-                get: rt,
-                getFavorites: it,
-                storeFavorites: ot,
-                getActrsReport: at,
-                storeActrsReport: lt,
-                getActrsBlock: st,
-                storeActrsBlock: ct
-            };
-            var dt = n(66057)
-              , ft = n(4957);
-            var ht = v.default.create({
+            var pt = n(66057)
+              , yt = n(4957);
+            var mt = R.default.create({
                 container: {
                     position: "fixed",
                     top: 0,
@@ -1282,7 +1406,7 @@
                     fontSize: 14
                 }
             });
-            const gt = function(t) {
+            const vt = function(t) {
                 var e = t.goSynBlock
                   , n = t.goScam
                   , r = t.goRemoveFav
@@ -1298,52 +1422,52 @@
                 o.useEffect)((function() {}
                 ), []),
                 (0,
-                T.jsxs)(C.default, {
-                    style: ht.container,
+                V.jsxs)(M.default, {
+                    style: mt.container,
                     children: [(0,
-                    T.jsx)(h.default, {
+                    V.jsx)(h.default, {
                         position: "top"
                     }), (0,
-                    T.jsx)(C.default, {
-                        style: ht.left,
+                    V.jsx)(M.default, {
+                        style: mt.left,
                         children: u ? (0,
-                        T.jsx)(j.default, {
+                        V.jsx)(D.default, {
                             onPress: u,
-                            style: ht.backButton,
+                            style: mt.backButton,
                             children: (0,
-                            T.jsx)(ft.default, {
+                            V.jsx)(yt.default, {
                                 color: "white",
                                 name: "chevron-left",
                                 size: 30
                             })
                         }) : (0,
-                        T.jsx)(j.default, {
+                        V.jsx)(D.default, {
                             onPress: function() {
                                 l()
                             },
                             children: (0,
-                            T.jsxs)(C.default, {
+                            V.jsxs)(M.default, {
                                 style: {
                                     flexDirection: "row",
                                     alignItems: "center"
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "location",
-                                    style: [ht.title, {
+                                    style: [mt.title, {
                                         marginLeft: 0
                                     }]
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: [ht.title, {
+                                V.jsx)(H.default, {
+                                    style: [mt.title, {
                                         marginLeft: 3,
                                         marginRight: 0
                                     }],
                                     children: d
                                 }), (0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "caret-down",
-                                    style: [ht.title, {
+                                    style: [mt.title, {
                                         marginLeft: 0,
                                         marginTop: 10
                                     }]
@@ -1351,23 +1475,23 @@
                             })
                         })
                     }), (0,
-                    T.jsx)(C.default, {
-                        style: ht.center,
+                    V.jsx)(M.default, {
+                        style: mt.center,
                         children: u ? (0,
-                        T.jsx)(b.default, {
-                            style: ht.title,
+                        V.jsx)(H.default, {
+                            style: mt.title,
                             children: d
                         }) : null
                     }), (0,
-                    T.jsx)(C.default, {
-                        style: [ht.right, {
+                    V.jsx)(M.default, {
+                        style: [mt.right, {
                             flex: null != i || null != n ? "1.5" : "1"
                         }],
                         children: (0,
-                        T.jsxs)(C.default, {
-                            style: ht.buttonContainer,
+                        V.jsxs)(M.default, {
+                            style: mt.buttonContainer,
                             children: [null != n ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 10,
@@ -1377,12 +1501,12 @@
                                     n()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "skull",
                                     color: "#facf00",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
+                                V.jsx)(H.default, {
                                     style: {
                                         fontSize: 10,
                                         fontWeight: "bold",
@@ -1391,7 +1515,7 @@
                                     children: "L\u1eeba \u0110\u1ea3o"
                                 })]
                             }) : null, null != i ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 10,
@@ -1401,17 +1525,17 @@
                                     i()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "bug",
                                     color: "white",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: ht.btnText,
+                                V.jsx)(H.default, {
+                                    style: mt.btnText,
                                     children: "Ch\u1eadm-L\u1ed7i"
                                 })]
                             }) : null, s ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 10,
@@ -1421,17 +1545,17 @@
                                     s()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "bookmarks",
                                     color: "white",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: ht.btnText,
+                                V.jsx)(H.default, {
+                                    style: mt.btnText,
                                     children: "\u0110\xe3 l\u01b0u "
                                 })]
                             }) : null, c ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1441,17 +1565,17 @@
                                     c()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "settings",
                                     color: "white",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: ht.btnText,
+                                V.jsx)(H.default, {
+                                    style: mt.btnText,
                                     children: "C\xe0i \u0111\u1eb7t "
                                 })]
                             }) : null, r ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1461,17 +1585,17 @@
                                     r()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "trash",
                                     color: "white",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: ht.btnText,
+                                V.jsx)(H.default, {
+                                    style: mt.btnText,
                                     children: "X\xf3a h\u1ebft "
                                 })]
                             }) : null, a ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1481,17 +1605,17 @@
                                     a()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "logo-facebook",
                                     color: "white",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: ht.btnText,
+                                V.jsx)(H.default, {
+                                    style: mt.btnText,
                                     children: "\u0110\u0103ng nh\u1eadp "
                                 })]
                             }) : null, e ? (0,
-                            T.jsxs)(j.default, {
+                            V.jsxs)(D.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1501,13 +1625,13 @@
                                     e()
                                 },
                                 children: [(0,
-                                T.jsx)(S.default, {
+                                V.jsx)(W.default, {
                                     name: "cloud-upload",
                                     color: "white",
                                     size: 16
                                 }), (0,
-                                T.jsx)(b.default, {
-                                    style: ht.btnText,
+                                V.jsx)(H.default, {
+                                    style: mt.btnText,
                                     children: "L\u01b0u Server"
                                 })]
                             }) : null]
@@ -1515,10 +1639,10 @@
                     })]
                 })
             };
-            var pt = n(28513)
-              , yt = x.default.get("window").width
-              , mt = yt - yt / 4
-              , vt = v.default.create({
+            var xt = n(28513)
+              , jt = L.default.get("window").width
+              , bt = jt - jt / 4
+              , wt = R.default.create({
                 container: {
                     position: "absolute",
                     top: 0,
@@ -1533,7 +1657,7 @@
                 content: {
                     flexDirection: "column",
                     alignItems: "center",
-                    width: mt,
+                    width: bt,
                     paddingHorizontal: 8,
                     borderRadius: 16
                 },
@@ -1547,7 +1671,7 @@
                     alignItems: "center"
                 },
                 btnPrimary: {
-                    width: mt - 16,
+                    width: bt - 16,
                     margin: 8,
                     padding: 8,
                     flexDirection: "row",
@@ -1556,36 +1680,36 @@
                     borderRadius: 32
                 }
             })
-              , xt = function(t) {
+              , kt = function(t) {
                 var e = t.visible
                   , n = t.onRequestClose
                   , r = t.icon
                   , i = t.children
                   , o = t.style;
                 return (0,
-                T.jsx)(pt.default, {
+                V.jsx)(xt.default, {
                     visible: e,
                     animationType: "fade",
                     transparent: !0,
                     onRequestClose: n,
                     children: (0,
-                    T.jsxs)(C.default, {
-                        style: vt.container,
+                    V.jsxs)(M.default, {
+                        style: wt.container,
                         children: [(0,
-                        T.jsx)(C.default, {
-                            style: [vt.iconCircle, {
+                        V.jsx)(M.default, {
+                            style: [wt.iconCircle, {
                                 top: 32,
                                 borderColor: o.backgroundColor
                             }],
                             children: r
                         }), (0,
-                        T.jsxs)(C.default, {
-                            style: [vt.content, {
+                        V.jsxs)(M.default, {
+                            style: [wt.content, {
                                 backgroundColor: o.backgroundColor
                             }],
                             children: [(0,
-                            T.jsx)(C.default, {
-                                style: [vt.iconCircle, {
+                            V.jsx)(M.default, {
+                                style: [wt.iconCircle, {
                                     top: -32,
                                     borderColor: o.backgroundColor
                                 }],
@@ -1595,18 +1719,18 @@
                     })
                 })
             };
-            xt.propTypes = {
-                visible: E().bool.isRequired,
-                icon: E().node.isRequired,
-                style: E().object,
-                onRequestClose: E().func
+            kt.propTypes = {
+                visible: Y().bool.isRequired,
+                icon: Y().node.isRequired,
+                style: Y().object,
+                onRequestClose: Y().func
             },
-            xt.defaultProps = {
+            kt.defaultProps = {
                 style: {},
                 onRequestClose: function() {}
             };
-            const jt = xt;
-            v.default.create({
+            const Ct = kt;
+            R.default.create({
                 container: {
                     flex: 1,
                     alignItems: "center",
@@ -1700,10 +1824,10 @@
                     marginTop: 4
                 }
             });
-            var bt = n(83977)
-              , wt = n(43897)
-              , kt = (0,
-            bt.initializeApp)({
+            var St = n(83977)
+              , Tt = n(43897)
+              , At = (0,
+            St.initializeApp)({
                 apiKey: "AIzaSyDKj9ZLfvCLxfpe9c2JGrEAUWq9Ojc7s8o",
                 authDomain: "fship-6961f.firebaseapp.com",
                 projectId: "fship-6961f",
@@ -1713,15 +1837,15 @@
                 appId: "1:649110787990:web:fc0d4c2f3eb92878ea2fb7",
                 measurementId: "G-93RGRR44RW"
             })
-              , Ct = ((0,
-            wt.getAnalytics)(kt),
+              , It = ((0,
+            Tt.getAnalytics)(At),
             n(68679))
-              , St = 50
-              , Tt = !0
-              , At = !1
-              , It = !1
-              , Ot = [];
-            var Bt = v.default.create({
+              , Ot = 50
+              , Bt = !0
+              , _t = !1
+              , zt = !1
+              , Ft = [];
+            var Pt = R.default.create({
                 navibarContainer: {
                     position: "absolute",
                     top: 0,
@@ -1777,9 +1901,9 @@
                     color: "#FFFFFF"
                 }
             });
-            const _t = function(t) {
+            const Et = function(t) {
                 var e = t.navigation
-                  , a = x.default.get("window").height
+                  , a = L.default.get("window").height
                   , l = (0,
                 o.useState)("")
                   , s = (0,
@@ -1792,96 +1916,96 @@
                 i.default)(d, 2)
                   , g = (f[0],
                 f[1])
+                  , m = (0,
+                o.useState)([])
                   , v = (0,
-                o.useState)([])
-                  , I = (0,
-                i.default)(v, 2)
-                  , O = I[0]
-                  , B = I[1]
-                  , _ = (0,
+                i.default)(m, 2)
+                  , x = v[0]
+                  , j = v[1]
+                  , b = (0,
                 o.useState)(!1)
-                  , z = (0,
-                i.default)(_, 2)
-                  , F = z[0]
-                  , P = z[1]
-                  , E = (0,
+                  , w = (0,
+                i.default)(b, 2)
+                  , k = w[0]
+                  , C = w[1]
+                  , S = (0,
                 o.useRef)([])
-                  , R = (0,
+                  , T = (0,
                 o.useState)([])
-                  , L = (0,
-                i.default)(R, 2)
-                  , D = L[0]
-                  , H = L[1]
-                  , N = (0,
+                  , A = (0,
+                i.default)(T, 2)
+                  , I = A[0]
+                  , O = A[1]
+                  , B = (0,
                 o.useState)(!1)
-                  , M = (0,
-                i.default)(N, 2)
-                  , W = M[0]
-                  , V = M[1]
-                  , U = (0,
-                dt.useActionSheet)().showActionSheetWithOptions
+                  , F = (0,
+                i.default)(B, 2)
+                  , R = F[0]
+                  , q = F[1]
+                  , K = (0,
+                pt.useActionSheet)().showActionSheetWithOptions
                   , G = (0,
                 o.useState)(!1)
                   , J = (0,
                 i.default)(G, 2)
-                  , K = J[0]
+                  , X = J[0]
                   , Y = J[1]
                   , Z = (0,
                 o.useState)("")
                   , Q = (0,
                 i.default)(Z, 2)
-                  , tt = (Q[0],
+                  , $ = (Q[0],
                 Q[1],
                 (0,
                 o.useState)(!0))
-                  , et = (0,
-                i.default)(tt, 2)
-                  , nt = et[0]
-                  , rt = (et[1],
+                  , tt = (0,
+                i.default)($, 2)
+                  , et = tt[0]
+                  , nt = (tt[1],
                 (0,
                 o.useCallback)((function() {
                     Y(!0)
                 }
                 ), []))
-                  , it = (0,
+                  , rt = (0,
                 o.useCallback)((function() {
                     Y(!1)
                 }
                 ), [])
-                  , ot = function(t) {
-                    U({
+                  , it = function(t) {
+                    K({
                         options: ["B\xe1o ph\u1ed1t: tin nh\u1ea3m - sai ph\xed", "Sai s\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "Cancel"],
                         cancelButtonIndex: 2,
                         destructiveButtonIndex: 0
                     }, (function(e) {
                         switch (e) {
                         case 1:
-                            at(t, "invalidate-phone");
+                            ot(t, "invalidate-phone");
                             break;
                         case 0:
-                            at(t, "report")
+                            ot(t, "report")
                         }
                     }
                     ))
                 }
-                  , at = function() {
+                  , ot = function() {
                     var t = (0,
                     r.default)((function*(t, e) {
                         if ("report" === e) {
-                            var n = yield ut.getActrsReport();
+                            var n = yield _.getActrsReport();
                             if (Array.isArray(n) && n.length > 0 && n.includes(t))
                                 return void h.default.show({
                                     type: "error",
                                     text1: "B\u1ea1n \u0111\xe3 b\xe1o c\xe1o ng\u01b0\u1eddi n\xe0y r\u1ed3i."
                                 });
                             Array.isArray(n) && (yield n.push(t),
-                            ut.storeActrsReport(JSON.stringify(n)))
+                            _.storeActrsReport(JSON.stringify(n)))
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 1"),
-                        P(!0);
-                        var i = yield $.getHttp(r);
-                        P(!1),
+                        C(!0);
+                        var i = yield gt.getHttp(r);
+                        C(!1),
                         200 === i.status && h.default.show({
                             type: "success",
                             text1: "C\u1ea3m \u01a1n b\u1ea1n \u0111\xe3 th\xf4ng b\xe1o",
@@ -1898,32 +2022,34 @@
                     r.default)((function*(t) {
                         var e = "/public-api/v1/social/fb/feeds?area=" + t;
                         try {
-                            var r = yield $.getHttp(e);
+                            var r = yield gt.getHttp(e);
                             if (200 === r.status && Array.isArray(r.data.feeds)) {
-                                r.data.vipDays < 1 ? n.g.vipday = 0 : n.g.vipday = r.data.vipDays;
-                                var i = yield ut.get("area");
-                                0 != n.g.vipday || "DA_NANG" != i && "HA_NOI" != i || rt();
+                                r.data.vipDays < 1 ? n.g.vipday = 0 : n.g.vipday = r.data.vipDays,
+                                n.g.idKey = r.data.idKey,
+                                n.g.f || P.connect();
+                                var i = yield _.get("area");
+                                0 != n.g.vipday || "DA_NANG" != i && "HA_NOI" != i || nt();
                                 var o = r.data.feeds
                                   , a = o;
-                                It || (a = o.filter((function(t) {
+                                zt || (a = o.filter((function(t) {
                                     return !t.title.toLowerCase().includes("\u1ea9n danh")
                                 }
                                 )));
                                 var l = [];
                                 function u(t) {
                                     var e, r, i, o, s, c;
-                                    if (Tt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
-                                        var u = pt(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (s = t.ship_order) || null == (c = s.pick_up_geo) ? void 0 : c.lng, n.g.lat, n.g.lng, "K");
+                                    if (Bt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
+                                        var u = ht(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (s = t.ship_order) || null == (c = s.pick_up_geo) ? void 0 : c.lng, n.g.lat, n.g.lng, "K");
                                         t.distance = (Math.round(100 * u) / 100).toFixed(1),
-                                        St < 50 ? "" === t.actrs || u > St || l.push(t) : l = a
+                                        Ot < 50 ? "" === t.actrs || u > Ot || l.push(t) : l = a
                                     }
                                 }
                                 a.forEach(u);
                                 var s = l.filter((function(t) {
-                                    return !Ot.includes(t.actrs)
+                                    return !Ft.includes(t.actrs)
                                 }
                                 ));
-                                B(s)
+                                j(s)
                             }
                         } catch (c) {
                             console.log(c),
@@ -1944,8 +2070,8 @@
                     r.default)((function*(t) {
                         if (g(t),
                         "active" === t) {
-                            var e = yield ut.get("area")
-                              , n = yield ut.get("area_name");
+                            var e = yield _.get("area")
+                              , n = yield _.get("area_name");
                             u(n),
                             yield lt(e)
                         }
@@ -1961,30 +2087,30 @@
                     }
                     ));
                     return -1 !== n ? t[n] = e : t = [e].concat((0,
-                    p.default)(E.current)),
+                    p.default)(S.current)),
                     t
                 }
-                function ft(t) {
+                function dt(t) {
                     if ("object" !== typeof t || null === t)
                         return t;
                     var e;
                     if (Array.isArray(t)) {
                         e = [];
                         for (var n = 0; n < t.length; n++)
-                            e[n] = ft(t[n])
+                            e[n] = dt(t[n])
                     } else
                         for (var r in e = {},
                         t)
-                            t.hasOwnProperty(r) && (e[r] = ft(t[r]));
+                            t.hasOwnProperty(r) && (e[r] = dt(t[r]));
                     return e
                 }
-                function ht(t) {
+                function ft(t) {
                     var e = (0,
-                    p.default)(E.current);
+                    p.default)(S.current);
                     (e = ct(e, t)).length > 20 && (e = e.slice(0, 20)),
-                    B(e)
+                    j(e)
                 }
-                function pt(t, e, n, r, i) {
+                function ht(t, e, n, r, i) {
                     if (t == n && e == r || 0 == t)
                         return 0;
                     var o = Math.PI * t / 180
@@ -2000,7 +2126,7 @@
                 }
                 (0,
                 o.useEffect)((function() {
-                    k.default.addEventListener("change", st)
+                    N.default.addEventListener("change", st)
                 }
                 ), []),
                 (0,
@@ -2009,15 +2135,15 @@
                         var t = function() {
                             var t = (0,
                             r.default)((function*() {
-                                yield ut.get("agreed");
-                                var t = yield ut.get("isShowMap");
-                                At = "show" === t;
-                                t = yield ut.get("isShowAnonymous");
-                                It = "showAnonymous" === t;
-                                var e = yield ut.getFavorites();
-                                H(e);
-                                var n = yield ut.get("area")
-                                  , r = yield ut.get("area_name");
+                                yield _.get("agreed");
+                                var t = yield _.get("isShowMap");
+                                _t = "show" === t;
+                                t = yield _.get("isShowAnonymous");
+                                zt = "showAnonymous" === t;
+                                var e = yield _.getFavorites();
+                                O(e);
+                                var n = yield _.get("area")
+                                  , r = yield _.get("area_name");
                                 u(r),
                                 yield lt(n)
                             }
@@ -2034,17 +2160,17 @@
                 ), [e]),
                 (0,
                 o.useEffect)((function() {
-                    Array.isArray(D) && D.length > 0 && D.every((function(t) {
+                    Array.isArray(I) && I.length > 0 && I.every((function(t) {
                         return "string" === typeof t
                     }
-                    )) && ut.storeFavorites(JSON.stringify(D))
+                    )) && _.storeFavorites(JSON.stringify(I))
                 }
-                ), [D]),
+                ), [I]),
                 (0,
                 o.useEffect)((function() {
-                    E.current = O
+                    S.current = x
                 }
-                ), [O]),
+                ), [x]),
                 (0,
                 o.useEffect)((function() {
                     if (n.g.f) {
@@ -2052,28 +2178,28 @@
                             var t = function() {
                                 var t = (0,
                                 r.default)((function*() {
-                                    var t = yield ut.get("area")
+                                    var t = yield _.get("area")
                                       , e = (0,
-                                    Ct.getDatabase)()
+                                    It.getDatabase)()
                                       , r = (0,
-                                    Ct.ref)(e, "/feeds/" + t);
+                                    It.ref)(e, "/feeds/" + t);
                                     (0,
-                                    Ct.onValue)(r, (function(t) {
+                                    It.onValue)(r, (function(t) {
                                         var e, r, i, o, a, l, s = t.val();
-                                        if (Tt || 0 != (null == (e = s.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
-                                            var c = pt(null == (i = s.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = s.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
+                                        if (Bt || 0 != (null == (e = s.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
+                                            var c = ht(null == (i = s.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = s.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
                                             if (s.distance = (Math.round(100 * c) / 100).toFixed(1),
-                                            !(St < 50 && ("" === s.actrs || c > St))) {
-                                                var u = ft(s);
+                                            !(Ot < 50 && ("" === s.actrs || c > Ot))) {
+                                                var u = dt(s);
                                                 setTimeout((function() {
-                                                    ht(s)
+                                                    ft(s)
                                                 }
                                                 ), 200),
                                                 u.ship_order.image_map_url = "";
                                                 var d = (0,
-                                                p.default)(E.current);
+                                                p.default)(S.current);
                                                 (d = ct(d, u)).length > 20 && (d = d.slice(0, 20)),
-                                                B(d)
+                                                j(d)
                                             }
                                         }
                                     }
@@ -2093,42 +2219,42 @@
                 ), [e]),
                 (0,
                 o.useEffect)((function() {
-                    return W || (w.default.addListener("new-post", (function(t) {
+                    return R || (z.default.addListener("new-post", (function(t) {
                         var e, r, i, o, a, l, s = "";
                         if (void 0 != t.desc && t.desc.length > 0 ? s = t.desc : void 0 != t.duy && t.duy.length > 0 ? s = t.duy : void 0 != t.admin && t.admin.length > 0 ? s = t.admin : void 0 != t.bimbim && t.bimbim.length > 0 ? s = t.bimbim : void 0 != t.teiwqyue && t.teiwqyue.length > 0 ? s = t.teiwqyue : void 0 != t.fjhdfjk && t.fjhdfjk.length > 0 ? s = t.fjhdfjk : void 0 != t.ronadola && t.ronadola.length > 0 ? s = t.ronadola : void 0 != t.vipserver && t.vipserver.length > 0 ? s = t.vipserver : void 0 != t.totoka && t.totoka.length > 0 && (s = t.totoka),
                         t.desc = s,
                         void 0 != t.phone_number && t.phone_number.length > 0 && (t.phone = t.phone_number),
-                        (It || !function(t, e) {
+                        (zt || !function(t, e) {
                             var n = t.toLowerCase()
                               , r = e.toLowerCase();
                             return n.includes(r)
-                        }(t.title, "\u1ea9n danh")) && !Ot.includes(t.actrs) && (Tt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat))) {
-                            var c = pt(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = t.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
+                        }(t.title, "\u1ea9n danh")) && !Ft.includes(t.actrs) && (Bt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat))) {
+                            var c = ht(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = t.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
                             if (t.distance = (Math.round(100 * c) / 100).toFixed(1),
-                            !(St < 50 && ("" === t.id || c > St)))
+                            !(Ot < 50 && ("" === t.id || c > Ot)))
                                 if ("" === t.id) {
-                                    if (!E.current.includes(t))
+                                    if (!S.current.includes(t))
                                         (u = [t].concat((0,
-                                        p.default)(E.current))).length > 20 && (u = u.slice(0, 20)),
-                                        B(u)
+                                        p.default)(S.current))).length > 20 && (u = u.slice(0, 20)),
+                                        j(u)
                                 } else {
-                                    var u, d = ft(t);
-                                    At && (setTimeout((function() {
-                                        ht(t)
+                                    var u, d = dt(t);
+                                    _t && (setTimeout((function() {
+                                        ft(t)
                                     }
                                     ), 200),
                                     d.ship_order.image_map_url = ""),
                                     u = ct(u = (0,
-                                    p.default)(E.current), d),
-                                    B(u)
+                                    p.default)(S.current), d),
+                                    j(u)
                                 }
                         }
                     }
                     )),
-                    V(!0)),
+                    q(!0)),
                     function() {}
                 }
-                ), [W]);
+                ), [R]);
                 var yt = function() {
                     var t = (0,
                     r.default)((function*(t) {
@@ -2144,27 +2270,27 @@
                     var t = (0,
                     r.default)((function*(t) {
                         var e = (0,
-                        p.default)(D);
-                        if (!D.includes(t)) {
+                        p.default)(I);
+                        if (!I.includes(t)) {
                             var n = e.indexOf(t);
                             -1 === n ? (e.length > 99 && e.pop(),
                             e.unshift(t)) : (e.splice(n, 1),
                             e.unshift(t))
                         }
-                        0 == e.length && ut.storeFavorites(""),
-                        H(e)
+                        0 == e.length && _.storeFavorites(""),
+                        O(e)
                     }
                     ));
                     return function(e) {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , vt = function() {
+                  , xt = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         var e = (0,
-                        p.default)(D);
-                        if (D.includes(t))
+                        p.default)(I);
+                        if (I.includes(t))
                             h.default.show({
                                 type: "success",
                                 text1: "\u0110\xe3 x\xf3a kh\u1ecfi m\u1ee5c \u01b0a th\xedch."
@@ -2183,15 +2309,15 @@
                             e.unshift(t)) : (e.splice(n, 1),
                             e.unshift(t))
                         }
-                        0 == e.length && ut.storeFavorites(""),
-                        H(e)
+                        0 == e.length && _.storeFavorites(""),
+                        O(e)
                     }
                     ));
                     return function(e) {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , xt = function() {
+                  , jt = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         e.navigate("ListingDetails", {
@@ -2240,7 +2366,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , _t = function() {
+                  , St = function() {
                     var t = (0,
                     r.default)((function*() {
                         e.navigate("BotAutoDistance", {
@@ -2252,7 +2378,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , zt = function() {
+                  , Tt = function() {
                     var t = (0,
                     r.default)((function*() {
                         e.navigate("ScammerScreen", {
@@ -2264,11 +2390,11 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , Ft = (function() {
+                  , At = (function() {
                     var t = (0,
                     r.default)((function*() {
                         Y(!1),
-                        ut.store("agreed", "agreed")
+                        _.store("agreed", "agreed")
                     }
                     ))
                 }(),
@@ -2312,21 +2438,21 @@
                 o.useEffect)((function() {
                     return e.addListener("focus", (0,
                     r.default)((function*() {
-                        var t, e = yield ut.get("distance");
-                        St = e;
+                        var t, e = yield _.get("distance");
+                        Ot = e;
                         try {
-                            t = yield ut.getActrsBlock()
+                            t = yield _.getActrsBlock()
                         } catch (r) {
                             console.error("Error getting actrsBlock:", r)
                         }
-                        Array.isArray(t) && t.length > 0 && (Ot = t);
-                        var n = yield ut.get("isShowUnknowLocation");
-                        Tt = "show" === n
+                        Array.isArray(t) && t.length > 0 && (Ft = t);
+                        var n = yield _.get("isShowUnknowLocation");
+                        Bt = "show" === n
                     }
                     )))
                 }
                 ), [e]);
-                var Pt = function() {
+                var Et = function() {
                     var t = (0,
                     r.default)((function*() {
                         Y(!1),
@@ -2340,83 +2466,83 @@
                     }
                 }();
                 return (0,
-                T.jsxs)(X, {
-                    style: Bt.screen,
+                V.jsxs)(ut, {
+                    style: Pt.screen,
                     children: [(0,
-                    T.jsx)(C.default, {
-                        style: Bt.navibarContainer,
+                    V.jsx)(M.default, {
+                        style: Pt.navibarContainer,
                         children: (0,
-                        T.jsx)(gt, {
-                            goBugs: nt ? null : Ft,
-                            goScam: nt ? zt : null,
-                            goBotAuto: _t,
+                        V.jsx)(vt, {
+                            goBugs: et ? null : At,
+                            goScam: et ? Tt : null,
+                            goBotAuto: St,
                             goChangeArea: kt,
                             goFilter: bt,
                             goFavorite: wt,
                             title: c.length > 0 ? c : "\u0110\u01a1n m\u1edbi"
                         })
                     }), (0,
-                    T.jsx)(jt, {
-                        style: Bt.alert,
+                    V.jsx)(Ct, {
+                        style: Pt.alert,
                         icon: (0,
-                        T.jsx)(C.default, {
-                            style: [Bt.icon, {
+                        V.jsx)(M.default, {
+                            style: [Pt.icon, {
                                 borderRadius: 32
                             }],
                             children: (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 name: "megaphone",
                                 size: 36,
                                 color: "#FFFFFF"
                             })
                         }),
-                        onRequestClose: it,
-                        visible: K,
+                        onRequestClose: rt,
+                        visible: X,
                         children: (0,
-                        T.jsxs)(C.default, {
-                            style: Bt.content,
+                        V.jsxs)(M.default, {
+                            style: Pt.content,
                             children: [(0,
-                            T.jsx)(b.default, {
-                                style: Bt.contentText,
+                            V.jsx)(H.default, {
+                                style: Pt.contentText,
                                 children: "H\xe3y c\xf9ng chung tay duy tr\xec, x\xe2y d\u1ef1ng v\xe0 ph\xe1t tri\u1ec3n \u1ee9ng d\u1ee5ng l\xe2u d\xe0i b\u1eb1ng c\xe1ch \u1ee7ng h\u1ed9 kinh ph\xed. M\u1ecdi \u0111\xf3ng g\xf3p \u0111\u1ec1u mang l\u1ea1i \xfd ngh\u0129a l\u1edbn lao!"
                             }), (0,
-                            T.jsx)(j.default, {
-                                style: Bt.btn,
-                                onPress: Pt,
+                            V.jsx)(D.default, {
+                                style: Pt.btn,
+                                onPress: Et,
                                 children: (0,
-                                T.jsx)(b.default, {
-                                    style: Bt.btnText,
+                                V.jsx)(H.default, {
+                                    style: Pt.btnText,
                                     children: "T\xe0i tr\u1ee3 ngay \u0111\u1ec3 t\u1eaft th\xf4ng b\xe1o n\xe0y."
                                 })
                             }), (0,
-                            T.jsx)(j.default, {
-                                style: Bt.btn,
+                            V.jsx)(D.default, {
+                                style: Pt.btn,
                                 onPress: function() {
                                     Y(!1)
                                 },
                                 children: (0,
-                                T.jsx)(b.default, {
-                                    style: Bt.btnText,
+                                V.jsx)(H.default, {
+                                    style: Pt.btnText,
                                     children: "Ti\u1ebfp t\u1ee5c d\xf9ng mi\u1ec5n ph\xed."
                                 })
                             })]
                         })
-                    }), F || 0 !== O.length ? (0,
-                    T.jsx)(C.default, {
-                        style: Bt.container,
+                    }), k || 0 !== x.length ? (0,
+                    V.jsx)(M.default, {
+                        style: Pt.container,
                         children: (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             style: {
                                 marginTop: 10,
                                 maxHeight: a
                             },
-                            data: O,
+                            data: x,
                             keyExtractor: function(t, e) {
                                 return e.toString()
                             },
                             ItemSeparatorComponent: function() {
                                 return (0,
-                                T.jsx)(C.default, {
+                                V.jsx)(M.default, {
                                     style: {
                                         height: 0
                                     }
@@ -2425,28 +2551,28 @@
                             renderItem: function(t) {
                                 var e = t.item;
                                 return e && (0,
-                                T.jsx)(q, {
+                                V.jsx)(at, {
                                     item: e,
-                                    isFavorite: D.includes(null == e ? void 0 : e.id),
+                                    isFavorite: I.includes(null == e ? void 0 : e.id),
                                     autoComment: yt,
                                     autoSave: mt,
-                                    addToFavorite: vt,
-                                    viewProfile: xt,
-                                    onActionSheetPress: ot,
-                                    isShowMap: At
+                                    addToFavorite: xt,
+                                    viewProfile: jt,
+                                    onActionSheetPress: it,
+                                    isShowMap: _t
                                 })
                             },
                             removeClippedSubviews: !0
                         })
                     }) : (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: {
                             flex: 1,
                             alignItems: "center",
                             justifyContent: "center"
                         },
                         children: (0,
-                        T.jsx)(b.default, {
+                        V.jsx)(H.default, {
                             style: {
                                 textAlign: "center",
                                 color: "white"
@@ -2454,16 +2580,16 @@
                             children: "Danh s\xe1ch tr\u1ed1ng."
                         })
                     }), (0,
-                    T.jsx)(A, {
-                        visible: F
+                    V.jsx)(U, {
+                        visible: k
                     })]
                 })
             };
-            var zt = n(23612)
-              , Ft = n(33777)
-              , Pt = n(48002)
-              , Et = n(45987);
-            const Rt = {
+            var Rt = n(23612)
+              , Lt = n(33777)
+              , Dt = n(48002)
+              , Ht = n(45987);
+            const Nt = {
                 text: {
                     fontSize: 18,
                     fontFamily: (n(66578).default.OS,
@@ -2471,8 +2597,8 @@
                     color: c.darkGrey
                 }
             };
-            var Lt = ["children", "style"];
-            function Dt(t, e) {
+            var Mt = ["children", "style"];
+            function Wt(t, e) {
                 var n = Object.keys(t);
                 if (Object.getOwnPropertySymbols) {
                     var r = Object.getOwnPropertySymbols(t);
@@ -2484,34 +2610,34 @@
                 }
                 return n
             }
-            function Ht(t) {
+            function Vt(t) {
                 for (var e = 1; e < arguments.length; e++) {
                     var n = null != arguments[e] ? arguments[e] : {};
-                    e % 2 ? Dt(Object(n), !0).forEach((function(e) {
+                    e % 2 ? Wt(Object(n), !0).forEach((function(e) {
                         (0,
                         l.default)(t, e, n[e])
                     }
-                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : Dt(Object(n)).forEach((function(e) {
+                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : Wt(Object(n)).forEach((function(e) {
                         Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e))
                     }
                     ))
                 }
                 return t
             }
-            v.default.create({});
-            const Nt = function(t) {
+            R.default.create({});
+            const Ut = function(t) {
                 var e = t.children
                   , n = t.style
                   , r = (0,
-                Et.default)(t, Lt);
+                Ht.default)(t, Mt);
                 return (0,
-                T.jsx)(b.default, Ht(Ht({
-                    style: [Rt.text, n]
+                V.jsx)(H.default, Vt(Vt({
+                    style: [Nt.text, n]
                 }, r), {}, {
                     children: e
                 }))
             };
-            var Mt = v.default.create({
+            var qt = R.default.create({
                 container: {
                     alignItems: "center",
                     flexDirection: "row",
@@ -2536,7 +2662,7 @@
                     color: "white"
                 }
             });
-            const Wt = function(t) {
+            const Kt = function(t) {
                 var e = t.title
                   , r = t.subTitle
                   , i = t.image
@@ -2545,41 +2671,41 @@
                   , l = t.renderRightActions
                   , s = t.rightIcon;
                 return (0,
-                T.jsx)(Pt.default, {
+                V.jsx)(Dt.default, {
                     renderRightActions: l,
                     children: (0,
-                    T.jsx)(Ft.default, {
+                    V.jsx)(Lt.default, {
                         underlayColor: c.light,
                         onPress: a,
                         children: (0,
-                        T.jsxs)(C.default, {
-                            style: Mt.container,
+                        V.jsxs)(M.default, {
+                            style: qt.container,
                             children: [o, i ? (0,
-                            T.jsx)(zt.default, {
-                                style: Mt.image,
+                            V.jsx)(Rt.default, {
+                                style: qt.image,
                                 source: {
                                     uri: i
                                 }
                             }) : (0,
-                            T.jsx)(zt.default, {
-                                style: Mt.image,
+                            V.jsx)(Rt.default, {
+                                style: qt.image,
                                 source: n(45020)
                             }), (0,
-                            T.jsxs)(C.default, {
-                                style: Mt.detailsContainer,
+                            V.jsxs)(M.default, {
+                                style: qt.detailsContainer,
                                 children: [(0,
-                                T.jsx)(Nt, {
-                                    style: Mt.title,
+                                V.jsx)(Ut, {
+                                    style: qt.title,
                                     numberOflines: 1,
                                     children: e
                                 }), r && (0,
-                                T.jsx)(Nt, {
-                                    style: Mt.subTitle,
+                                V.jsx)(Ut, {
+                                    style: qt.subTitle,
                                     numberOflines: 2,
                                     children: r
                                 })]
                             }), s ? (0,
-                            T.jsx)(ft.default, {
+                            V.jsx)(yt.default, {
                                 color: c.mediumGrey,
                                 name: "chevron-right",
                                 size: 25
@@ -2588,8 +2714,8 @@
                     })
                 })
             };
-            var Vt = ["children", "style"];
-            function Ut(t, e) {
+            var Gt = ["children", "style"];
+            function Jt(t, e) {
                 var n = Object.keys(t);
                 if (Object.getOwnPropertySymbols) {
                     var r = Object.getOwnPropertySymbols(t);
@@ -2601,36 +2727,36 @@
                 }
                 return n
             }
-            function qt(t) {
+            function Xt(t) {
                 for (var e = 1; e < arguments.length; e++) {
                     var n = null != arguments[e] ? arguments[e] : {};
-                    e % 2 ? Ut(Object(n), !0).forEach((function(e) {
+                    e % 2 ? Jt(Object(n), !0).forEach((function(e) {
                         (0,
                         l.default)(t, e, n[e])
                     }
-                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : Ut(Object(n)).forEach((function(e) {
+                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : Jt(Object(n)).forEach((function(e) {
                         Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e))
                     }
                     ))
                 }
                 return t
             }
-            const Gt = function(t) {
+            const Yt = function(t) {
                 var e = t.children
                   , n = t.style
                   , r = (0,
-                Et.default)(t, Vt);
+                Ht.default)(t, Gt);
                 return (0,
-                T.jsx)(b.default, qt(qt({
-                    style: [Rt.text, n]
+                V.jsx)(H.default, Xt(Xt({
+                    style: [Nt.text, n]
                 }, r), {}, {
                     children: e
                 }))
             };
-            var Jt = n(30381);
+            var Zt = n(30381);
             n(65666),
-            Jt.locale("vi");
-            var Kt = v.default.create({
+            Zt.locale("vi");
+            var Qt = R.default.create({
                 card: {
                     borderRadius: 15,
                     backgroundColor: "#2c2f39",
@@ -2690,54 +2816,54 @@
                     opacity: .5
                 }
             });
-            const Xt = function(t) {
+            const $t = function(t) {
                 var e = t.item;
                 return (0,
-                T.jsx)(T.Fragment, {
+                V.jsx)(V.Fragment, {
                     children: (0,
-                    T.jsxs)(C.default, {
-                        style: Kt.card,
+                    V.jsxs)(M.default, {
+                        style: Qt.card,
                         children: [(0,
-                        T.jsxs)(C.default, {
-                            style: Kt.detailsContainer,
+                        V.jsxs)(M.default, {
+                            style: Qt.detailsContainer,
                             children: [(0,
-                            T.jsxs)(C.default, {
+                            V.jsxs)(M.default, {
                                 style: {
                                     flexDirection: "row",
                                     marginBottom: 5,
                                     marginTop: 5
                                 },
                                 children: [(0,
-                                T.jsxs)(b.default, {
+                                V.jsxs)(H.default, {
                                     style: {
                                         color: "white"
                                     },
-                                    children: [Jt(e.created_at).format("hh:mm DD/MM/YYYY"), " "]
+                                    children: [Zt(e.created_at).format("hh:mm DD/MM/YYYY"), " "]
                                 }), (0,
-                                T.jsx)(M, {
-                                    style: Kt.time,
+                                V.jsx)(nt, {
+                                    style: Qt.time,
                                     time: e.created_at,
                                     interval: 1e3
                                 })]
                             }), (0,
-                            T.jsx)(Nt, {
-                                style: Kt.subTitle,
+                            V.jsx)(Ut, {
+                                style: Qt.subTitle,
                                 numberOfLines: 7,
                                 children: null == e ? void 0 : e.desc
                             })]
                         }), (0,
-                        T.jsx)(C.default, {
-                            style: Kt.buttonContainer,
+                        V.jsx)(M.default, {
+                            style: Qt.buttonContainer,
                             children: (0,
-                            T.jsx)(j.default, {
-                                style: Kt.button,
+                            V.jsx)(D.default, {
+                                style: Qt.button,
                                 onPress: function() {
                                     var t;
-                                    return "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = e.source_url : I.default.openURL(e.source_url)
+                                    return "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = e.source_url : q.default.openURL(e.source_url)
                                 },
                                 children: (0,
-                                T.jsx)(b.default, {
-                                    style: Kt.buttonText,
+                                V.jsx)(H.default, {
+                                    style: Qt.buttonText,
                                     children: "Xem Tin"
                                 })
                             })
@@ -2745,8 +2871,8 @@
                     })
                 })
             };
-            var Yt = [];
-            var Zt = v.default.create({
+            var te = [];
+            var ee = R.default.create({
                 screen: {
                     marginTop: 44,
                     backgroundColor: "#23262e",
@@ -2839,18 +2965,18 @@
                     color: "#FFFFFF"
                 }
             });
-            const Qt = function(t) {
+            const ne = function(t) {
                 var e, a = t.navigation, l = t.route.params, s = l.title, c = l.actrsId, u = (0,
                 o.useState)([]), d = (0,
                 i.default)(u, 2), f = d[0], g = d[1], p = (0,
                 o.useState)(null), y = (0,
-                i.default)(p, 2), v = y[0], x = y[1], b = (0,
-                o.useState)(!1), w = (0,
-                i.default)(b, 2), k = w[0], O = w[1], B = (0,
-                o.useState)(!1), _ = (0,
-                i.default)(B, 2), z = _[0], F = _[1], P = (0,
-                o.useState)(!1), E = (0,
-                i.default)(P, 2), R = E[0], L = E[1];
+                i.default)(p, 2), m = y[0], v = y[1], x = (0,
+                o.useState)(!1), j = (0,
+                i.default)(x, 2), b = j[0], w = j[1], k = (0,
+                o.useState)(!1), C = (0,
+                i.default)(k, 2), S = C[0], T = C[1], A = (0,
+                o.useState)(!1), I = (0,
+                i.default)(A, 2), O = I[0], B = I[1];
                 o.useLayoutEffect((function() {
                     a.setOptions({
                         title: s,
@@ -2858,17 +2984,17 @@
                     })
                 }
                 ), [a, s]);
-                var D = function() {
+                var z = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t = "/public-api/v1/social/fb/get-actrs-details/" + c;
-                        O(!0);
+                        w(!0);
                         try {
-                            var e = yield $.getHttp(t);
-                            if (O(!1),
+                            var e = yield gt.getHttp(t);
+                            if (w(!1),
                             200 === e.status && 200 === e.data.status.code) {
                                 var n = e.data.data;
-                                x(n.actrs),
+                                v(n.actrs),
                                 g(n.feeds)
                             }
                         } catch (r) {
@@ -2887,7 +3013,7 @@
                 }();
                 (0,
                 o.useEffect)((function() {
-                    D()
+                    z()
                 }
                 ), []),
                 (0,
@@ -2895,23 +3021,23 @@
                     window.scrollTo(0, 0)
                 }
                 ), []);
-                var H = function() {
+                var F = function() {
                     var t = (0,
                     r.default)((function*() {
-                        F(!1),
-                        N(v.actrs, "sos")
+                        T(!1),
+                        P(m.actrs, "sos")
                     }
                     ));
                     return function() {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , N = function() {
+                  , P = function() {
                     var t = (0,
                     r.default)((function*(t, e) {
                         if (console.log(e, t),
                         "sos" === e) {
-                            var n = yield ut.getActrsReport();
+                            var n = yield _.getActrsReport();
                             if (Array.isArray(n) && n.length > 0 && n.includes(t))
                                 return console.log(e, t),
                                 void h.default.show({
@@ -2920,13 +3046,13 @@
                                 });
                             Array.isArray(n) && (console.log(e, t),
                             yield n.push(t),
-                            ut.storeActrsReport(JSON.stringify(n)))
+                            _.storeActrsReport(JSON.stringify(n)))
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 3"),
-                        O(!0);
-                        var i = yield $.getHttp(r);
-                        O(!1),
+                        w(!0);
+                        var i = yield gt.getHttp(r);
+                        w(!1),
                         200 === i.status && h.default.show({
                             type: "success",
                             text1: "C\u1ea3m \u01a1n b\u1ea1n \u0111\xe3 th\xf4ng b\xe1o"
@@ -2944,12 +3070,12 @@
                         r.default)((function*() {
                             var t;
                             try {
-                                t = yield ut.getActrsBlock()
+                                t = yield _.getActrsBlock()
                             } catch (e) {
                                 console.error("Error getting actrsBlock:", e)
                             }
-                            Array.isArray(t) && t.length > 0 && (Yt = t),
-                            Yt.includes(c) && L(!0)
+                            Array.isArray(t) && t.length > 0 && (te = t),
+                            te.includes(c) && B(!0)
                         }
                         ));
                         return function() {
@@ -2957,147 +3083,147 @@
                         }
                     }();
                     t(),
-                    D()
+                    z()
                 }
                 ), []),
                 (0,
-                T.jsxs)(J.default, {
-                    style: Zt.screen,
+                V.jsxs)(st.default, {
+                    style: ee.screen,
                     children: [(0,
-                    T.jsx)(jt, {
-                        style: Zt.alert,
+                    V.jsx)(Ct, {
+                        style: ee.alert,
                         icon: (0,
-                        T.jsx)(C.default, {
-                            style: [Zt.icon, {
+                        V.jsx)(M.default, {
+                            style: [ee.icon, {
                                 borderRadius: 32
                             }],
                             children: (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 name: "alert",
                                 size: 36,
                                 color: "#FFFFFF"
                             })
                         }),
                         onRequestClose: function() {
-                            F(!1)
+                            T(!1)
                         },
-                        visible: z,
+                        visible: S,
                         children: (0,
-                        T.jsxs)(C.default, {
-                            style: Zt.content,
+                        V.jsxs)(M.default, {
+                            style: ee.content,
                             children: [(0,
-                            T.jsxs)(Gt, {
-                                style: Zt.contentText,
+                            V.jsxs)(Yt, {
+                                style: ee.contentText,
                                 children: ["B\u1ea1n \u0111ang b\xe1o L\u1eeaA \u0110\u1ea2O KH\u1ea8N C\u1ea4P, t\u1ea5t c\u1ea3 shipper s\u1ebd nh\u1eadn \u0111\u01b0\u1ee3c th\xf4ng b\xe1o n\xe0y. B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn \u0111\xe2y l\xe0 L\u1eeaA \u0110\u1ea2O? N\u1ebfu b\u1ea1n c\u1ed1 t\xecnh b\xe1o kh\xf4ng \u0111\xfang, ch\xfang t\xf4i s\u1ebd KH\xd3A T\xc0I KHO\u1ea2N ", null == (e = n.g.data3rd) ? void 0 : e.phone.replace(/^\s/, "+"), " c\u1ee7a b\u1ea1n v\u0129nh vi\u1ec5n."]
                             }), (0,
-                            T.jsx)(j.default, {
-                                style: Zt.btn,
-                                onPress: H,
+                            V.jsx)(D.default, {
+                                style: ee.btn,
+                                onPress: F,
                                 children: (0,
-                                T.jsx)(Gt, {
-                                    style: Zt.btnText,
+                                V.jsx)(Yt, {
+                                    style: ee.btnText,
                                     children: "B\xc1O KH\u1ea8N C\u1ea4P"
                                 })
                             }), (0,
-                            T.jsx)(j.default, {
-                                style: [Zt.btn, {
+                            V.jsx)(D.default, {
+                                style: [ee.btn, {
                                     backgroundColor: "#1966fe"
                                 }],
                                 onPress: function() {
-                                    F(!1)
+                                    T(!1)
                                 },
                                 children: (0,
-                                T.jsx)(Gt, {
-                                    style: Zt.btnText,
+                                V.jsx)(Yt, {
+                                    style: ee.btnText,
                                     children: "T\xd4I NH\u1ea6M, H\u1ee6Y"
                                 })
                             })]
                         })
                     }), (0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: "Ng\u01b0\u1eddi \u0111\u0103ng",
                         goBack: function() {
                             a.goBack()
                         }
                     }), (0,
-                    T.jsx)(A, {
-                        visible: k
-                    }), null != v && (0,
-                    T.jsxs)(C.default, {
-                        style: Zt.detailsContainer,
+                    V.jsx)(U, {
+                        visible: b
+                    }), null != m && (0,
+                    V.jsxs)(M.default, {
+                        style: ee.detailsContainer,
                         children: [(0,
-                        T.jsx)(C.default, {
-                            style: Zt.userContainer,
+                        V.jsx)(M.default, {
+                            style: ee.userContainer,
                             children: (0,
-                            T.jsx)(Wt, {
-                                title: v.name,
-                                subTitle: "\u0110\xe3 \u0111\u0103ng: " + v.num_post + "          Ph\u1ed1t: " + v.report,
-                                image: v.avatar
+                            V.jsx)(Kt, {
+                                title: m.name,
+                                subTitle: "\u0110\xe3 \u0111\u0103ng: " + m.num_post + "          Ph\u1ed1t: " + m.report,
+                                image: m.avatar
                             })
                         }), (0,
-                        T.jsxs)(C.default, {
-                            style: Zt.buttonContainer,
+                        V.jsxs)(M.default, {
+                            style: ee.buttonContainer,
                             children: [(0,
-                            T.jsx)(j.default, {
-                                style: [Zt.button],
+                            V.jsx)(D.default, {
+                                style: [ee.button],
                                 onPress: function() {
                                     var t;
-                                    "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + v.actrs : I.default.openURL("https://www.facebook.com/profile.php?id=" + v.actrs)
+                                    "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + m.actrs : q.default.openURL("https://www.facebook.com/profile.php?id=" + m.actrs)
                                 },
                                 children: (0,
-                                T.jsx)(Gt, {
-                                    style: Zt.buttonText,
+                                V.jsx)(Yt, {
+                                    style: ee.buttonText,
                                     children: "Check F.B"
                                 })
                             }), (0,
-                            T.jsx)(j.default, {
-                                style: [Zt.button],
+                            V.jsx)(D.default, {
+                                style: [ee.button],
                                 onPress: function() {
                                     return function(t) {
-                                        Yt.length > 1e3 ? h.default.show({
+                                        te.length > 1e3 ? h.default.show({
                                             type: "error",
                                             text1: "Ch\u1eb7n t\u1ed1i \u0111a 1000 shop. Vui l\xf2ng x\xf3a b\u1edbt"
-                                        }) : (Yt.includes(t) ? (L(!1),
+                                        }) : (te.includes(t) ? (B(!1),
                                         h.default.show({
                                             type: "success",
                                             text1: "\u0110\xe3 b\u1ecf ch\u1eb7n th\xe0nh c\xf4ng."
                                         }),
-                                        Yt = Yt.filter((function(e) {
+                                        te = te.filter((function(e) {
                                             return e !== t
                                         }
-                                        ))) : (L(!0),
-                                        Yt.push(t),
+                                        ))) : (B(!0),
+                                        te.push(t),
                                         h.default.show({
                                             type: "success",
                                             text1: "Ch\u1eb7n th\xe0nh c\xf4ng."
                                         })),
-                                        ut.storeActrsBlock(JSON.stringify(Yt)))
-                                    }(v.actrs)
+                                        _.storeActrsBlock(JSON.stringify(te)))
+                                    }(m.actrs)
                                 },
                                 children: (0,
-                                T.jsx)(Gt, {
-                                    style: Zt.buttonText,
-                                    children: R ? "B\u1ecf ch\u1eb7n" : "Ch\u1eb7n"
+                                V.jsx)(Yt, {
+                                    style: ee.buttonText,
+                                    children: O ? "B\u1ecf ch\u1eb7n" : "Ch\u1eb7n"
                                 })
                             }), (0,
-                            T.jsx)(j.default, {
-                                style: [Zt.button, {
+                            V.jsx)(D.default, {
+                                style: [ee.button, {
                                     backgroundColor: "#b749f7"
                                 }],
                                 onPress: function() {
-                                    F(!0)
+                                    T(!0)
                                 },
                                 children: (0,
-                                T.jsx)(Gt, {
-                                    style: Zt.buttonText,
+                                V.jsx)(Yt, {
+                                    style: ee.buttonText,
                                     children: "SOS L.\u0110\u1ea3o"
                                 })
                             })]
                         }), (0,
-                        T.jsx)(C.default, {
-                            style: Zt.container,
+                        V.jsx)(M.default, {
+                            style: ee.container,
                             children: (0,
-                            T.jsx)(Gt, {
+                            V.jsx)(Yt, {
                                 style: {
                                     fontSize: 18,
                                     fontWeight: "bold",
@@ -3107,7 +3233,7 @@
                             })
                         })]
                     }), (0,
-                    T.jsx)(m.default, {
+                    V.jsx)(E.default, {
                         contentContainerStyle: {
                             paddingBottom: 20,
                             padding: 10
@@ -3119,14 +3245,14 @@
                         renderItem: function(t) {
                             var e = t.item;
                             return (0,
-                            T.jsx)(Xt, {
+                            V.jsx)($t, {
                                 item: e
                             })
                         }
                     })]
                 })
             };
-            var $t = v.default.create({
+            var re = R.default.create({
                 container: {
                     alignItems: "center",
                     flexDirection: "row",
@@ -3152,7 +3278,7 @@
                     color: "white"
                 }
             });
-            const te = function(t) {
+            const ie = function(t) {
                 var e = t.title
                   , n = t.subTitle
                   , r = t.image
@@ -3162,48 +3288,48 @@
                   , l = (t.renderRightActions,
                 t.isShowRight);
                 return (0,
-                T.jsx)(C.default, {
+                V.jsx)(M.default, {
                     style: {
                         paddingHorizontal: 10,
                         paddingBottom: 5
                     },
                     children: (0,
-                    T.jsx)(Ft.default, {
+                    V.jsx)(Lt.default, {
                         underlayColor: c.light,
                         onPress: o,
                         children: (0,
-                        T.jsxs)(C.default, {
-                            style: $t.container,
+                        V.jsxs)(M.default, {
+                            style: re.container,
                             children: [i, r && (0,
-                            T.jsx)(zt.default, {
-                                style: $t.image,
+                            V.jsx)(Rt.default, {
+                                style: re.image,
                                 source: r
                             }), (0,
-                            T.jsxs)(C.default, {
-                                style: $t.detailsContainer,
+                            V.jsxs)(M.default, {
+                                style: re.detailsContainer,
                                 children: [(0,
-                                T.jsx)(Nt, {
-                                    style: $t.title,
+                                V.jsx)(Ut, {
+                                    style: re.title,
                                     numberOflines: 1,
                                     children: e
                                 }), n && (0,
-                                T.jsx)(Nt, {
-                                    style: $t.subTitle,
+                                V.jsx)(Ut, {
+                                    style: re.subTitle,
                                     numberOflines: 2,
                                     children: n
                                 })]
                             }), l ? (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 color: "white",
                                 name: "chevron-forward-sharp",
                                 size: 25
                             }) : a ? (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 color: "white",
                                 name: "checkbox-sharp",
                                 size: 25
                             }) : (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 color: "white",
                                 name: "square-outline",
                                 size: 25
@@ -3212,7 +3338,7 @@
                     })
                 })
             };
-            var ee = v.default.create({
+            var oe = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -3221,7 +3347,7 @@
                     marginVertical: 20
                 }
             });
-            const ne = function(t) {
+            const ae = function(t) {
                 var e = t.navigation
                   , a = (t.route,
                 (0,
@@ -3238,17 +3364,17 @@
                   , p = f[1]
                   , y = (0,
                 o.useState)(!1)
-                  , v = (0,
+                  , m = (0,
                 i.default)(y, 2)
-                  , x = v[0]
-                  , j = v[1]
-                  , b = (0,
+                  , v = m[0]
+                  , x = m[1]
+                  , j = (0,
                 o.useState)("")
-                  , w = (0,
-                i.default)(b, 2)
-                  , k = w[0]
-                  , A = w[1]
-                  , O = function() {
+                  , b = (0,
+                i.default)(j, 2)
+                  , w = b[0]
+                  , k = b[1]
+                  , C = function() {
                     var t = (0,
                     r.default)((function*() {
                         e.navigate("BlocksScreen", {
@@ -3260,7 +3386,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , B = (function() {
+                  , S = (function() {
                     var t = (0,
                     r.default)((function*() {
                         e.navigate("BotAutoDistance", {
@@ -3281,29 +3407,29 @@
                         return t.apply(this, arguments)
                     }
                 }())
-                  , _ = function() {
+                  , T = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t;
-                        "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://zalo.me/0944889705" : I.default.openURL("https://zalo.me/0944889705")
+                        "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://zalo.me/0944889705" : q.default.openURL("https://zalo.me/0944889705")
                     }
                     ));
                     return function() {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , z = function() {
+                  , A = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t, e;
-                        "DA_NANG" == (yield ut.get("area")) ? "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://zalo.me/g/vsnjmr793" : I.default.openURL("https://zalo.me/g/vsnjmr793") : "ios" === (null == (e = n.g.data3rd) ? void 0 : e.platform) ? window.location.href = "https://zalo.me/g/wkwfyb413" : I.default.openURL("https://zalo.me/g/wkwfyb413")
+                        "DA_NANG" == (yield _.get("area")) ? "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://zalo.me/g/vsnjmr793" : q.default.openURL("https://zalo.me/g/vsnjmr793") : "ios" === (null == (e = n.g.data3rd) ? void 0 : e.platform) ? window.location.href = "https://zalo.me/g/wkwfyb413" : q.default.openURL("https://zalo.me/g/wkwfyb413")
                     }
                     ));
                     return function() {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , F = [{
+                  , I = [{
                     title: "T\xe0i tr\u1ee3 kinh ph\xed",
                     index: 101,
                     isShowRight: !0,
@@ -3311,7 +3437,7 @@
                         name: "star",
                         backgroundColor: c.primary
                     },
-                    targetAction: B
+                    targetAction: S
                 }, {
                     title: "Danh s\xe1ch Ch\u1eb7n",
                     index: 110,
@@ -3320,7 +3446,7 @@
                         name: "eye-off",
                         backgroundColor: c.primary
                     },
-                    targetAction: O
+                    targetAction: C
                 }, {
                     title: "Ch\u1ecdn b\xe1n k\xednh qu\xe9t \u0111\u01a1n",
                     index: 1,
@@ -3382,16 +3508,16 @@
                         function t() {
                             return (t = (0,
                             r.default)((function*() {
-                                var t, e = null == (t = n.g.data3rd) ? void 0 : t.phone.replace(/^\s/, "+"), r = "/public-api/v1/social/fb/notification-action/" + e + "/UP?area=" + k;
-                                x && (r = "/public-api/v1/social/fb/notification-action/" + e + "/DEL"),
-                                $.getHttp(r)
+                                var t, e = null == (t = n.g.data3rd) ? void 0 : t.phone.replace(/^\s/, "+"), r = "/public-api/v1/social/fb/notification-action/" + e + "/UP?area=" + w;
+                                v && (r = "/public-api/v1/social/fb/notification-action/" + e + "/DEL"),
+                                gt.getHttp(r)
                             }
                             ))).apply(this, arguments)
                         }
                         !function() {
                             t.apply(this, arguments)
                         }(),
-                        x ? h.default.show({
+                        v ? h.default.show({
                             type: "success",
                             text1: "Y\xeau c\u1ea7u s\u1ebd \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n trong 20s",
                             text2: "B\u1ea1n \u0111\xe3 t\u1eaft th\xf4ng b\xe1o khi c\xf3 \u0111\u01a1n m\u1edbi."
@@ -3400,7 +3526,7 @@
                             text1: "Y\xeau c\u1ea7u s\u1ebd \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n trong 20s",
                             text2: "B\u1ea1n \u0111\xe3 b\u1eadt th\xf4ng b\xe1o khi c\xf3 \u0111\u01a1n m\u1edbi."
                         }),
-                        j(!x)
+                        x(!v)
                     }
                 }, {
                     title: "T\u1ef1 l\u01b0u \u0111\u01a1n khi li\xean h\u1ec7",
@@ -3421,7 +3547,7 @@
                         name: "people",
                         backgroundColor: c.primary
                     },
-                    targetAction: z
+                    targetAction: A
                 }, {
                     title: "Li\xean h\u1ec7 Admin App",
                     index: 55,
@@ -3430,14 +3556,14 @@
                         name: "logo-snapchat",
                         backgroundColor: c.primary
                     },
-                    targetAction: _
+                    targetAction: T
                 }];
                 return (0,
                 o.useEffect)((function() {
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t = yield ut.get("isShowMap");
+                            var t = yield _.get("isShowMap");
                             p("show" === t)
                         }
                         ))).apply(this, arguments)
@@ -3452,7 +3578,7 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t = yield ut.get("isShowAnonymous");
+                            var t = yield _.get("isShowAnonymous");
                             console.log(t),
                             u("showAnonymous" === t)
                         }
@@ -3468,7 +3594,7 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            yield ut.store("isShowMap", g ? "show" : "noshow")
+                            yield _.store("isShowMap", g ? "show" : "noshow")
                         }
                         ))).apply(this, arguments)
                     }
@@ -3482,8 +3608,8 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            yield ut.store("isShowAnonymous", s ? "showAnonymous" : "noshowAnonymous");
-                            var t = yield ut.get("isShowAnonymous");
+                            yield _.store("isShowAnonymous", s ? "showAnonymous" : "noshowAnonymous");
+                            var t = yield _.get("isShowAnonymous");
                             console.log(t)
                         }
                         ))).apply(this, arguments)
@@ -3498,13 +3624,13 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t, e = yield ut.get("area");
-                            A(e);
+                            var t, e = yield _.get("area");
+                            k(e);
                             var r = "/public-api/v1/social/fb/notification-get-status/" + (null == (t = n.g.data3rd) ? void 0 : t.phone.replace(/^\s/, "+"));
                             console.log(r);
-                            var i = yield $.getHttp(r);
+                            var i = yield gt.getHttp(r);
                             console.log(i.data),
-                            200 === i.status && i.data ? j(!0) : j(!1)
+                            200 === i.status && i.data ? x(!0) : x(!1)
                         }
                         ))).apply(this, arguments)
                     }
@@ -3514,37 +3640,37 @@
                 }
                 ), []),
                 (0,
-                T.jsxs)(X, {
-                    style: ee.screen,
+                V.jsxs)(ut, {
+                    style: oe.screen,
                     children: [(0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: "C\xe0i \u0111\u1eb7t",
                         goBack: function() {
                             e.goBack()
                         }
                     }), (0,
-                    T.jsx)(C.default, {
-                        style: ee.container,
+                    V.jsx)(M.default, {
+                        style: oe.container,
                         children: (0,
-                        T.jsx)(m.default, {
-                            data: F,
+                        V.jsx)(E.default, {
+                            data: I,
                             keyExtractor: function(t) {
                                 return t.title
                             },
                             renderItem: function(t) {
                                 var e = t.item;
                                 return (0,
-                                T.jsx)(te, {
+                                V.jsx)(ie, {
                                     title: e.title,
                                     rightIcon: !0,
                                     IconComponent: (0,
-                                    T.jsx)(S.default, {
+                                    V.jsx)(W.default, {
                                         name: e.icon.name,
                                         size: 20,
                                         color: e.icon.backgroundColor
                                     }),
                                     isShowRight: e.isShowRight,
-                                    isCheck: 2 == e.index ? g : 11 == e.index ? x : 22 != e.index || s,
+                                    isCheck: 2 == e.index ? g : 11 == e.index ? v : 22 != e.index || s,
                                     index: e.index,
                                     isShowMap: g,
                                     onPress: function() {
@@ -3556,138 +3682,14 @@
                     })]
                 })
             };
-            v.default.create({
+            R.default.create({
                 seperator: {
                     width: "100%",
                     height: 1,
                     backgroundColor: c.lightGrey
                 }
             });
-            var re = n(86809)
-              , ie = n.n(re)
-              , oe = (n(81354),
-            function() {
-                function t() {
-                    (0,
-                    O.default)(this, t),
-                    this.events = [],
-                    this.eventsEmit = [],
-                    this.socket = null,
-                    this.url = "https://api-fship.gojo.vn",
-                    this.key = "11031567890123456789012311031989"
-                }
-                return (0,
-                B.default)(t, [{
-                    key: "replaceStringInBase64",
-                    value: function(t) {
-                        var e = this.key
-                          , n = t.indexOf(e);
-                        if (-1 !== n) {
-                            var r = t.substring(0, n)
-                              , i = t.substring(n + e.length);
-                            t = r + "a" + i
-                        }
-                        return t
-                    }
-                }, {
-                    key: "onDefault",
-                    value: function() {
-                        var t = (0,
-                        r.default)((function*() {
-                            var t = this;
-                            this.socket.on("new-post", (function(e) {
-                                var n = t.replaceStringInBase64(e.data)
-                                  , r = atob(n)
-                                  , i = decodeURIComponent(escape(r))
-                                  , o = JSON.parse(i);
-                                w.default.emit("new-post", o)
-                                const data = {
-                                    name: o.title,
-                                    content: o.desc,
-                                    postId: o.top_level_post_id,
-                                    userId: o.actrs,
-                                    groupId: o.group_id,
-                                    created_at: new Date()
-                                }
-                                socket1.emit('message', data)
-                            }
-                            ))
-                        }
-                        ));
-                        return function() {
-                            return t.apply(this, arguments)
-                        }
-                    }()
-                }, {
-                    key: "onConnect",
-                    value: function() {
-                        for (var t of this.events) {
-                            var e = t.eventName
-                              , n = t.callback;
-                            this.socket.on(e, n)
-                        }
-                        for (var r of (this.events.length = 0,
-                        this.eventsEmit)) {
-                            var i = r.eventName
-                              , o = r.data;
-                            this.socket.emit(i, o)
-                        }
-                        this.eventsEmit.length = 0
-                    }
-                }, {
-                    key: "connect",
-                    value: function() {
-                        var t = this;
-                        this.socket = ie().connect(this.url, {
-                            upgrade: !1,
-                            transports: ["websocket"]
-                        }),
-                        this.socket.on("connect", (function() {
-                            console.log("connected"),
-                            t.onDefault(),
-                            t.onConnect();
-                            var e = setTimeout((0,
-                            r.default)((function*() {
-                                var n = yield ut.get("area");
-                                t.socket.emit("joinRoom", n + "g0j0vn"),
-                                clearTimeout(e)
-                            }
-                            )), 1e3)
-                        }
-                        ))
-                    }
-                }, {
-                    key: "disconnect",
-                    value: function() {
-                        this.socket && (console.log("Disonnected to SocketIO server"),
-                        this.socket.disconnect())
-                    }
-                }, {
-                    key: "emitEvent",
-                    value: function(t, e) {
-                        this.socket && this.socket.connected ? this.socket.emit(t, e) : this.eventsEmit.push({
-                            eventName: t,
-                            data: e
-                        })
-                    }
-                }, {
-                    key: "onEvent",
-                    value: function(t, e) {
-                        this.socket && this.socket.connected ? this.socket.on(t, e) : this.events.push({
-                            eventName: t,
-                            callback: e
-                        })
-                    }
-                }, {
-                    key: "offEvent",
-                    value: function(t) {
-                        this.socket && this.socket.off(t)
-                    }
-                }]),
-                t
-            }());
-            const ae = new oe;
-            var le = v.default.create({
+            var le = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -3715,7 +3717,7 @@
                 o.useCallback)((0,
                 r.default)((function*() {
                     try {
-                        var t = yield $.getHttp("/public-api/v1/social/fb/areas");
+                        var t = yield gt.getHttp("/public-api/v1/social/fb/areas");
                         200 === t.status && c(t.data)
                     } catch (e) {
                         console.log(e),
@@ -3737,18 +3739,18 @@
                     var t = (0,
                     r.default)((function*(t) {
                         var r;
-                        n.g.f || ae.emitEvent("joinRoom", t.code);
-                        var i = yield ut.get("area");
+                        n.g.f || P.emitEvent("joinRoom", t.code);
+                        var i = yield _.get("area");
                         if (i != t.code) {
                             var o = (0,
-                            Ct.getDatabase)()
+                            It.getDatabase)()
                               , a = (0,
-                            Ct.ref)(o, "/feeds/" + i);
+                            It.ref)(o, "/feeds/" + i);
                             (0,
-                            Ct.off)(a)
+                            It.off)(a)
                         }
-                        ut.store("area", t.code),
-                        ut.store("area_name", t.name),
+                        _.store("area", t.code),
+                        _.store("area_name", t.name),
                         "+84944889705" == (null == (r = n.g.data3rd) ? void 0 : r.phone.replace(/^\s/, "+")) && "HA_NOI" == t.code && (n.g.lat = 21.020766517849072,
                         n.g.lng = 105.83702248210905),
                         e.goBack(),
@@ -3766,26 +3768,26 @@
                 o.useEffect)((function() {
                     return e.addListener("focus", (0,
                     r.default)((function*() {
-                        var t = yield ut.get("area");
+                        var t = yield _.get("area");
                         g(t)
                     }
                     )))
                 }
                 ), [e]),
                 (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: le.screen,
                     children: [(0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: "Ch\u1ecdn khu v\u1ef1c",
                         goBack: function() {
                             e.goBack()
                         }
                     }), (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: le.container,
                         children: (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             data: s,
                             keyExtractor: (0,
                             o.useMemo)((function() {
@@ -3797,7 +3799,7 @@
                             renderItem: function(t) {
                                 var e = t.item;
                                 return (0,
-                                T.jsx)(te, {
+                                V.jsx)(ie, {
                                     title: e.name,
                                     onPress: function() {
                                         return y(e)
@@ -3810,7 +3812,7 @@
                 })
             };
             var ce = n(45999)
-              , ue = v.default.create({
+              , ue = R.default.create({
                 container: {
                     height: 60,
                     width: "100%",
@@ -3840,14 +3842,14 @@
                 }
                 ), [n]),
                 (0,
-                T.jsxs)(C.default, {
+                V.jsxs)(M.default, {
                     style: ue.container,
                     children: [(0,
-                    T.jsx)(b.default, {
+                    V.jsx)(H.default, {
                         style: ue.label,
                         children: "Hi\u1ec3n th\u1ecb \u0111\u01a1n kh\xf4ng x\xe1c \u0111\u1ecbnh \u0111\u01b0\u1ee3c v\u1ecb tr\xed"
                     }), (0,
-                    T.jsx)(ce.default, {
+                    V.jsx)(ce.default, {
                         trackColor: {
                             false: "#767577",
                             true: "#fff"
@@ -3871,7 +3873,7 @@
                     })]
                 })
             };
-            var fe = v.default.create({
+            var fe = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -3924,9 +3926,9 @@
                     function t() {
                         return t = (0,
                         r.default)((function*() {
-                            var t = yield ut.get("distance");
+                            var t = yield _.get("distance");
                             s(t);
-                            var e = yield ut.get("isShowUnknowLocation");
+                            var e = yield _.get("isShowUnknowLocation");
                             f("show" === e)
                         }
                         )),
@@ -3937,12 +3939,12 @@
                     }()
                 }
                 ), []);
-                var v = (0,
+                var m = (0,
                 o.useCallback)(function() {
                     var t = (0,
                     r.default)((function*(t) {
                         s(t.value),
-                        yield ut.store("distance", t.value),
+                        yield _.store("distance", t.value),
                         h.default.show({
                             type: "success",
                             text1: "Ch\u1ec9 hi\u1ec7n \u0111\u01a1n c\xe1ch b\u1ea1n " + t.title
@@ -3954,21 +3956,21 @@
                     }
                 }(), []);
                 return (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: fe.screen,
                     children: [(0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: "B\xe1n k\xednh",
                         goBack: function() {
                             e.goBack()
                         }
                     }), (0,
-                    T.jsxs)(C.default, {
+                    V.jsxs)(M.default, {
                         style: fe.container,
                         children: [(0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             children: (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: {
                                     padding: 10,
                                     marginVertical: 5,
@@ -3977,7 +3979,7 @@
                                 children: "Ch\u1ecdn b\xe1n k\xednh t\u1eeb v\u1ecb tr\xed c\u1ee7a b\u1ea1n \u0111\u1ebfn v\u1ecb tr\xed \u0111\u01a1n h\xe0ng. L\u01b0u \xfd: khi b\u1ea1n s\u1eed d\u1ee5ng t\xednh n\u0103ng n\xe0y, \u0111\u01a1n s\u1ebd hi\u1ec3n th\u1ecb ch\u1eadm h\u01a1n kho\u1ea3n ~ 0.3 gi\xe2y so v\u1edbi  b\xecnh th\u01b0\u1eddng. "
                             })
                         }), (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             data: y,
                             keyExtractor: (0,
                             o.useMemo)((function() {
@@ -3989,30 +3991,30 @@
                             renderItem: function(t) {
                                 var e = t.item;
                                 return (0,
-                                T.jsx)(te, {
+                                V.jsx)(ie, {
                                     title: e.title,
                                     onPress: function() {
-                                        return v(e)
+                                        return m(e)
                                     },
                                     isCheck: l == e.value
                                 })
                             }
                         }), (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             style: {},
                             children: (0,
-                            T.jsx)(de, {
+                            V.jsx)(de, {
                                 showUnknowLocation: d,
                                 switchHandle: function(t) {
                                     f(t),
-                                    t ? ut.store("isShowUnknowLocation", "show") : ut.store("isShowUnknowLocation", "noshow")
+                                    t ? _.store("isShowUnknowLocation", "show") : _.store("isShowUnknowLocation", "noshow")
                                 }
                             })
                         })]
                     })]
                 })
             };
-            var ge = v.default.create({
+            var ge = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4080,12 +4082,12 @@
                 i.default)(f, 2)
                   , p = g[0]
                   , y = g[1]
-                  , v = (0,
+                  , m = (0,
                 o.useState)([])
-                  , x = (0,
-                i.default)(v, 2)
-                  , w = x[0]
-                  , k = (x[1],
+                  , v = (0,
+                i.default)(m, 2)
+                  , x = v[0]
+                  , j = (v[1],
                 (0,
                 o.useState)([{
                     title: "< 1km",
@@ -4100,16 +4102,16 @@
                     title: "Kh\xf4ng d\xf9ng Bot",
                     value: 0
                 }]))
-                  , A = (0,
-                i.default)(k, 2)
-                  , I = A[0];
-                A[1],
+                  , b = (0,
+                i.default)(j, 2)
+                  , w = b[0];
+                b[1],
                 (0,
                 o.useEffect)((function() {
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t = yield ut.get("botdistance");
+                            var t = yield _.get("botdistance");
                             y(t)
                         }
                         ))).apply(this, arguments)
@@ -4119,89 +4121,89 @@
                     }()
                 }
                 ), []);
-                var O = (0,
+                var k = (0,
                 o.useCallback)(function() {
                     var t = (0,
                     r.default)((function*(t) {
                         0 == t.value ? (y(t.value),
-                        yield ut.store("botdistance", t.value),
+                        yield _.store("botdistance", t.value),
                         h.default.show({
                             type: "success",
                             text1: "T\u1ef1 \u0111\u1ed9ng nh\u1eadn, khi \u0111\u01a1n c\xe1ch b\u1ea1n " + t.title
-                        })) : B()
+                        })) : C()
                     }
                     ));
                     return function(e) {
                         return t.apply(this, arguments)
                     }
                 }(), [])
-                  , B = (0,
+                  , C = (0,
                 o.useCallback)((function() {
                     s(!0)
                 }
                 ), [])
-                  , _ = (0,
+                  , S = (0,
                 o.useCallback)((function() {
                     s(!1)
                 }
                 ), [])
-                  , z = (0,
+                  , T = (0,
                 o.useCallback)((function() {
-                    B()
+                    C()
                 }
                 ), []);
                 return (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: ge.screen,
                     children: [(0,
-                    T.jsx)(gt, {
-                        goSetUpBot: z,
+                    V.jsx)(vt, {
+                        goSetUpBot: T,
                         title: "Bot Auto",
                         goBack: function() {
                             e.goBack()
                         }
                     }), (0,
-                    T.jsx)(jt, {
+                    V.jsx)(Ct, {
                         style: ge.alert,
                         icon: (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             style: [ge.icon, {
                                 borderRadius: 32
                             }],
                             children: (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 name: "happy-outline",
                                 size: 36,
                                 color: "#FFFFFF"
                             })
                         }),
-                        onRequestClose: _,
+                        onRequestClose: S,
                         visible: l,
                         children: (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: ge.content,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: ge.contentText,
                                 children: d
                             }), (0,
-                            T.jsx)(j.default, {
+                            V.jsx)(D.default, {
                                 style: ge.btn,
-                                onPress: _,
+                                onPress: S,
                                 children: (0,
-                                T.jsx)(b.default, {
+                                V.jsx)(H.default, {
                                     style: ge.btnText,
                                     children: "Okay"
                                 })
                             })]
                         })
                     }), (0,
-                    T.jsxs)(C.default, {
+                    V.jsxs)(M.default, {
                         style: ge.container,
                         children: [(0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             children: (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: {
                                     padding: 10,
                                     marginVertical: 5,
@@ -4210,8 +4212,8 @@
                                 children: "Bot s\u1ebd t\u1ef1 \u0111\u1ed9ng comment b\xe0i vi\u1ebft tr\xean Facebook v\xe0 nh\u1eafn Messenger nh\u1eadn \u0111\u01a1n \u0111\u1ebfn Ch\u1ee7 Shop, khi v\u1ecb tr\xed c\u1ee7a b\u1ea1n c\xe1ch \u0111\u01a1n h\xe0ng m\u1ed9t kho\u1ea3n c\xe1ch d\u01b0\u1edbi \u0111\xe2y: "
                             })
                         }), (0,
-                        T.jsx)(m.default, {
-                            data: I,
+                        V.jsx)(E.default, {
+                            data: w,
                             keyExtractor: (0,
                             o.useMemo)((function() {
                                 return function(t) {
@@ -4222,21 +4224,21 @@
                             renderItem: function(t) {
                                 var e = t.item;
                                 return (0,
-                                T.jsx)(te, {
+                                V.jsx)(ie, {
                                     title: e.title,
                                     onPress: function() {
-                                        return O(e)
+                                        return k(e)
                                     },
                                     isCheck: p == e.value
                                 })
                             }
                         }), (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             style: {},
                             children: (0,
-                            T.jsx)(C.default, {
+                            V.jsx)(M.default, {
                                 children: (0,
-                                T.jsx)(b.default, {
+                                V.jsx)(H.default, {
                                     style: {
                                         padding: 10,
                                         marginVertical: 5,
@@ -4246,14 +4248,14 @@
                                 })
                             })
                         }), (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             style: {
                                 marginVertical: 20,
                                 justifyContent: "center",
                                 alignItems: "center"
                             },
                             children: (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: {
                                     fontSize: 18,
                                     fontWeight: "bold",
@@ -4261,15 +4263,15 @@
                                 },
                                 children: "\u0110\u01a1n Bot v\u1eeba nh\u1eadn"
                             })
-                        }), 0 === w.length ? (0,
-                        T.jsx)(C.default, {
+                        }), 0 === x.length ? (0,
+                        V.jsx)(M.default, {
                             style: {
                                 flex: 1,
                                 alignItems: "center",
                                 justifyContent: "center"
                             },
                             children: (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: {
                                     textAlign: "center",
                                     color: "white"
@@ -4277,19 +4279,19 @@
                                 children: "Danh s\xe1ch tr\u1ed1ng."
                             })
                         }) : (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             contentContainerStyle: {
                                 paddingBottom: 20,
                                 padding: 10
                             },
-                            data: w,
+                            data: x,
                             keyExtractor: function(t, e) {
                                 return e.toString()
                             },
                             renderItem: function(t) {
                                 var e = t.item;
                                 return (0,
-                                T.jsx)(CardShort, {
+                                V.jsx)(CardShort, {
                                     item: e
                                 })
                             }
@@ -4297,7 +4299,7 @@
                     })]
                 })
             };
-            var ye = v.default.create({
+            var ye = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4352,26 +4354,26 @@
             const me = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , r = (x.default.get("window").height,
+                  , r = (L.default.get("window").height,
                 n.params.title);
                 return (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: ye.screen,
                     children: [(0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: r,
                         goBack: function() {
                             e.goBack()
                         }
                     }), (0,
-                    T.jsx)("iframe", {
+                    V.jsx)("iframe", {
                         src: "https://shopmap.gojo.vn?a=c",
                         height: "100%",
                         width: "100%"
                     })]
                 })
             };
-            var ve = v.default.create({
+            var ve = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4451,7 +4453,7 @@
             const xe = function(t) {
                 var e = t.navigation
                   , a = t.route
-                  , l = x.default.get("window").height
+                  , l = L.default.get("window").height
                   , s = a.params.title
                   , c = (0,
                 o.useState)([])
@@ -4465,29 +4467,29 @@
                 i.default)(h, 2)
                   , p = g[0]
                   , y = g[1]
-                  , v = (0,
+                  , m = (0,
                 o.useState)([])
-                  , w = (0,
-                i.default)(v, 2)
-                  , k = (w[0],
-                w[1],
+                  , v = (0,
+                i.default)(m, 2)
+                  , x = (v[0],
+                v[1],
                 (0,
-                dt.useActionSheet)().showActionSheetWithOptions,
+                pt.useActionSheet)().showActionSheetWithOptions,
                 (0,
                 o.useState)(!1))
-                  , S = (0,
-                i.default)(k, 2)
-                  , O = (S[0],
-                S[1])
-                  , B = (0,
+                  , j = (0,
+                i.default)(x, 2)
+                  , b = (j[0],
+                j[1])
+                  , w = (0,
                 o.useState)("")
-                  , _ = (0,
-                i.default)(B, 2)
-                  , z = (_[0],
-                _[1],
+                  , k = (0,
+                i.default)(w, 2)
+                  , C = (k[0],
+                k[1],
                 (0,
                 o.useCallback)((function() {
-                    O(!0)
+                    b(!0)
                 }
                 ), []),
                 function() {
@@ -4504,11 +4506,11 @@
                         return t.apply(this, arguments)
                     }
                 }())
-                  , F = function() {
+                  , S = function() {
                     var t = (0,
                     r.default)((function*() {
                         y(!0);
-                        var t = yield $.getHttp("/public-api/v1/social/fb/get-actrs-scam?skip=0&numReport=700");
+                        var t = yield gt.getHttp("/public-api/v1/social/fb/get-actrs-scam?skip=0&numReport=700");
                         y(!1),
                         200 === t.status && (console.log(t.data.data.actrs),
                         f(t.data.data.actrs))
@@ -4520,27 +4522,27 @@
                 }();
                 return (0,
                 o.useEffect)((function() {
-                    F()
+                    S()
                 }
                 ), []),
                 (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: ve.screen,
                     children: [(0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: s,
                         goBack: function() {
                             e.goBack()
                         }
                     }), !p && 0 === d.length && (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: {
                             flex: 1,
                             alignItems: "center",
                             justifyContent: "center"
                         },
                         children: (0,
-                        T.jsx)(b.default, {
+                        V.jsx)(H.default, {
                             style: {
                                 textAlign: "center",
                                 color: "white"
@@ -4548,13 +4550,13 @@
                             children: "Danh s\xe1ch tr\u1ed1ng."
                         })
                     }), (0,
-                    T.jsx)(A, {
+                    V.jsx)(U, {
                         visible: p
                     }), (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: ve.container,
                         children: (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             style: {
                                 maxHeight: l - 44
                             },
@@ -4564,7 +4566,7 @@
                             },
                             ItemSeparatorComponent: function() {
                                 return (0,
-                                T.jsx)(C.default, {
+                                V.jsx)(M.default, {
                                     style: {
                                         height: 1,
                                         backgroundColor: "white"
@@ -4575,48 +4577,48 @@
                                 t.actrs;
                                 var e = t.index;
                                 return (0,
-                                T.jsxs)(C.default, {
+                                V.jsxs)(M.default, {
                                     style: ve.detailsContainer,
                                     children: [(0,
-                                    T.jsx)(C.default, {
+                                    V.jsx)(M.default, {
                                         style: ve.userContainer,
                                         children: (0,
-                                        T.jsx)(Wt, {
+                                        V.jsx)(Kt, {
                                             title: d[e].name,
                                             subTitle: "\u0110\xe3 \u0111\u0103ng: " + d[e].num_post + "          Ph\u1ed1t: " + d[e].report,
                                             image: "https://cdn.gojo.vn/image-cdn/default/scam.png"
                                         })
                                     }), (0,
-                                    T.jsxs)(C.default, {
+                                    V.jsxs)(M.default, {
                                         style: ve.buttonContainer,
                                         children: [(0,
-                                        T.jsx)(j.default, {
+                                        V.jsx)(D.default, {
                                             style: [ve.button],
                                             onPress: function() {
                                                 var t;
-                                                "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + d[e].actrs : I.default.openURL("https://www.facebook.com/profile.php?id=" + d[e].actrs)
+                                                "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + d[e].actrs : q.default.openURL("https://www.facebook.com/profile.php?id=" + d[e].actrs)
                                             },
                                             children: (0,
-                                            T.jsx)(b.default, {
+                                            V.jsx)(H.default, {
                                                 style: ve.buttonText,
                                                 children: "Check Facebook"
                                             })
                                         }), (0,
-                                        T.jsx)(j.default, {
+                                        V.jsx)(D.default, {
                                             style: [ve.button, {
                                                 backgroundColor: "#b749f7"
                                             }],
                                             onPress: function() {
-                                                z(d[e])
+                                                C(d[e])
                                             },
                                             children: (0,
-                                            T.jsx)(b.default, {
+                                            V.jsx)(H.default, {
                                                 style: ve.buttonText,
                                                 children: "Tin \u0111\xe3 \u0111\u0103ng"
                                             })
                                         })]
                                     }), d[e].report_from.length > 0 ? (0,
-                                    T.jsxs)(b.default, {
+                                    V.jsxs)(H.default, {
                                         style: {
                                             textAlign: "left",
                                             color: "white"
@@ -4630,7 +4632,7 @@
                 })
             };
             var je = n(47290);
-            var be = v.default.create({
+            var be = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4710,7 +4712,7 @@
             const we = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , a = x.default.get("window").height
+                  , a = L.default.get("window").height
                   , l = n.params.title
                   , s = (0,
                 o.useState)([])
@@ -4724,7 +4726,7 @@
                 i.default)(f, 2)
                   , p = g[0]
                   , y = g[1]
-                  , v = function() {
+                  , m = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         console.log(t.actrs),
@@ -4738,19 +4740,19 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , w = function() {
+                  , v = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t;
                         try {
-                            t = yield ut.getActrsBlock()
+                            t = yield _.getActrsBlock()
                         } catch (r) {
                             console.error("Error getting actrsBlock:", r)
                         }
                         if (Array.isArray(t) && t.length > 0) {
                             var e = "/public-api/v1/social/fb/get-actrs-block?ids=" + t.join(",");
                             y(!0);
-                            var n = yield $.getHttp(e);
+                            var n = yield gt.getHttp(e);
                             y(!1),
                             200 === n.data.status.code && d(n.data.data.actrs)
                         }
@@ -4763,24 +4765,24 @@
                 (0,
                 o.useEffect)((function() {
                     return e.addListener("focus", (function() {
-                        w()
+                        v()
                     }
                     ))
                 }
                 ), [e]);
-                var k = function() {
+                var x = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t;
                         try {
-                            t = yield ut.getActrsBlock()
+                            t = yield _.getActrsBlock()
                         } catch (r) {
                             console.error("Error getting actrsBlock:", r)
                         }
                         if (Array.isArray(t) && t.length > 0) {
                             var e = "/public-api/v1/social/fb/syn-actrs-block?action=UP&ids=" + t.join(",");
                             y(!0);
-                            var n = yield $.getHttp(e);
+                            var n = yield gt.getHttp(e);
                             setTimeout((function() {
                                 y(!1)
                             }
@@ -4807,24 +4809,24 @@
                     }
                 }();
                 return (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: be.screen,
                     children: [(0,
-                    T.jsx)(gt, {
-                        goSynBlock: k,
+                    V.jsx)(vt, {
+                        goSynBlock: x,
                         title: l,
                         goBack: function() {
                             e.goBack()
                         }
                     }), !p && 0 === u.length && (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: {
                             flex: 1,
                             alignItems: "center",
                             justifyContent: "center"
                         },
                         children: (0,
-                        T.jsx)(b.default, {
+                        V.jsx)(H.default, {
                             style: {
                                 textAlign: "center",
                                 color: "white"
@@ -4832,14 +4834,14 @@
                             children: "Danh s\xe1ch tr\u1ed1ng."
                         })
                     }), (0,
-                    T.jsxs)(C.default, {
+                    V.jsxs)(M.default, {
                         style: be.container,
                         children: [p && (0,
-                        T.jsx)(je.default, {
+                        V.jsx)(je.default, {
                             size: "large",
                             color: "#9437ff"
                         }), (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             style: {
                                 maxHeight: a - 44
                             },
@@ -4849,7 +4851,7 @@
                             },
                             ItemSeparatorComponent: function() {
                                 return (0,
-                                T.jsx)(C.default, {
+                                V.jsx)(M.default, {
                                     style: {
                                         height: 1,
                                         backgroundColor: "white"
@@ -4860,29 +4862,29 @@
                                 t.actrs;
                                 var e = t.index;
                                 return (0,
-                                T.jsxs)(C.default, {
+                                V.jsxs)(M.default, {
                                     style: be.detailsContainer,
                                     children: [(0,
-                                    T.jsx)(C.default, {
+                                    V.jsx)(M.default, {
                                         style: be.userContainer,
                                         children: (0,
-                                        T.jsx)(Wt, {
+                                        V.jsx)(Kt, {
                                             title: u[e].name,
                                             subTitle: "\u0110\xe3 \u0111\u0103ng: " + u[e].num_post + "          Ph\u1ed1t: " + u[e].report
                                         })
                                     }), (0,
-                                    T.jsx)(C.default, {
+                                    V.jsx)(M.default, {
                                         style: be.buttonContainer,
                                         children: (0,
-                                        T.jsx)(j.default, {
+                                        V.jsx)(D.default, {
                                             style: [be.button, {
                                                 backgroundColor: "#b749f7"
                                             }],
                                             onPress: function() {
-                                                v(u[e])
+                                                m(u[e])
                                             },
                                             children: (0,
-                                            T.jsx)(b.default, {
+                                            V.jsx)(H.default, {
                                                 style: be.buttonText,
                                                 children: "Xem"
                                             })
@@ -4894,7 +4896,7 @@
                     })]
                 })
             };
-            var ke = v.default.create({
+            var ke = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4950,7 +4952,7 @@
             const Ce = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , a = x.default.get("window").height
+                  , a = L.default.get("window").height
                   , l = n.params.title
                   , s = (0,
                 o.useState)([])
@@ -4963,71 +4965,71 @@
                   , g = (0,
                 i.default)(f, 2)
                   , y = g[0]
-                  , v = g[1]
-                  , w = (0,
+                  , m = g[1]
+                  , v = (0,
                 o.useState)([])
+                  , x = (0,
+                i.default)(v, 2)
+                  , j = x[0]
+                  , b = x[1]
+                  , w = (0,
+                pt.useActionSheet)().showActionSheetWithOptions
                   , k = (0,
-                i.default)(w, 2)
-                  , I = k[0]
-                  , O = k[1]
-                  , B = (0,
-                dt.useActionSheet)().showActionSheetWithOptions
-                  , _ = (0,
                 o.useState)(!1)
-                  , z = (0,
-                i.default)(_, 2)
-                  , F = z[0]
-                  , P = z[1]
-                  , E = (0,
+                  , C = (0,
+                i.default)(k, 2)
+                  , S = C[0]
+                  , T = C[1]
+                  , A = (0,
                 o.useState)("")
-                  , R = (0,
-                i.default)(E, 2)
-                  , L = (R[0],
-                R[1],
+                  , I = (0,
+                i.default)(A, 2)
+                  , O = (I[0],
+                I[1],
                 (0,
                 o.useCallback)((function() {
-                    P(!0)
+                    T(!0)
                 }
                 ), []))
-                  , D = (0,
+                  , B = (0,
                 o.useCallback)((function() {
-                    P(!1)
+                    T(!1)
                 }
                 ), [])
-                  , H = function(t) {
-                    B({
+                  , z = function(t) {
+                    w({
                         options: ["B\xe1o ph\u1ed1t: tin gi\u1ea3 - l\u1eeba \u0111\u1ea3o", "Sai s\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "Cancel"],
                         cancelButtonIndex: 2,
                         destructiveButtonIndex: 0
                     }, (function(e) {
                         switch (e) {
                         case 1:
-                            N(t, "invalidate-phone");
+                            F(t, "invalidate-phone");
                             break;
                         case 0:
-                            N(t, "report")
+                            F(t, "report")
                         }
                     }
                     ))
                 }
-                  , N = function() {
+                  , F = function() {
                     var t = (0,
                     r.default)((function*(t, e) {
                         if ("report" === e) {
-                            var n = yield ut.getActrsReport();
+                            var n = yield _.getActrsReport();
                             if (Array.isArray(n) && n.length > 0 && n.includes(t))
                                 return void h.default.show({
                                     type: "error",
                                     text1: "B\u1ea1n \u0111\xe3 b\xe1o c\xe1o ng\u01b0\u1eddi n\xe0y r\u1ed3i."
                                 });
                             Array.isArray(n) && (yield n.push(t),
-                            ut.storeActrsReport(JSON.stringify(n)))
+                            _.storeActrsReport(JSON.stringify(n)))
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 2"),
-                        v(!0);
-                        var i = yield $.getHttp(r);
-                        v(!1),
+                        m(!0);
+                        var i = yield gt.getHttp(r);
+                        m(!1),
                         200 === i.status && h.default.show({
                             type: "success",
                             text1: "C\u1ea3m \u01a1n b\u1ea1n \u0111\xe3 th\xf4ng b\xe1o",
@@ -5039,7 +5041,7 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , M = function() {
+                  , P = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         console.log(t),
@@ -5053,13 +5055,13 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , W = function() {
+                  , R = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         var e = "/public-api/v1/social/fb/feeds?ids=" + t + "&&isfavorite=true";
-                        v(!0);
-                        var n = yield $.getHttp(e);
-                        v(!1),
+                        m(!0);
+                        var n = yield gt.getHttp(e);
+                        m(!1),
                         200 === n.status && Array.isArray(n.data.feeds) && d(n.data.feeds)
                     }
                     ));
@@ -5067,42 +5069,42 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , V = function(t) {
+                  , N = function(t) {
                     var e = (0,
-                    p.default)(I);
-                    I.includes(t) && (h.default.show({
+                    p.default)(j);
+                    j.includes(t) && (h.default.show({
                         type: "success",
                         text1: "\u0110\xe3 x\xf3a kh\u1ecfi m\u1ee5c \u01b0a th\xedch."
                     }),
                     0 == (e = e.filter((function(e) {
                         return e !== t
                     }
-                    ))).length && ut.storeFavorites(""),
-                    W(e.toString()),
-                    O(e))
+                    ))).length && _.storeFavorites(""),
+                    R(e.toString()),
+                    b(e))
                 };
                 (0,
                 o.useEffect)((function() {
-                    Array.isArray(I) && I.length > 0 && I.every((function(t) {
+                    Array.isArray(j) && j.length > 0 && j.every((function(t) {
                         return "string" === typeof t
                     }
-                    )) && ut.storeFavorites(JSON.stringify(I))
+                    )) && _.storeFavorites(JSON.stringify(j))
                 }
-                ), [I]),
+                ), [j]),
                 (0,
                 o.useEffect)((function() {
                     var t = e.addListener("focus", (function() {
                         var t = function() {
                             var t = (0,
                             r.default)((function*() {
-                                var t = yield ut.getFavorites();
+                                var t = yield _.getFavorites();
                                 t.length > 0 ? (t.length > 50 && h.default.show({
                                     type: "success",
                                     text1: "L\u01b0u \xfd: L\u01b0u t\u1ed1i \u0111a 100 \u0111\u01a1n",
                                     text2: "X\xf3a b\u1edbt \u0111\u01a1n l\u01b0u \u0111\u1ec3 App nhanh h\u01a1n"
                                 }),
-                                O(t),
-                                W(t.toString())) : d([])
+                                b(t),
+                                R(t.toString())) : d([])
                             }
                             ));
                             return function() {
@@ -5115,14 +5117,14 @@
                     return t
                 }
                 ), [e]);
-                var U = function() {
+                var q = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t = [];
-                        W(t.toString()),
-                        O(t),
-                        ut.storeFavorites(JSON.stringify(t)),
-                        D(),
+                        R(t.toString()),
+                        b(t),
+                        _.storeFavorites(JSON.stringify(t)),
+                        B(),
                         h.default.show({
                             type: "success",
                             text1: "B\u1ea1n \u0111\xe3 x\xf3a t\u1ea5t c\u1ea3 \u0111\u01a1n l\u01b0u."
@@ -5134,70 +5136,70 @@
                     }
                 }();
                 return (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: ke.screen,
                     children: [(0,
-                    T.jsx)(gt, {
-                        goRemoveFav: L,
+                    V.jsx)(vt, {
+                        goRemoveFav: O,
                         title: l,
                         goBack: function() {
                             e.goBack()
                         }
                     }), (0,
-                    T.jsx)(jt, {
+                    V.jsx)(Ct, {
                         style: ke.alert,
                         icon: (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             style: [ke.icon, {
                                 borderRadius: 32
                             }],
                             children: (0,
-                            T.jsx)(S.default, {
+                            V.jsx)(W.default, {
                                 name: "trash",
                                 size: 36,
                                 color: "#FFFFFF"
                             })
                         }),
-                        onRequestClose: D,
-                        visible: F,
+                        onRequestClose: B,
+                        visible: S,
                         children: (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: ke.content,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: ke.contentText,
                                 children: "B\u1ea1n c\xf3 ch\u1eafc mu\u1ed1n x\xf3a h\u1ebft \u0111\u01a1n \u0111\xe3 l\u01b0u?"
                             }), (0,
-                            T.jsx)(j.default, {
+                            V.jsx)(D.default, {
                                 style: ke.btn,
-                                onPress: U,
+                                onPress: q,
                                 children: (0,
-                                T.jsx)(b.default, {
+                                V.jsx)(H.default, {
                                     style: ke.btnText,
                                     children: "\u0110\u1ed3ng \xfd"
                                 })
                             }), (0,
-                            T.jsx)(j.default, {
+                            V.jsx)(D.default, {
                                 style: [ke.btn, {
                                     backgroundColor: "#1966fe"
                                 }],
-                                onPress: D,
+                                onPress: B,
                                 children: (0,
-                                T.jsx)(b.default, {
+                                V.jsx)(H.default, {
                                     style: ke.btnText,
                                     children: "H\u1ee7y"
                                 })
                             })]
                         })
                     }), !y && 0 === u.length && (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: {
                             flex: 1,
                             alignItems: "center",
                             justifyContent: "center"
                         },
                         children: (0,
-                        T.jsx)(b.default, {
+                        V.jsx)(H.default, {
                             style: {
                                 textAlign: "center",
                                 color: "white"
@@ -5205,13 +5207,13 @@
                             children: "Danh s\xe1ch tr\u1ed1ng."
                         })
                     }), (0,
-                    T.jsx)(A, {
+                    V.jsx)(U, {
                         visible: y
                     }), (0,
-                    T.jsx)(C.default, {
+                    V.jsx)(M.default, {
                         style: ke.container,
                         children: (0,
-                        T.jsx)(m.default, {
+                        V.jsx)(E.default, {
                             style: {
                                 maxHeight: a - 44
                             },
@@ -5222,12 +5224,12 @@
                             renderItem: function(t) {
                                 var e = t.item;
                                 return (0,
-                                T.jsx)(q, {
+                                V.jsx)(at, {
                                     item: e,
-                                    isFavorite: I.includes(e.id),
-                                    addToFavorite: V,
-                                    viewProfile: M,
-                                    onActionSheetPress: H
+                                    isFavorite: j.includes(e.id),
+                                    addToFavorite: N,
+                                    viewProfile: P,
+                                    onActionSheetPress: z
                                 })
                             }
                         })
@@ -5235,7 +5237,7 @@
                 })
             };
             var Se = n(9948);
-            var Te = v.default.create({
+            var Te = R.default.create({
                 screen: {
                     backgroundColor: "#23262e"
                 },
@@ -5270,7 +5272,7 @@
                 i.default)(l, 2), c = s[0], u = s[1], d = function() {
                     var t = (0,
                     r.default)((function*() {
-                        var t = yield $.getBankInfor();
+                        var t = yield gt.getBankInfor();
                         console.log(t.data),
                         200 == t.data.status.code && u(t.data.data)
                     }
@@ -5299,19 +5301,19 @@
                     }
                 }();
                 return (0,
-                T.jsxs)(X, {
+                V.jsxs)(ut, {
                     style: Te.screen,
                     children: [(0,
-                    T.jsx)(gt, {
+                    V.jsx)(vt, {
                         title: "T\xe0i Tr\u1ee3",
                         goBack: function() {
                             a.goBack()
                         }
                     }), (0,
-                    T.jsx)(h.default, {
+                    V.jsx)(h.default, {
                         position: "bottom"
                     }), (0,
-                    T.jsxs)(b.default, {
+                    V.jsxs)(H.default, {
                         style: {
                             paddingHorizontal: 10,
                             marginTop: 60,
@@ -5320,7 +5322,7 @@
                         },
                         children: ["S\u1ed1 ng\xe0y VIP c\xf2n l\u1ea1i c\u1ee7a b\u1ea1n: ", n.g.vipday, " ng\xe0y"]
                     }), (0,
-                    T.jsx)(b.default, {
+                    V.jsx)(H.default, {
                         style: {
                             paddingHorizontal: 10,
                             marginTop: 10,
@@ -5328,7 +5330,7 @@
                         },
                         children: "H\xe3y c\xf9ng chung tay duy tr\xec, x\xe2y d\u1ef1ng v\xe0 ph\xe1t tri\u1ec3n \u1ee9ng d\u1ee5ng l\xe2u d\xe0i b\u1eb1ng c\xe1ch \u1ee7ng h\u1ed9 kinh ph\xed. M\u1ecdi \u0111\xf3ng g\xf3p \u0111\u1ec1u mang l\u1ea1i \xfd ngh\u0129a l\u1edbn lao!"
                     }), (0,
-                    T.jsx)(b.default, {
+                    V.jsx)(H.default, {
                         style: {
                             paddingHorizontal: 10,
                             marginVertical: 5,
@@ -5337,29 +5339,29 @@
                         },
                         children: "Vui l\xf2ng chuy\u1ec3n kho\u1ea3n \u0111\xfang v\u1edbi th\xf4ng tin b\xean d\u01b0\u1edbi. Sau khi chuy\u1ec3n kho\u1ea3n th\xe0nh c\xf4ng. S\u1ed1 ng\xe0y VIP s\u1ebd \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt sau v\xe0i gi\xe2y, nh\u1edb b\u1ea5m reload \u0111\u1ec3 App c\u1eadp nh\u1eadt.(Ch\u1ea1m v\xe0o S\u1ed1 t\xe0i kho\u1ea3n v\xe0 N\u1ed9i dung \u0111\u1ec3 t\u1ef1 \u0111\u1ed9ng sao ch\xe9p.):"
                     }), (0,
-                    T.jsxs)(C.default, {
+                    V.jsxs)(M.default, {
                         style: Te.container,
                         children: [(0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: Te.row,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.label,
                                 children: "Ng\xe2n H\xe0ng:"
                             }), (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.value,
                                 children: c.bankName
                             })]
                         }), (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: Te.row,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.label,
                                 children: "S\u1ed1 t\xe0i kho\u1ea3n:"
                             }), (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: [Te.value, Te.copyText, {
                                     color: "#9437ff"
                                 }],
@@ -5369,26 +5371,26 @@
                                 children: c.bankNumber
                             })]
                         }), (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: Te.row,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.label,
                                 children: "T\xean kho\u1ea3n:"
                             }), (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.value,
                                 children: c.bankAccount
                             })]
                         }), (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: Te.row,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.label,
                                 children: "N\u1ed9i dung:"
                             }), (0,
-                            T.jsxs)(b.default, {
+                            V.jsxs)(H.default, {
                                 style: [Te.value, Te.copyText, {
                                     color: "#9437ff"
                                 }],
@@ -5399,21 +5401,21 @@
                                 children: ["gojo ", "0" + (null == (e = n.g.data3rd) ? void 0 : e.phone.slice(3)) + " BOSS"]
                             })]
                         }), (0,
-                        T.jsxs)(C.default, {
+                        V.jsxs)(M.default, {
                             style: Te.row,
                             children: [(0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.label,
                                 children: "S\u1ed1 ti\u1ec1n: 30K"
                             }), (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: Te.value,
                                 children: "+30 ng\xe0y VIP"
                             })]
                         }), (0,
-                        T.jsx)(C.default, {
+                        V.jsx)(M.default, {
                             children: (0,
-                            T.jsx)(b.default, {
+                            V.jsx)(H.default, {
                                 style: {
                                     paddingHorizontal: 10,
                                     marginTop: 10,
@@ -5430,52 +5432,52 @@
             g.default)();
             const Oe = function() {
                 return (0,
-                T.jsxs)(Ie.Navigator, {
+                V.jsxs)(Ie.Navigator, {
                     screenOptions: {
                         headerShown: !1
                     },
                     children: [(0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "Listings",
-                        component: _t
+                        component: Et
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "ListingDetails",
-                        component: Qt
-                    }), (0,
-                    T.jsx)(Ie.Screen, {
-                        name: "FilterFastNews",
                         component: ne
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
+                        name: "FilterFastNews",
+                        component: ae
+                    }), (0,
+                    V.jsx)(Ie.Screen, {
                         name: "Favorites",
                         component: Ce
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "FilterFastNewsArea",
                         component: se
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "FilterFastNewsDistance",
                         component: he
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "ShopMapScreen",
                         component: me
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "ScammerScreen",
                         component: xe
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "BlocksScreen",
                         component: we
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "BotAutoDistance",
                         component: pe
                     }), (0,
-                    T.jsx)(Ie.Screen, {
+                    V.jsx)(Ie.Screen, {
                         name: "BankScreen",
                         component: Ae
                     })]
@@ -5483,7 +5485,7 @@
             };
             var Be = o.createRef();
             var _e = n(44473);
-            v.default.create({
+            R.default.create({
                 container: {
                     flex: 1,
                     justifyContent: "center",
@@ -5520,7 +5522,7 @@
                             var a = o.location.split(",");
                             n.g.lat = a[0],
                             n.g.lng = a[1];
-                            var l = yield ut.get("area");
+                            var l = yield _.get("area");
                             if (!l || 0 == l.length) {
                                 var s = function(t, e) {
                                     var n = null
@@ -5554,12 +5556,11 @@
                                     }
                                     return n
                                 }(a[0], a[1]);
-                                yield ut.store("area", s.code),
-                                yield ut.store("area_name", s.name)
+                                yield _.store("area", s.code),
+                                yield _.store("area_name", s.name)
                             }
                         } else
-                            n.g.f = !0;
-                        n.g.f || ae.connect()
+                            n.g.f = !0
                     }
                     ))).apply(this, arguments)
                 }
@@ -5571,17 +5572,17 @@
                             yield function() {
                                 return d.apply(this, arguments)
                             }();
-                            var t = yield ut.get("isShowUnknowLocation");
-                            t && 0 != t.length || (yield ut.store("isShowUnknowLocation", "show"));
-                            var e = yield ut.get("area");
-                            e && 0 != e.length || (yield ut.store("area", "DA_NANG"),
-                            yield ut.store("area_name", "\u0110\xe0 N\u1eb5ng"));
-                            var n = yield ut.get("isShowMap");
-                            n && 0 != n.length || (yield ut.store("isShowMap", "noshow"));
-                            var r = yield ut.get("isShowAnonymous");
-                            r && 0 != r.length || (yield ut.store("isShowAnonymous", "showAnonymous"));
-                            var i = yield ut.get("distance");
-                            i && 0 != i.length || (yield ut.store("distance", 50)),
+                            var t = yield _.get("isShowUnknowLocation");
+                            t && 0 != t.length || (yield _.store("isShowUnknowLocation", "show"));
+                            var e = yield _.get("area");
+                            e && 0 != e.length || (yield _.store("area", "DA_NANG"),
+                            yield _.store("area_name", "\u0110\xe0 N\u1eb5ng"));
+                            var n = yield _.get("isShowMap");
+                            n && 0 != n.length || (yield _.store("isShowMap", "noshow"));
+                            var r = yield _.get("isShowAnonymous");
+                            r && 0 != r.length || (yield _.store("isShowAnonymous", "showAnonymous"));
+                            var i = yield _.get("distance");
+                            i && 0 != i.length || (yield _.store("distance", 50)),
                             c(!0)
                         }
                         ));
@@ -5593,13 +5594,13 @@
                 }
                 ), []),
                 (0,
-                T.jsx)(dt.ActionSheetProvider, {
+                V.jsx)(pt.ActionSheetProvider, {
                     children: (0,
-                    T.jsx)(a.default, {
+                    V.jsx)(a.default, {
                         ref: Be,
                         theme: f,
                         children: s ? (0,
-                        T.jsx)(Oe, {}) : null
+                        V.jsx)(Oe, {}) : null
                     })
                 })
             }

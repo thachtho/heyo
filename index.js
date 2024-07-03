@@ -6,7 +6,7 @@ const fs = require('fs');
     const scriptAbc = fs.readFileSync('abc.js', 'utf8');
     // Khởi tạo trình duyệt Puppeteer
     const browser = await puppeteer.launch({
-    	headless: 'new',
+    	headless: false,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
