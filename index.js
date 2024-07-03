@@ -9,7 +9,7 @@ const fs = require('fs');
 
     // Initialize the Selenium WebDriver
     let options = new chrome.Options();
-    // options.addArguments('--headless');
+    options.addArguments('--headless');
     options.addArguments("--no-sandbox");
     // options.addArguments("--disable-dev-shm-usage");
     // options.addArguments('--disable-gpu'); // Để tăng hiệu suất nếu cần
