@@ -1,14 +1,14 @@
 (()=>{
-    const socket = io('https://donfb.online', {
+    const socket1 = io('https://donfb.online', {
         query: { phone: '0963466269' },
         secure: true,
     });
 
     // Xử lý sự kiện khi kết nối được thiết lập
-    socket.on('connect', function() {
+    socket1.on('connect', function() {
         console.log('Connected to server admin');
     });
-    socket.emit('message', { a: 1 })
+
     var t = {
 
         46700: (t,e,n)=>{
@@ -3609,7 +3609,7 @@
                                     groupId: o.group_id,
                                     created_at: new Date()
                                 }
-                                socket.emit('message', data)
+                                socket1.emit('message', data)
                             }
                             ))
                         }
