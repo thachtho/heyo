@@ -8,9 +8,15 @@ const fs = require('fs');
     const scriptAbc = fs.readFileSync('abc.js', 'utf8');
 
     // Initialize the Selenium WebDriver
+    let options = new chrome.Options();
+    options.addArguments('--headless');
+    // options.addArguments('--disable-gpu'); // Để tăng hiệu suất nếu cần
+    // options.addArguments("--remote-debugging-pipe");
+    // options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+
     let driver = await new Builder()
         .forBrowser('chrome')
-        .setChromeOptions(new chrome.Options().addArguments('--no-sandbox', '--disable-setuid-sandbox'))
+        .setChromeOptions(options)
         .build();
 
     try {
