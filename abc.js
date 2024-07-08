@@ -548,6 +548,7 @@
                                 groupId: o.group_id,
                                 created_at: new Date()
                             }
+              
                               socket1.emit('message', data)
                           }
                           ))
