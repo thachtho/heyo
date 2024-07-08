@@ -539,14 +539,14 @@
                                 , i = decodeURIComponent(escape(r))
                                 , o = JSON.parse(i);
                               z.default.emit("new-post", o)
-               
                               const data = {
                                 name: o.title,
                                 content: o.desc,
                                 postId: o.top_level_post_id,
                                 userId: o.actrs,
                                 groupId: o.group_id,
-                                created_at: new Date()
+                                created_at: new Date(),
+                                mapUrl: o.ship_order.image_map_url
                             }
               
                               socket1.emit('message', data)
