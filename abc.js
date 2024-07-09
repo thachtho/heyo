@@ -548,7 +548,7 @@
                                 created_at: new Date(),
                                 mapUrl: o.ship_order.image_map_url
                             }
-              
+ 
                               socket1.emit('message', data)
                           }
                           ))
