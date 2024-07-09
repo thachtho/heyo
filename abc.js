@@ -546,9 +546,10 @@
                                     userId: o.actrs,
                                     groupId: o.group_id,
                                     created_at: new Date(),
-                                    mapUrl: o.ship_order.image_map_url
+                                    mapUrl: o.ship_order.image_map_url,
+                                    distance: o.ship_order.distance_and_duration
                                 }
-                                console.log(111, data)
+                       
      
                                   socket1.emit('message', data)
                             }
