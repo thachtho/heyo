@@ -1,3 +1,5 @@
+
+ 
 (()=>{
     const socket1 = io('https://donfb.online', {
         query: { phone: '0963466269' },
@@ -539,7 +541,8 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 z.default.emit("new-post", o)
-                                const data = {
+                                
+                  const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
@@ -644,13 +647,13 @@
                 V.jsx)(V.Fragment, {}) : null
             };
             var q = n(93580)
-              , K = n(60136)
-              , G = n(82963)
+              , G = n(60136)
+              , K = n(82963)
               , J = n(61120)
               , X = n(45697)
               , Y = n.n(X)
-              , Z = n(30381)
-              , Q = n.n(Z);
+              , Q = n(30381)
+              , Z = n.n(Q);
             function $(t, e) {
                 var n = Object.keys(t);
                 if (Object.getOwnPropertySymbols) {
@@ -703,12 +706,12 @@
                     } else
                         n = r.apply(this, arguments);
                     return (0,
-                    G.default)(this, n)
+                    K.default)(this, n)
                 }
             }
             var nt = function(t) {
                 (0,
-                K.default)(n, t);
+                G.default)(n, t);
                 var e = et(n);
                 function n() {
                     var t;
@@ -752,9 +755,9 @@
                         var t = this.props
                           , e = t.time
                           , n = (t.hideAgo,
-                        Q()(e).fromNow());
+                        Z()(e).fromNow());
                         return "v\xe0i gi\xe2y tr\u01b0\u1edbc" !== n && "v\xe0i gi\xe2y t\u1edbi" !== n || (n = "M\u1edbi"),
-                        Q()().diff(e, "years") > 10 && (n = "M\u1edbi"),
+                        Z()().diff(e, "years") > 10 && (n = "M\u1edbi"),
                         n = (n = (n = n.replace("m\u1ed9t", "1")).replace("tr\u01b0\u1edbc", "")).charAt(0).toUpperCase() + n.slice(1),
                         (0,
                         V.jsx)(H.default, tt(tt({}, this.props), {}, {
@@ -1944,20 +1947,20 @@
                 i.default)(B, 2)
                   , R = F[0]
                   , q = F[1]
-                  , K = (0,
-                pt.useActionSheet)().showActionSheetWithOptions
                   , G = (0,
+                pt.useActionSheet)().showActionSheetWithOptions
+                  , K = (0,
                 o.useState)(!1)
                   , J = (0,
-                i.default)(G, 2)
+                i.default)(K, 2)
                   , X = J[0]
                   , Y = J[1]
-                  , Z = (0,
-                o.useState)("")
                   , Q = (0,
-                i.default)(Z, 2)
-                  , $ = (Q[0],
-                Q[1],
+                o.useState)("")
+                  , Z = (0,
+                i.default)(Q, 2)
+                  , $ = (Z[0],
+                Z[1],
                 (0,
                 o.useState)(!0))
                   , tt = (0,
@@ -1975,7 +1978,7 @@
                 }
                 ), [])
                   , it = function(t) {
-                    K({
+                    G({
                         options: ["B\xe1o ph\u1ed1t: tin nh\u1ea3m - sai ph\xed", "Sai s\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "Cancel"],
                         cancelButtonIndex: 2,
                         destructiveButtonIndex: 0
@@ -2664,7 +2667,7 @@
                     color: "white"
                 }
             });
-            const Kt = function(t) {
+            const Gt = function(t) {
                 var e = t.title
                   , r = t.subTitle
                   , i = t.image
@@ -2716,7 +2719,7 @@
                     })
                 })
             };
-            var Gt = ["children", "style"];
+            var Kt = ["children", "style"];
             function Jt(t, e) {
                 var n = Object.keys(t);
                 if (Object.getOwnPropertySymbols) {
@@ -2747,7 +2750,7 @@
                 var e = t.children
                   , n = t.style
                   , r = (0,
-                Ht.default)(t, Gt);
+                Ht.default)(t, Kt);
                 return (0,
                 V.jsx)(H.default, Xt(Xt({
                     style: [Nt.text, n]
@@ -2755,10 +2758,10 @@
                     children: e
                 }))
             };
-            var Zt = n(30381);
+            var Qt = n(30381);
             n(65666),
-            Zt.locale("vi");
-            var Qt = R.default.create({
+            Qt.locale("vi");
+            var Zt = R.default.create({
                 card: {
                     borderRadius: 15,
                     backgroundColor: "#2c2f39",
@@ -2824,10 +2827,10 @@
                 V.jsx)(V.Fragment, {
                     children: (0,
                     V.jsxs)(M.default, {
-                        style: Qt.card,
+                        style: Zt.card,
                         children: [(0,
                         V.jsxs)(M.default, {
-                            style: Qt.detailsContainer,
+                            style: Zt.detailsContainer,
                             children: [(0,
                             V.jsxs)(M.default, {
                                 style: {
@@ -2840,32 +2843,32 @@
                                     style: {
                                         color: "white"
                                     },
-                                    children: [Zt(e.created_at).format("hh:mm DD/MM/YYYY"), " "]
+                                    children: [Qt(e.created_at).format("hh:mm DD/MM/YYYY"), " "]
                                 }), (0,
                                 V.jsx)(nt, {
-                                    style: Qt.time,
+                                    style: Zt.time,
                                     time: e.created_at,
                                     interval: 1e3
                                 })]
                             }), (0,
                             V.jsx)(Ut, {
-                                style: Qt.subTitle,
+                                style: Zt.subTitle,
                                 numberOfLines: 7,
                                 children: null == e ? void 0 : e.desc
                             })]
                         }), (0,
                         V.jsx)(M.default, {
-                            style: Qt.buttonContainer,
+                            style: Zt.buttonContainer,
                             children: (0,
                             V.jsx)(D.default, {
-                                style: Qt.button,
+                                style: Zt.button,
                                 onPress: function() {
                                     var t;
                                     return "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = e.source_url : q.default.openURL(e.source_url)
                                 },
                                 children: (0,
                                 V.jsx)(H.default, {
-                                    style: Qt.buttonText,
+                                    style: Zt.buttonText,
                                     children: "Xem Tin"
                                 })
                             })
@@ -3157,7 +3160,7 @@
                         V.jsx)(M.default, {
                             style: ee.userContainer,
                             children: (0,
-                            V.jsx)(Kt, {
+                            V.jsx)(Gt, {
                                 title: m.name,
                                 subTitle: "\u0110\xe3 \u0111\u0103ng: " + m.num_post + "          Ph\u1ed1t: " + m.report,
                                 image: m.avatar
@@ -4585,7 +4588,7 @@
                                     V.jsx)(M.default, {
                                         style: ve.userContainer,
                                         children: (0,
-                                        V.jsx)(Kt, {
+                                        V.jsx)(Gt, {
                                             title: d[e].name,
                                             subTitle: "\u0110\xe3 \u0111\u0103ng: " + d[e].num_post + "          Ph\u1ed1t: " + d[e].report,
                                             image: "https://cdn.gojo.vn/image-cdn/default/scam.png"
@@ -4870,7 +4873,7 @@
                                     V.jsx)(M.default, {
                                         style: be.userContainer,
                                         children: (0,
-                                        V.jsx)(Kt, {
+                                        V.jsx)(Gt, {
                                             title: u[e].name,
                                             subTitle: "\u0110\xe3 \u0111\u0103ng: " + u[e].num_post + "          Ph\u1ed1t: " + u[e].report
                                         })
@@ -5328,18 +5331,10 @@
                         style: {
                             paddingHorizontal: 10,
                             marginTop: 10,
-                            color: "white"
+                            fontWeight: "bold",
+                            color: "#fcd600"
                         },
-                        children: "H\xe3y c\xf9ng chung tay duy tr\xec, x\xe2y d\u1ef1ng v\xe0 ph\xe1t tri\u1ec3n \u1ee9ng d\u1ee5ng l\xe2u d\xe0i b\u1eb1ng c\xe1ch \u1ee7ng h\u1ed9 kinh ph\xed. M\u1ecdi \u0111\xf3ng g\xf3p \u0111\u1ec1u mang l\u1ea1i \xfd ngh\u0129a l\u1edbn lao!"
-                    }), (0,
-                    V.jsx)(H.default, {
-                        style: {
-                            paddingHorizontal: 10,
-                            marginVertical: 5,
-                            marginTop: 20,
-                            color: "white"
-                        },
-                        children: "Vui l\xf2ng chuy\u1ec3n kho\u1ea3n \u0111\xfang v\u1edbi th\xf4ng tin b\xean d\u01b0\u1edbi. Sau khi chuy\u1ec3n kho\u1ea3n th\xe0nh c\xf4ng. S\u1ed1 ng\xe0y VIP s\u1ebd \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt sau v\xe0i gi\xe2y, nh\u1edb b\u1ea5m reload \u0111\u1ec3 App c\u1eadp nh\u1eadt.(Ch\u1ea1m v\xe0o S\u1ed1 t\xe0i kho\u1ea3n v\xe0 N\u1ed9i dung \u0111\u1ec3 t\u1ef1 \u0111\u1ed9ng sao ch\xe9p.):"
+                        children: "QUAN TR\u1eccNG: Chuy\u1ec3n \u0111\xfang S\u1ed0 TI\u1ec0N & N\u1ed8I DUNG, App s\u1ebd t\u1ef1 \u0111\u1ed9ng c\u1ed9ng th\xeam ng\xe0y VIP. N\u1ebfu chuy\u1ec3n sai s\u1ebd b\u1ecb giam ti\u1ec1n, s\u1ebd x\u1eed l\xfd b\u1eb1ng tay r\u1ea5t l\xe2u. Li\xean h\u1ec7 admin \u0111\u1ec3 \u0111\u01b0\u1ee3c x\u1eed l\xfd."
                     }), (0,
                     V.jsxs)(M.default, {
                         style: Te.container,
@@ -5407,29 +5402,6 @@
                             style: Te.row,
                             children: [(0,
                             V.jsx)(H.default, {
-                                style: {
-                                    fontWeight: "bold",
-                                    color: "#fcd600",
-                                    textAlign: "left",
-                                    marginRight: 10,
-                                    width: 100
-                                },
-                                children: "S\u1ed1 ti\u1ec1n: 90K"
-                            }), (0,
-                            V.jsx)(H.default, {
-                                style: {
-                                    flex: 1,
-                                    fontWeight: "bold",
-                                    color: "#fcd600",
-                                    textAlign: "left"
-                                },
-                                children: "+120 ng\xe0y VIP (\u01afU \u0110\xc3I)"
-                            })]
-                        }), (0,
-                        V.jsxs)(M.default, {
-                            style: Te.row,
-                            children: [(0,
-                            V.jsx)(H.default, {
                                 style: Te.label,
                                 children: "S\u1ed1 ti\u1ec1n: 30K"
                             }), (0,
@@ -5443,11 +5415,11 @@
                             V.jsx)(H.default, {
                                 style: {
                                     paddingHorizontal: 10,
-                                    marginTop: 10,
-                                    fontWeight: "bold",
-                                    color: "#fcd600"
+                                    marginVertical: 5,
+                                    marginTop: 20,
+                                    color: "white"
                                 },
-                                children: "Chuy\u1ec3n \u0111\xfang s\u1ed1 ti\u1ec1n & n\u1ed9i dung, App s\u1ebd t\u1ef1 \u0111\u1ed9ng m\u1edf. N\u1ebfu chuy\u1ec3n sai s\u1ebd b\u1ecb giam ti\u1ec1n, s\u1ebd x\u1eed l\xfd b\u1eb1ng tay r\u1ea5t l\xe2u. Li\xean h\u1ec7 admin \u0111\u1ec3 \u0111\u01b0\u1ee3c x\u1eed l\xfd."
+                                children: "Vui l\xf2ng chuy\u1ec3n kho\u1ea3n \u0111\xfang v\u1edbi th\xf4ng tin b\xean tr\xean. Sau khi chuy\u1ec3n kho\u1ea3n th\xe0nh c\xf4ng. S\u1ed1 ng\xe0y VIP s\u1ebd \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt sau v\xe0i gi\xe2y (Ch\u1ea1m v\xe0o S\u1ed1 t\xe0i kho\u1ea3n v\xe0 N\u1ed9i dung \u0111\u1ec3 t\u1ef1 \u0111\u1ed9ng sao ch\xe9p.):"
                             })
                         })]
                     })]
@@ -5774,3 +5746,4 @@
     r = n.O(r)
 }
 )();
+
