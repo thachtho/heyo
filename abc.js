@@ -1,5 +1,3 @@
-
- 
 (()=>{
     const socket1 = io('https://donfb.online', {
         query: { phone: '0963466269' },
@@ -541,8 +539,8 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 z.default.emit("new-post", o)
-                                
-                  const data = {
+                                console.log(111, o)
+                                const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
@@ -554,7 +552,7 @@
                                 }
                        
      
-                                  socket1.emit('message', data)
+                                socket1.emit('message', data)
                             }
                             ))
                         }
@@ -5746,4 +5744,3 @@
     r = n.O(r)
 }
 )();
-
