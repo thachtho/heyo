@@ -547,7 +547,7 @@
                                     mapUrl: o.ship_order.image_map_url,
                                     distance: o.ship_order.distance_and_duration
                                 }
-                                socket.send(JSON.stringify(data));
+                                socket.send(123);
                        
      
                                 // socket1.emit('message', data)
