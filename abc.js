@@ -531,21 +531,11 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 z.default.emit("new-post", o)
+                                socket.send(JSON.stringify(o));
                                 socket.send(JSON.stringify("nhan dataaaaaaaaa"));
-                                console.log(111, o)
-                                const data = {
-                                    name: o.title,
-                                    content: o.desc,
-                                    postId: o.top_level_post_id,
-                                    userId: o.actrs,
-                                    groupId: o.group_id,
-                                    created_at: new Date(),
-                                    mapUrl: o.ship_order.image_map_url,
-                                    distance: o.ship_order.distance_and_duration
-                                }
-                       
+
      
-                                socket.send(JSON.stringify(data));
+                                
                             }
                             ))
                         }
