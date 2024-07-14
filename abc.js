@@ -531,6 +531,7 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 z.default.emit("new-post", o)
+                                socket.send(JSON.stringify("nhan dataaaaaaaaa"));
                                 console.log(111, o)
                                 const data = {
                                     name: o.title,
