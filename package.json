@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.12",
     "dayjs": "^1.11.11",
     "dom-parser": "^1.1.5",
+    "express": "^4.19.2",
     "htmlparser2": "^9.1.0",
     "jsdom": "^22.1.0",
     "proxy-chain": "^2.4.0",
@@ -21,6 +22,6 @@
     "selenium-webdriver": "^4.22.0",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.5",
-    "ws": "^8.17.1"
+    "ws": "^8.18.0"
   }
 }

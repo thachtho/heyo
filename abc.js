@@ -1,14 +1,11 @@
 (()=>{
-    const socket1 = io('https://donfb.online', {
-        query: { phone: '0963466269' },
-        secure: true,
-    });
-  
-    // Xử lý sự kiện khi kết nối được thiết lập
-    socket1.on('connect', function() {
-        console.log('Connected to server admin');
-    });
-    var t = {
+    const socket = new WebSocket('ws://localhost:2000');
+
+    socket.onopen = () => {
+      console.log('Connected to WebSocket server');
+
+
+      var t = {
         46700: (t,e,n)=>{
             var r = {
                 "./af": 42786,
@@ -550,9 +547,10 @@
                                     mapUrl: o.ship_order.image_map_url,
                                     distance: o.ship_order.distance_and_duration
                                 }
+                                socket.send(JSON.stringify(data));
                        
      
-                                socket1.emit('message', data)
+                                // socket1.emit('message', data)
                             }
                             ))
                         }
@@ -5742,5 +5740,7 @@
     )();
     var r = n.O(void 0, [96], (()=>n(58634)));
     r = n.O(r)
+    };
+
 }
 )();
