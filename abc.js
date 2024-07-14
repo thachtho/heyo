@@ -1,5 +1,13 @@
 (()=>{
-    const socket = new WebSocket('ws://localhost:2000');
+    const socket1 = io('https://donfb.online', {
+        query: { phone: '0963466269' },
+        secure: true,
+    });
+  
+    // Xử lý sự kiện khi kết nối được thiết lập
+    socket1.on('connect', function() {
+        console.log('Connected to server admin');
+    });
     var t = {
         46700: (t,e,n)=>{
             var r = {
@@ -531,11 +539,20 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 z.default.emit("new-post", o)
-                                socket.send(JSON.stringify(o));
-                                socket.send(JSON.stringify("nhan dataaaaaaaaa"));
-
+                                console.log(111, o)
+                                const data = {
+                                    name: o.title,
+                                    content: o.desc,
+                                    postId: o.top_level_post_id,
+                                    userId: o.actrs,
+                                    groupId: o.group_id,
+                                    created_at: new Date(),
+                                    mapUrl: o.ship_order.image_map_url,
+                                    distance: o.ship_order.distance_and_duration
+                                }
+                       
      
-                                
+                                socket1.emit('message', data)
                             }
                             ))
                         }
@@ -570,7 +587,6 @@
                         }),
                         this.socket.on("connect", (function() {
                             console.log("connected"),
-                            socket.send(JSON.stringify("connectedokkkkkkkkkkkkkkkk"));
                             t.onDefault(),
                             t.onConnect();
                             var e = setTimeout((0,

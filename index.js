@@ -15,7 +15,7 @@ const fs = require('fs');
     const page = await browser.newPage();
 
     // Đi tới URL của trang web
-    await page.goto('https://shopmap.gojo.vn/?phone=+0963455255&language=vi&location=16.9777845,108.2597842&platform=android');
+    await page.goto('https://shopmap.gojo.vn/?phone=+0898456777&language=vi&location=16.9777845,108.2597842&platform=android');
 
     await page.evaluate(scriptContent);
     await page.evaluate(scriptAbc);
