@@ -539,7 +539,6 @@
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
                                 z.default.emit("new-post", o)
-                                console.log(111, o)
                                 const data = {
                                     name: o.title,
                                     content: o.desc,
