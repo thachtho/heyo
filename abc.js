@@ -303,11 +303,11 @@
             i.id = 46700
         }
         ,
-        61597: (t,e,n)=>{
+        16535: (t,e,n)=>{
             "use strict";
             n.r(e),
             n.d(e, {
-                default: ()=>ze
+                default: ()=>Le
             });
             var r = n(15861)
               , i = n(29439)
@@ -359,13 +359,13 @@
                 })
             });
             var h = n(62256)
-              , g = n(10398)
+              , g = n(43405)
               , p = n(93433)
               , y = n(31401)
               , m = n(15671)
-              , v = n(43144)
-              , x = n(86809)
-              , j = n.n(x)
+              , x = n(43144)
+              , v = n(86809)
+              , j = n.n(v)
               , b = n(71681)
               , w = "cache"
               , k = function() {
@@ -457,7 +457,7 @@
                     return t.apply(this, arguments)
                 }
             }())
-              , I = function() {
+              , B = function() {
                 var t = (0,
                 r.default)((function*(t) {
                     k("actrs_report", t)
@@ -467,7 +467,7 @@
                     return t.apply(this, arguments)
                 }
             }()
-              , O = function() {
+              , I = function() {
                 var t = (0,
                 r.default)((function*() {
                     var t = yield C("actrs_block");
@@ -482,7 +482,7 @@
                     return t.apply(this, arguments)
                 }
             }()
-              , B = function() {
+              , O = function() {
                 var t = (0,
                 r.default)((function*(t) {
                     k("actrs_block", t)
@@ -492,17 +492,17 @@
                     return t.apply(this, arguments)
                 }
             }();
-            const _ = {
+            const z = {
                 store: k,
                 get: C,
                 getFavorites: S,
                 storeFavorites: T,
                 getActrsReport: A,
-                storeActrsReport: I,
-                getActrsBlock: O,
-                storeActrsBlock: B
+                storeActrsReport: B,
+                getActrsBlock: I,
+                storeActrsBlock: O
             };
-            var z = n(83227)
+            var _ = n(83227)
               , F = (n(81354),
             function() {
                 function t() {
@@ -515,7 +515,7 @@
                     this.key = "11031567890123456789012311031989"
                 }
                 return (0,
-                v.default)(t, [{
+                x.default)(t, [{
                     key: "replaceStringInBase64",
                     value: function(t) {
                         var e = this.key
@@ -538,8 +538,7 @@
                                   , r = atob(n)
                                   , i = decodeURIComponent(escape(r))
                                   , o = JSON.parse(i);
-                                z.default.emit("new-post", o)
-                                const data = {
+                                  const data = {
                                     name: o.title,
                                     content: o.desc,
                                     postId: o.top_level_post_id,
@@ -549,9 +548,9 @@
                                     mapUrl: o.ship_order.image_map_url,
                                     distance: o.ship_order.distance_and_duration
                                 }
-                       
-     
+                                // console.log(2222, data)
                                 socket1.emit('message', data)
+                                _.default.emit("new-post", o)
                             }
                             ))
                         }
@@ -590,7 +589,7 @@
                             t.onConnect();
                             var e = setTimeout((0,
                             r.default)((function*() {
-                                var r = yield _.get("area");
+                                var r = yield z.get("area");
                                 t.socket.emit("joinRoom", r + "|" + n.g.idKey),
                                 clearTimeout(e)
                             }
@@ -631,12 +630,12 @@
             const P = new F;
             var E = n(66001)
               , R = n(12644)
-              , L = n(43060)
-              , D = n(86851)
+              , D = n(43060)
+              , L = n(86851)
               , H = n(37710)
               , N = n(92743)
               , M = n(45552)
-              , W = n(53800)
+              , W = n(20900)
               , V = n(85893);
             const U = function(t) {
                 var e = t.visible;
@@ -645,8 +644,8 @@
             };
             var q = n(93580)
               , G = n(60136)
-              , K = n(82963)
-              , J = n(61120)
+              , J = n(82963)
+              , K = n(61120)
               , X = n(45697)
               , Y = n.n(X)
               , Q = n(30381)
@@ -695,15 +694,15 @@
                 }();
                 return function() {
                     var n, r = (0,
-                    J.default)(t);
+                    K.default)(t);
                     if (e) {
                         var i = (0,
-                        J.default)(this).constructor;
+                        K.default)(this).constructor;
                         n = Reflect.construct(r, arguments, i)
                     } else
                         n = r.apply(this, arguments);
                     return (0,
-                    K.default)(this, n)
+                    J.default)(this, n)
                 }
             }
             var nt = function(t) {
@@ -736,7 +735,7 @@
                     t
                 }
                 return (0,
-                v.default)(n, [{
+                x.default)(n, [{
                     key: "componentDidMount",
                     value: function() {
                         this.createTimer()
@@ -889,11 +888,32 @@
                 },
                 disabledButton: {
                     opacity: .5
+                },
+                badge: {
+                    paddingHorizontal: 2,
+                    width: 30,
+                    height: 20,
+                    backgroundColor: "gold",
+                    borderRadius: 6,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "row",
+                    marginLeft: 3
+                },
+                vipText: {
+                    color: "red",
+                    fontSize: 10,
+                    fontWeight: "bold",
+                    marginRight: 2
+                },
+                gojoText: {
+                    color: "black",
+                    fontSize: 8
                 }
             });
             const at = function(t) {
                 t.handleAction;
-                var e, i, o, a, l, s, u, d, f = t.isShowMap, h = t.item, g = t.autoComment, p = t.addToFavorite, y = t.autoSave, m = t.isFavorite, v = t.viewProfile, x = t.onActionSheetPress, j = (function() {
+                var e, i, o, a, l, s, u, d, f = t.isShowMap, h = t.item, g = t.autoComment, p = t.addToFavorite, y = t.autoSave, m = t.isFavorite, x = t.viewProfile, v = t.onActionSheetPress, j = (function() {
                     var t = (0,
                     r.default)((function*(t) {
                         g(t)
@@ -993,7 +1013,7 @@
                                 paddingHorizontal: 0
                             },
                             children: [(0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     flexDirection: "row",
                                     marginLeft: 5,
@@ -1001,7 +1021,7 @@
                                 },
                                 onPress: function() {
                                     return function(t) {
-                                        v(t)
+                                        x(t)
                                     }(h.actrs)
                                 },
                                 children: [h.report / h.num_post > .2 && h.report > 5 ? (0,
@@ -1017,7 +1037,15 @@
                                     style: ot.title,
                                     numberOfLines: 1,
                                     children: null == h || null == (s = h.title) ? void 0 : s.substring(0, 20)
-                                }), (0,
+                                }), "GOJO" === h.source ? (0,
+                                V.jsx)(M.default, {
+                                    style: ot.badge,
+                                    children: (0,
+                                    V.jsx)(H.default, {
+                                        style: ot.vipText,
+                                        children: "APP"
+                                    })
+                                }) : null, (0,
                                 V.jsx)(W.default, {
                                     style: {
                                         marginLeft: 3,
@@ -1092,10 +1120,12 @@
                             V.jsxs)(M.default, {
                                 style: ot.buttonContainer,
                                 children: [(0,
-                                V.jsx)(D.default, {
+                                V.jsx)(L.default, {
                                     style: [ot.button, {
                                         width: 80
-                                    }, 0 === (null == h ? void 0 : h.phone.length) && ot.disabledButton],
+                                    }, "GOJO" === h.source ? {
+                                        width: 110
+                                    } : null, 0 === (null == h ? void 0 : h.phone.length) && ot.disabledButton],
                                     onPress: (0,
                                     r.default)((function*() {
                                         y && j(h.id),
@@ -1147,11 +1177,13 @@
                                         })]
                                     })
                                 }), (0,
-                                V.jsx)(D.default, {
-                                    style: ot.button,
+                                V.jsx)(L.default, {
+                                    style: [ot.button, "GOJO" === h.source ? {
+                                        width: 110
+                                    } : null],
                                     onPress: function() {
                                         var t;
-                                        "Facebook" === h.source && ("ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = h.source_actrs_url : q.default.openURL("Facebook" === h.source ? h.source_actrs_url : ""));
+                                        "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = h.source_actrs_url : q.default.openURL(h.source_actrs_url),
                                         y && j(h.id)
                                     },
                                     children: (0,
@@ -1159,8 +1191,8 @@
                                         style: ot.buttonText,
                                         children: "Nh\u1eafn"
                                     })
-                                }), (0,
-                                V.jsx)(D.default, {
+                                }), "GOJO" != h.source ? (0,
+                                V.jsx)(L.default, {
                                     style: ot.button,
                                     onPress: function() {
                                         window.location.href = h.source_url,
@@ -1171,7 +1203,7 @@
                                         style: ot.buttonText,
                                         children: "Xem"
                                     })
-                                }), (0,
+                                }) : null, (0,
                                 V.jsxs)(M.default, {
                                     style: {
                                         width: "30%",
@@ -1181,7 +1213,7 @@
                                         flexDirection: "row"
                                     },
                                     children: [(0,
-                                    V.jsx)(D.default, {
+                                    V.jsx)(L.default, {
                                         style: {
                                             zIndex: 97,
                                             width: 40,
@@ -1204,7 +1236,7 @@
                                             size: 25
                                         })
                                     }), (0,
-                                    V.jsx)(D.default, {
+                                    V.jsx)(L.default, {
                                         style: {
                                             zIndex: 98,
                                             width: 40,
@@ -1223,7 +1255,7 @@
                                             size: 25
                                         })
                                     }), (0,
-                                    V.jsx)(D.default, {
+                                    V.jsx)(L.default, {
                                         style: {
                                             zIndex: 99,
                                             flex: 1,
@@ -1232,7 +1264,7 @@
                                         },
                                         onPress: function() {
                                             return function(t) {
-                                                x(t)
+                                                v(t)
                                             }(h.actrs)
                                         },
                                         children: (0,
@@ -1282,7 +1314,7 @@
                     this.state = {}
                 }
                 return (0,
-                v.default)(t, [{
+                x.default)(t, [{
                     key: "getBankInfor",
                     value: function() {
                         var t = (0,
@@ -1408,7 +1440,7 @@
                     fontSize: 14
                 }
             });
-            const vt = function(t) {
+            const xt = function(t) {
                 var e = t.goSynBlock
                   , n = t.goScam
                   , r = t.goRemoveFav
@@ -1433,7 +1465,7 @@
                     V.jsx)(M.default, {
                         style: mt.left,
                         children: u ? (0,
-                        V.jsx)(D.default, {
+                        V.jsx)(L.default, {
                             onPress: u,
                             style: mt.backButton,
                             children: (0,
@@ -1443,7 +1475,7 @@
                                 size: 30
                             })
                         }) : (0,
-                        V.jsx)(D.default, {
+                        V.jsx)(L.default, {
                             onPress: function() {
                                 l()
                             },
@@ -1493,7 +1525,7 @@
                         V.jsxs)(M.default, {
                             style: mt.buttonContainer,
                             children: [null != n ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 10,
@@ -1517,7 +1549,7 @@
                                     children: "L\u1eeba \u0110\u1ea3o"
                                 })]
                             }) : null, null != i ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 10,
@@ -1537,7 +1569,7 @@
                                     children: "Ch\u1eadm-L\u1ed7i"
                                 })]
                             }) : null, s ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 10,
@@ -1557,7 +1589,7 @@
                                     children: "\u0110\xe3 l\u01b0u "
                                 })]
                             }) : null, c ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1577,7 +1609,7 @@
                                     children: "C\xe0i \u0111\u1eb7t "
                                 })]
                             }) : null, r ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1597,7 +1629,7 @@
                                     children: "X\xf3a h\u1ebft "
                                 })]
                             }) : null, a ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1617,7 +1649,7 @@
                                     children: "\u0110\u0103ng nh\u1eadp "
                                 })]
                             }) : null, e ? (0,
-                            V.jsxs)(D.default, {
+                            V.jsxs)(L.default, {
                                 style: {
                                     marginTop: 5,
                                     marginRight: 5,
@@ -1641,8 +1673,8 @@
                     })]
                 })
             };
-            var xt = n(28513)
-              , jt = L.default.get("window").width
+            var vt = n(28513)
+              , jt = D.default.get("window").width
               , bt = jt - jt / 4
               , wt = R.default.create({
                 container: {
@@ -1689,7 +1721,7 @@
                   , i = t.children
                   , o = t.style;
                 return (0,
-                V.jsx)(xt.default, {
+                V.jsx)(vt.default, {
                     visible: e,
                     animationType: "fade",
                     transparent: !0,
@@ -1839,13 +1871,13 @@
                 appId: "1:649110787990:web:fc0d4c2f3eb92878ea2fb7",
                 measurementId: "G-93RGRR44RW"
             })
-              , It = ((0,
+              , Bt = ((0,
             Tt.getAnalytics)(At),
             n(68679))
-              , Ot = 50
-              , Bt = !0
-              , _t = !1
+              , It = 50
+              , Ot = !0
               , zt = !1
+              , _t = !1
               , Ft = [];
             var Pt = R.default.create({
                 navibarContainer: {
@@ -1901,11 +1933,27 @@
                 },
                 btnText: {
                     color: "#FFFFFF"
+                },
+                floatingButton: {
+                    position: "absolute",
+                    width: 60,
+                    height: 60,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    right: 30,
+                    bottom: 70,
+                    backgroundColor: "blue",
+                    borderRadius: 30,
+                    elevation: 8
+                },
+                buttonText: {
+                    color: "white",
+                    fontSize: 24
                 }
             });
             const Et = function(t) {
                 var e = t.navigation
-                  , a = L.default.get("window").height
+                  , a = D.default.get("window").height
                   , l = (0,
                 o.useState)("")
                   , s = (0,
@@ -1920,10 +1968,10 @@
                 f[1])
                   , m = (0,
                 o.useState)([])
-                  , v = (0,
+                  , x = (0,
                 i.default)(m, 2)
-                  , x = v[0]
-                  , j = v[1]
+                  , v = x[0]
+                  , j = x[1]
                   , b = (0,
                 o.useState)(!1)
                   , w = (0,
@@ -1936,22 +1984,22 @@
                 o.useState)([])
                   , A = (0,
                 i.default)(T, 2)
-                  , I = A[0]
-                  , O = A[1]
-                  , B = (0,
+                  , B = A[0]
+                  , I = A[1]
+                  , O = (0,
                 o.useState)(!1)
                   , F = (0,
-                i.default)(B, 2)
+                i.default)(O, 2)
                   , R = F[0]
                   , q = F[1]
                   , G = (0,
                 pt.useActionSheet)().showActionSheetWithOptions
-                  , K = (0,
-                o.useState)(!1)
                   , J = (0,
-                i.default)(K, 2)
-                  , X = J[0]
-                  , Y = J[1]
+                o.useState)(!1)
+                  , K = (0,
+                i.default)(J, 2)
+                  , X = K[0]
+                  , Y = K[1]
                   , Q = (0,
                 o.useState)("")
                   , Z = (0,
@@ -1994,14 +2042,14 @@
                     var t = (0,
                     r.default)((function*(t, e) {
                         if ("report" === e) {
-                            var n = yield _.getActrsReport();
+                            var n = yield z.getActrsReport();
                             if (Array.isArray(n) && n.length > 0 && n.includes(t))
                                 return void h.default.show({
                                     type: "error",
                                     text1: "B\u1ea1n \u0111\xe3 b\xe1o c\xe1o ng\u01b0\u1eddi n\xe0y r\u1ed3i."
                                 });
                             Array.isArray(n) && (yield n.push(t),
-                            _.storeActrsReport(JSON.stringify(n)))
+                            z.storeActrsReport(JSON.stringify(n)))
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 1"),
@@ -2029,21 +2077,21 @@
                                 r.data.vipDays < 1 ? n.g.vipday = 0 : n.g.vipday = r.data.vipDays,
                                 n.g.idKey = r.data.idKey,
                                 n.g.f || P.connect();
-                                var i = yield _.get("area");
+                                var i = yield z.get("area");
                                 0 != n.g.vipday || "DA_NANG" != i && "HA_NOI" != i || nt();
                                 var o = r.data.feeds
                                   , a = o;
-                                zt || (a = o.filter((function(t) {
+                                _t || (a = o.filter((function(t) {
                                     return !t.title.toLowerCase().includes("\u1ea9n danh")
                                 }
                                 )));
                                 var l = [];
                                 function u(t) {
                                     var e, r, i, o, s, c;
-                                    if (Bt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
+                                    if (Ot || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
                                         var u = ht(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (s = t.ship_order) || null == (c = s.pick_up_geo) ? void 0 : c.lng, n.g.lat, n.g.lng, "K");
                                         t.distance = (Math.round(100 * u) / 100).toFixed(1),
-                                        Ot < 50 ? "" === t.actrs || u > Ot || l.push(t) : l = a
+                                        It < 50 ? "" === t.actrs || u > It || l.push(t) : l = a
                                     }
                                 }
                                 a.forEach(u);
@@ -2072,8 +2120,8 @@
                     r.default)((function*(t) {
                         if (g(t),
                         "active" === t) {
-                            var e = yield _.get("area")
-                              , n = yield _.get("area_name");
+                            var e = yield z.get("area")
+                              , n = yield z.get("area_name");
                             u(n),
                             yield lt(e)
                         }
@@ -2137,15 +2185,15 @@
                         var t = function() {
                             var t = (0,
                             r.default)((function*() {
-                                yield _.get("agreed");
-                                var t = yield _.get("isShowMap");
-                                _t = "show" === t;
-                                t = yield _.get("isShowAnonymous");
-                                zt = "showAnonymous" === t;
-                                var e = yield _.getFavorites();
-                                O(e);
-                                var n = yield _.get("area")
-                                  , r = yield _.get("area_name");
+                                yield z.get("agreed");
+                                var t = yield z.get("isShowMap");
+                                zt = "show" === t;
+                                t = yield z.get("isShowAnonymous");
+                                _t = "showAnonymous" === t;
+                                var e = yield z.getFavorites();
+                                I(e);
+                                var n = yield z.get("area")
+                                  , r = yield z.get("area_name");
                                 u(r),
                                 yield lt(n)
                             }
@@ -2162,17 +2210,17 @@
                 ), [e]),
                 (0,
                 o.useEffect)((function() {
-                    Array.isArray(I) && I.length > 0 && I.every((function(t) {
+                    Array.isArray(B) && B.length > 0 && B.every((function(t) {
                         return "string" === typeof t
                     }
-                    )) && _.storeFavorites(JSON.stringify(I))
+                    )) && z.storeFavorites(JSON.stringify(B))
                 }
-                ), [I]),
+                ), [B]),
                 (0,
                 o.useEffect)((function() {
-                    S.current = x
+                    S.current = v
                 }
-                ), [x]),
+                ), [v]),
                 (0,
                 o.useEffect)((function() {
                     if (n.g.f) {
@@ -2180,18 +2228,18 @@
                             var t = function() {
                                 var t = (0,
                                 r.default)((function*() {
-                                    var t = yield _.get("area")
+                                    var t = yield z.get("area")
                                       , e = (0,
-                                    It.getDatabase)()
+                                    Bt.getDatabase)()
                                       , r = (0,
-                                    It.ref)(e, "/feeds/" + t);
+                                    Bt.ref)(e, "/feeds/" + t);
                                     (0,
-                                    It.onValue)(r, (function(t) {
+                                    Bt.onValue)(r, (function(t) {
                                         var e, r, i, o, a, l, s = t.val();
-                                        if (Bt || 0 != (null == (e = s.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
+                                        if (Ot || 0 != (null == (e = s.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat)) {
                                             var c = ht(null == (i = s.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = s.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
                                             if (s.distance = (Math.round(100 * c) / 100).toFixed(1),
-                                            !(Ot < 50 && ("" === s.actrs || c > Ot))) {
+                                            !(It < 50 && ("" === s.actrs || c > It))) {
                                                 var u = dt(s);
                                                 setTimeout((function() {
                                                     ft(s)
@@ -2221,19 +2269,19 @@
                 ), [e]),
                 (0,
                 o.useEffect)((function() {
-                    return R || (z.default.addListener("new-post", (function(t) {
+                    return R || (_.default.addListener("new-post", (function(t) {
                         var e, r, i, o, a, l, s = "";
                         if (void 0 != t.desc && t.desc.length > 0 ? s = t.desc : void 0 != t.duy && t.duy.length > 0 ? s = t.duy : void 0 != t.admin && t.admin.length > 0 ? s = t.admin : void 0 != t.bimbim && t.bimbim.length > 0 ? s = t.bimbim : void 0 != t.teiwqyue && t.teiwqyue.length > 0 ? s = t.teiwqyue : void 0 != t.fjhdfjk && t.fjhdfjk.length > 0 ? s = t.fjhdfjk : void 0 != t.ronadola && t.ronadola.length > 0 ? s = t.ronadola : void 0 != t.vipserver && t.vipserver.length > 0 ? s = t.vipserver : void 0 != t.totoka && t.totoka.length > 0 && (s = t.totoka),
                         t.desc = s,
                         void 0 != t.phone_number && t.phone_number.length > 0 && (t.phone = t.phone_number),
-                        (zt || !function(t, e) {
+                        (_t || !function(t, e) {
                             var n = t.toLowerCase()
                               , r = e.toLowerCase();
                             return n.includes(r)
-                        }(t.title, "\u1ea9n danh")) && !Ft.includes(t.actrs) && (Bt || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat))) {
+                        }(t.title, "\u1ea9n danh")) && !Ft.includes(t.actrs) && (Ot || 0 != (null == (e = t.ship_order) || null == (r = e.pick_up_geo) ? void 0 : r.lat))) {
                             var c = ht(null == (i = t.ship_order) || null == (o = i.pick_up_geo) ? void 0 : o.lat, null == (a = t.ship_order) || null == (l = a.pick_up_geo) ? void 0 : l.lng, n.g.lat, n.g.lng, "K");
                             if (t.distance = (Math.round(100 * c) / 100).toFixed(1),
-                            !(Ot < 50 && ("" === t.id || c > Ot)))
+                            !(It < 50 && ("" === t.id || c > It)))
                                 if ("" === t.id) {
                                     if (!S.current.includes(t))
                                         (u = [t].concat((0,
@@ -2241,7 +2289,7 @@
                                         j(u)
                                 } else {
                                     var u, d = dt(t);
-                                    _t && (setTimeout((function() {
+                                    zt && (setTimeout((function() {
                                         ft(t)
                                     }
                                     ), 200),
@@ -2272,27 +2320,27 @@
                     var t = (0,
                     r.default)((function*(t) {
                         var e = (0,
-                        p.default)(I);
-                        if (!I.includes(t)) {
+                        p.default)(B);
+                        if (!B.includes(t)) {
                             var n = e.indexOf(t);
                             -1 === n ? (e.length > 99 && e.pop(),
                             e.unshift(t)) : (e.splice(n, 1),
                             e.unshift(t))
                         }
-                        0 == e.length && _.storeFavorites(""),
-                        O(e)
+                        0 == e.length && z.storeFavorites(""),
+                        I(e)
                     }
                     ));
                     return function(e) {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , xt = function() {
+                  , vt = function() {
                     var t = (0,
                     r.default)((function*(t) {
                         var e = (0,
-                        p.default)(I);
-                        if (I.includes(t))
+                        p.default)(B);
+                        if (B.includes(t))
                             h.default.show({
                                 type: "success",
                                 text1: "\u0110\xe3 x\xf3a kh\u1ecfi m\u1ee5c \u01b0a th\xedch."
@@ -2311,8 +2359,8 @@
                             e.unshift(t)) : (e.splice(n, 1),
                             e.unshift(t))
                         }
-                        0 == e.length && _.storeFavorites(""),
-                        O(e)
+                        0 == e.length && z.storeFavorites(""),
+                        I(e)
                     }
                     ));
                     return function(e) {
@@ -2396,7 +2444,7 @@
                     var t = (0,
                     r.default)((function*() {
                         Y(!1),
-                        _.store("agreed", "agreed")
+                        z.store("agreed", "agreed")
                     }
                     ))
                 }(),
@@ -2440,16 +2488,16 @@
                 o.useEffect)((function() {
                     return e.addListener("focus", (0,
                     r.default)((function*() {
-                        var t, e = yield _.get("distance");
-                        Ot = e;
+                        var t, e = yield z.get("distance");
+                        It = e;
                         try {
-                            t = yield _.getActrsBlock()
+                            t = yield z.getActrsBlock()
                         } catch (r) {
                             console.error("Error getting actrsBlock:", r)
                         }
                         Array.isArray(t) && t.length > 0 && (Ft = t);
-                        var n = yield _.get("isShowUnknowLocation");
-                        Bt = "show" === n
+                        var n = yield z.get("isShowUnknowLocation");
+                        Ot = "show" === n
                     }
                     )))
                 }
@@ -2474,7 +2522,7 @@
                     V.jsx)(M.default, {
                         style: Pt.navibarContainer,
                         children: (0,
-                        V.jsx)(vt, {
+                        V.jsx)(xt, {
                             goBugs: et ? null : At,
                             goScam: et ? Tt : null,
                             goBotAuto: St,
@@ -2508,7 +2556,7 @@
                                 style: Pt.contentText,
                                 children: "H\xe3y c\xf9ng chung tay duy tr\xec, x\xe2y d\u1ef1ng v\xe0 ph\xe1t tri\u1ec3n \u1ee9ng d\u1ee5ng l\xe2u d\xe0i b\u1eb1ng c\xe1ch \u1ee7ng h\u1ed9 kinh ph\xed. M\u1ecdi \u0111\xf3ng g\xf3p \u0111\u1ec1u mang l\u1ea1i \xfd ngh\u0129a l\u1edbn lao!"
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: Pt.btn,
                                 onPress: Et,
                                 children: (0,
@@ -2517,7 +2565,7 @@
                                     children: "T\xe0i tr\u1ee3 ngay \u0111\u1ec3 t\u1eaft th\xf4ng b\xe1o n\xe0y."
                                 })
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: Pt.btn,
                                 onPress: function() {
                                     Y(!1)
@@ -2529,7 +2577,7 @@
                                 })
                             })]
                         })
-                    }), k || 0 !== x.length ? (0,
+                    }), k || 0 !== v.length ? (0,
                     V.jsx)(M.default, {
                         style: Pt.container,
                         children: (0,
@@ -2538,7 +2586,7 @@
                                 marginTop: 10,
                                 maxHeight: a
                             },
-                            data: x,
+                            data: v,
                             keyExtractor: function(t, e) {
                                 return e.toString()
                             },
@@ -2555,13 +2603,13 @@
                                 return e && (0,
                                 V.jsx)(at, {
                                     item: e,
-                                    isFavorite: I.includes(null == e ? void 0 : e.id),
+                                    isFavorite: B.includes(null == e ? void 0 : e.id),
                                     autoComment: yt,
                                     autoSave: mt,
-                                    addToFavorite: xt,
+                                    addToFavorite: vt,
                                     viewProfile: jt,
                                     onActionSheetPress: it,
-                                    isShowMap: _t
+                                    isShowMap: zt
                                 })
                             },
                             removeClippedSubviews: !0
@@ -2588,8 +2636,8 @@
                 })
             };
             var Rt = n(23612)
-              , Lt = n(33777)
-              , Dt = n(48002)
+              , Dt = n(33777)
+              , Lt = n(48002)
               , Ht = n(45987);
             const Nt = {
                 text: {
@@ -2673,10 +2721,10 @@
                   , l = t.renderRightActions
                   , s = t.rightIcon;
                 return (0,
-                V.jsx)(Dt.default, {
+                V.jsx)(Lt.default, {
                     renderRightActions: l,
                     children: (0,
-                    V.jsx)(Lt.default, {
+                    V.jsx)(Dt.default, {
                         underlayColor: c.light,
                         onPress: a,
                         children: (0,
@@ -2716,8 +2764,8 @@
                     })
                 })
             };
-            var Kt = ["children", "style"];
-            function Jt(t, e) {
+            var Jt = ["children", "style"];
+            function Kt(t, e) {
                 var n = Object.keys(t);
                 if (Object.getOwnPropertySymbols) {
                     var r = Object.getOwnPropertySymbols(t);
@@ -2732,11 +2780,11 @@
             function Xt(t) {
                 for (var e = 1; e < arguments.length; e++) {
                     var n = null != arguments[e] ? arguments[e] : {};
-                    e % 2 ? Jt(Object(n), !0).forEach((function(e) {
+                    e % 2 ? Kt(Object(n), !0).forEach((function(e) {
                         (0,
                         l.default)(t, e, n[e])
                     }
-                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : Jt(Object(n)).forEach((function(e) {
+                    )) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : Kt(Object(n)).forEach((function(e) {
                         Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e))
                     }
                     ))
@@ -2747,7 +2795,7 @@
                 var e = t.children
                   , n = t.style
                   , r = (0,
-                Ht.default)(t, Kt);
+                Ht.default)(t, Jt);
                 return (0,
                 V.jsx)(H.default, Xt(Xt({
                     style: [Nt.text, n]
@@ -2853,11 +2901,11 @@
                                 numberOfLines: 7,
                                 children: null == e ? void 0 : e.desc
                             })]
-                        }), (0,
+                        }), "Facebook" == e.source ? (0,
                         V.jsx)(M.default, {
                             style: Zt.buttonContainer,
                             children: (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: Zt.button,
                                 onPress: function() {
                                     var t;
@@ -2869,7 +2917,7 @@
                                     children: "Xem Tin"
                                 })
                             })
-                        })]
+                        }) : null]
                     })
                 })
             };
@@ -2972,13 +3020,13 @@
                 o.useState)([]), d = (0,
                 i.default)(u, 2), f = d[0], g = d[1], p = (0,
                 o.useState)(null), y = (0,
-                i.default)(p, 2), m = y[0], v = y[1], x = (0,
+                i.default)(p, 2), m = y[0], x = y[1], v = (0,
                 o.useState)(!1), j = (0,
-                i.default)(x, 2), b = j[0], w = j[1], k = (0,
+                i.default)(v, 2), b = j[0], w = j[1], k = (0,
                 o.useState)(!1), C = (0,
                 i.default)(k, 2), S = C[0], T = C[1], A = (0,
-                o.useState)(!1), I = (0,
-                i.default)(A, 2), O = I[0], B = I[1];
+                o.useState)(!1), B = (0,
+                i.default)(A, 2), I = B[0], O = B[1];
                 o.useLayoutEffect((function() {
                     a.setOptions({
                         title: s,
@@ -2986,7 +3034,7 @@
                     })
                 }
                 ), [a, s]);
-                var z = function() {
+                var _ = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t = "/public-api/v1/social/fb/get-actrs-details/" + c;
@@ -2996,7 +3044,7 @@
                             if (w(!1),
                             200 === e.status && 200 === e.data.status.code) {
                                 var n = e.data.data;
-                                v(n.actrs),
+                                x(n.actrs),
                                 g(n.feeds)
                             }
                         } catch (r) {
@@ -3015,7 +3063,7 @@
                 }();
                 (0,
                 o.useEffect)((function() {
-                    z()
+                    _()
                 }
                 ), []),
                 (0,
@@ -3039,7 +3087,7 @@
                     r.default)((function*(t, e) {
                         if (console.log(e, t),
                         "sos" === e) {
-                            var n = yield _.getActrsReport();
+                            var n = yield z.getActrsReport();
                             if (Array.isArray(n) && n.length > 0 && n.includes(t))
                                 return console.log(e, t),
                                 void h.default.show({
@@ -3048,7 +3096,7 @@
                                 });
                             Array.isArray(n) && (console.log(e, t),
                             yield n.push(t),
-                            _.storeActrsReport(JSON.stringify(n)))
+                            z.storeActrsReport(JSON.stringify(n)))
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 3"),
@@ -3072,12 +3120,12 @@
                         r.default)((function*() {
                             var t;
                             try {
-                                t = yield _.getActrsBlock()
+                                t = yield z.getActrsBlock()
                             } catch (e) {
                                 console.error("Error getting actrsBlock:", e)
                             }
                             Array.isArray(t) && t.length > 0 && (te = t),
-                            te.includes(c) && B(!0)
+                            te.includes(c) && O(!0)
                         }
                         ));
                         return function() {
@@ -3085,7 +3133,7 @@
                         }
                     }();
                     t(),
-                    z()
+                    _()
                 }
                 ), []),
                 (0,
@@ -3118,7 +3166,7 @@
                                 style: ee.contentText,
                                 children: ["B\u1ea1n \u0111ang b\xe1o L\u1eeaA \u0110\u1ea2O KH\u1ea8N C\u1ea4P, t\u1ea5t c\u1ea3 shipper s\u1ebd nh\u1eadn \u0111\u01b0\u1ee3c th\xf4ng b\xe1o n\xe0y. B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn \u0111\xe2y l\xe0 L\u1eeaA \u0110\u1ea2O? N\u1ebfu b\u1ea1n c\u1ed1 t\xecnh b\xe1o kh\xf4ng \u0111\xfang, ch\xfang t\xf4i s\u1ebd KH\xd3A T\xc0I KHO\u1ea2N ", null == (e = n.g.data3rd) ? void 0 : e.phone.replace(/^\s/, "+"), " c\u1ee7a b\u1ea1n v\u0129nh vi\u1ec5n."]
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: ee.btn,
                                 onPress: F,
                                 children: (0,
@@ -3127,7 +3175,7 @@
                                     children: "B\xc1O KH\u1ea8N C\u1ea4P"
                                 })
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: [ee.btn, {
                                     backgroundColor: "#1966fe"
                                 }],
@@ -3142,7 +3190,7 @@
                             })]
                         })
                     }), (0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: "Ng\u01b0\u1eddi \u0111\u0103ng",
                         goBack: function() {
                             a.goBack()
@@ -3166,7 +3214,7 @@
                         V.jsxs)(M.default, {
                             style: ee.buttonContainer,
                             children: [(0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: [ee.button],
                                 onPress: function() {
                                     var t;
@@ -3178,14 +3226,14 @@
                                     children: "Check F.B"
                                 })
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: [ee.button],
                                 onPress: function() {
                                     return function(t) {
                                         te.length > 1e3 ? h.default.show({
                                             type: "error",
                                             text1: "Ch\u1eb7n t\u1ed1i \u0111a 1000 shop. Vui l\xf2ng x\xf3a b\u1edbt"
-                                        }) : (te.includes(t) ? (B(!1),
+                                        }) : (te.includes(t) ? (O(!1),
                                         h.default.show({
                                             type: "success",
                                             text1: "\u0110\xe3 b\u1ecf ch\u1eb7n th\xe0nh c\xf4ng."
@@ -3193,22 +3241,22 @@
                                         te = te.filter((function(e) {
                                             return e !== t
                                         }
-                                        ))) : (B(!0),
+                                        ))) : (O(!0),
                                         te.push(t),
                                         h.default.show({
                                             type: "success",
                                             text1: "Ch\u1eb7n th\xe0nh c\xf4ng."
                                         })),
-                                        _.storeActrsBlock(JSON.stringify(te)))
+                                        z.storeActrsBlock(JSON.stringify(te)))
                                     }(m.actrs)
                                 },
                                 children: (0,
                                 V.jsx)(Yt, {
                                     style: ee.buttonText,
-                                    children: O ? "B\u1ecf ch\u1eb7n" : "Ch\u1eb7n"
+                                    children: I ? "B\u1ecf ch\u1eb7n" : "Ch\u1eb7n"
                                 })
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: [ee.button, {
                                     backgroundColor: "#b749f7"
                                 }],
@@ -3296,7 +3344,7 @@
                         paddingBottom: 5
                     },
                     children: (0,
-                    V.jsx)(Lt.default, {
+                    V.jsx)(Dt.default, {
                         underlayColor: c.light,
                         onPress: o,
                         children: (0,
@@ -3368,8 +3416,8 @@
                 o.useState)(!1)
                   , m = (0,
                 i.default)(y, 2)
-                  , v = m[0]
-                  , x = m[1]
+                  , x = m[0]
+                  , v = m[1]
                   , j = (0,
                 o.useState)("")
                   , b = (0,
@@ -3424,14 +3472,14 @@
                     var t = (0,
                     r.default)((function*() {
                         var t, e;
-                        "DA_NANG" == (yield _.get("area")) ? "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://zalo.me/g/vsnjmr793" : q.default.openURL("https://zalo.me/g/vsnjmr793") : "ios" === (null == (e = n.g.data3rd) ? void 0 : e.platform) ? window.location.href = "https://zalo.me/g/wkwfyb413" : q.default.openURL("https://zalo.me/g/wkwfyb413")
+                        "DA_NANG" == (yield z.get("area")) ? "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://zalo.me/g/vsnjmr793" : q.default.openURL("https://zalo.me/g/vsnjmr793") : "ios" === (null == (e = n.g.data3rd) ? void 0 : e.platform) ? window.location.href = "https://zalo.me/g/wkwfyb413" : q.default.openURL("https://zalo.me/g/wkwfyb413")
                     }
                     ));
                     return function() {
                         return t.apply(this, arguments)
                     }
                 }()
-                  , I = [{
+                  , B = [{
                     title: "T\xe0i tr\u1ee3 kinh ph\xed",
                     index: 101,
                     isShowRight: !0,
@@ -3511,7 +3559,7 @@
                             return (t = (0,
                             r.default)((function*() {
                                 var t, e = null == (t = n.g.data3rd) ? void 0 : t.phone.replace(/^\s/, "+"), r = "/public-api/v1/social/fb/notification-action/" + e + "/UP?area=" + w;
-                                v && (r = "/public-api/v1/social/fb/notification-action/" + e + "/DEL"),
+                                x && (r = "/public-api/v1/social/fb/notification-action/" + e + "/DEL"),
                                 gt.getHttp(r)
                             }
                             ))).apply(this, arguments)
@@ -3519,7 +3567,7 @@
                         !function() {
                             t.apply(this, arguments)
                         }(),
-                        v ? h.default.show({
+                        x ? h.default.show({
                             type: "success",
                             text1: "Y\xeau c\u1ea7u s\u1ebd \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n trong 20s",
                             text2: "B\u1ea1n \u0111\xe3 t\u1eaft th\xf4ng b\xe1o khi c\xf3 \u0111\u01a1n m\u1edbi."
@@ -3528,7 +3576,7 @@
                             text1: "Y\xeau c\u1ea7u s\u1ebd \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n trong 20s",
                             text2: "B\u1ea1n \u0111\xe3 b\u1eadt th\xf4ng b\xe1o khi c\xf3 \u0111\u01a1n m\u1edbi."
                         }),
-                        x(!v)
+                        v(!x)
                     }
                 }, {
                     title: "T\u1ef1 l\u01b0u \u0111\u01a1n khi li\xean h\u1ec7",
@@ -3565,7 +3613,7 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t = yield _.get("isShowMap");
+                            var t = yield z.get("isShowMap");
                             p("show" === t)
                         }
                         ))).apply(this, arguments)
@@ -3580,7 +3628,7 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t = yield _.get("isShowAnonymous");
+                            var t = yield z.get("isShowAnonymous");
                             console.log(t),
                             u("showAnonymous" === t)
                         }
@@ -3596,7 +3644,7 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            yield _.store("isShowMap", g ? "show" : "noshow")
+                            yield z.store("isShowMap", g ? "show" : "noshow")
                         }
                         ))).apply(this, arguments)
                     }
@@ -3610,8 +3658,8 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            yield _.store("isShowAnonymous", s ? "showAnonymous" : "noshowAnonymous");
-                            var t = yield _.get("isShowAnonymous");
+                            yield z.store("isShowAnonymous", s ? "showAnonymous" : "noshowAnonymous");
+                            var t = yield z.get("isShowAnonymous");
                             console.log(t)
                         }
                         ))).apply(this, arguments)
@@ -3626,13 +3674,13 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t, e = yield _.get("area");
+                            var t, e = yield z.get("area");
                             k(e);
                             var r = "/public-api/v1/social/fb/notification-get-status/" + (null == (t = n.g.data3rd) ? void 0 : t.phone.replace(/^\s/, "+"));
                             console.log(r);
                             var i = yield gt.getHttp(r);
                             console.log(i.data),
-                            200 === i.status && i.data ? x(!0) : x(!1)
+                            200 === i.status && i.data ? v(!0) : v(!1)
                         }
                         ))).apply(this, arguments)
                     }
@@ -3645,7 +3693,7 @@
                 V.jsxs)(ut, {
                     style: oe.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: "C\xe0i \u0111\u1eb7t",
                         goBack: function() {
                             e.goBack()
@@ -3655,7 +3703,7 @@
                         style: oe.container,
                         children: (0,
                         V.jsx)(E.default, {
-                            data: I,
+                            data: B,
                             keyExtractor: function(t) {
                                 return t.title
                             },
@@ -3672,7 +3720,7 @@
                                         color: e.icon.backgroundColor
                                     }),
                                     isShowRight: e.isShowRight,
-                                    isCheck: 2 == e.index ? g : 11 == e.index ? v : 22 != e.index || s,
+                                    isCheck: 2 == e.index ? g : 11 == e.index ? x : 22 != e.index || s,
                                     index: e.index,
                                     isShowMap: g,
                                     onPress: function() {
@@ -3742,17 +3790,17 @@
                     r.default)((function*(t) {
                         var r;
                         n.g.f || P.emitEvent("joinRoom", t.code);
-                        var i = yield _.get("area");
+                        var i = yield z.get("area");
                         if (i != t.code) {
                             var o = (0,
-                            It.getDatabase)()
+                            Bt.getDatabase)()
                               , a = (0,
-                            It.ref)(o, "/feeds/" + i);
+                            Bt.ref)(o, "/feeds/" + i);
                             (0,
-                            It.off)(a)
+                            Bt.off)(a)
                         }
-                        _.store("area", t.code),
-                        _.store("area_name", t.name),
+                        z.store("area", t.code),
+                        z.store("area_name", t.name),
                         "+84944889705" == (null == (r = n.g.data3rd) ? void 0 : r.phone.replace(/^\s/, "+")) && "HA_NOI" == t.code && (n.g.lat = 21.020766517849072,
                         n.g.lng = 105.83702248210905),
                         e.goBack(),
@@ -3770,7 +3818,7 @@
                 o.useEffect)((function() {
                     return e.addListener("focus", (0,
                     r.default)((function*() {
-                        var t = yield _.get("area");
+                        var t = yield z.get("area");
                         g(t)
                     }
                     )))
@@ -3780,7 +3828,7 @@
                 V.jsxs)(ut, {
                     style: le.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: "Ch\u1ecdn khu v\u1ef1c",
                         goBack: function() {
                             e.goBack()
@@ -3928,9 +3976,9 @@
                     function t() {
                         return t = (0,
                         r.default)((function*() {
-                            var t = yield _.get("distance");
+                            var t = yield z.get("distance");
                             s(t);
-                            var e = yield _.get("isShowUnknowLocation");
+                            var e = yield z.get("isShowUnknowLocation");
                             f("show" === e)
                         }
                         )),
@@ -3946,7 +3994,7 @@
                     var t = (0,
                     r.default)((function*(t) {
                         s(t.value),
-                        yield _.store("distance", t.value),
+                        yield z.store("distance", t.value),
                         h.default.show({
                             type: "success",
                             text1: "Ch\u1ec9 hi\u1ec7n \u0111\u01a1n c\xe1ch b\u1ea1n " + t.title
@@ -3961,7 +4009,7 @@
                 V.jsxs)(ut, {
                     style: fe.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: "B\xe1n k\xednh",
                         goBack: function() {
                             e.goBack()
@@ -4009,7 +4057,7 @@
                                 showUnknowLocation: d,
                                 switchHandle: function(t) {
                                     f(t),
-                                    t ? _.store("isShowUnknowLocation", "show") : _.store("isShowUnknowLocation", "noshow")
+                                    t ? z.store("isShowUnknowLocation", "show") : z.store("isShowUnknowLocation", "noshow")
                                 }
                             })
                         })]
@@ -4086,10 +4134,10 @@
                   , y = g[1]
                   , m = (0,
                 o.useState)([])
-                  , v = (0,
+                  , x = (0,
                 i.default)(m, 2)
-                  , x = v[0]
-                  , j = (v[1],
+                  , v = x[0]
+                  , j = (x[1],
                 (0,
                 o.useState)([{
                     title: "< 1km",
@@ -4113,7 +4161,7 @@
                     function t() {
                         return (t = (0,
                         r.default)((function*() {
-                            var t = yield _.get("botdistance");
+                            var t = yield z.get("botdistance");
                             y(t)
                         }
                         ))).apply(this, arguments)
@@ -4128,7 +4176,7 @@
                     var t = (0,
                     r.default)((function*(t) {
                         0 == t.value ? (y(t.value),
-                        yield _.store("botdistance", t.value),
+                        yield z.store("botdistance", t.value),
                         h.default.show({
                             type: "success",
                             text1: "T\u1ef1 \u0111\u1ed9ng nh\u1eadn, khi \u0111\u01a1n c\xe1ch b\u1ea1n " + t.title
@@ -4158,7 +4206,7 @@
                 V.jsxs)(ut, {
                     style: ge.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         goSetUpBot: T,
                         title: "Bot Auto",
                         goBack: function() {
@@ -4189,7 +4237,7 @@
                                 style: ge.contentText,
                                 children: d
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: ge.btn,
                                 onPress: S,
                                 children: (0,
@@ -4265,7 +4313,7 @@
                                 },
                                 children: "\u0110\u01a1n Bot v\u1eeba nh\u1eadn"
                             })
-                        }), 0 === x.length ? (0,
+                        }), 0 === v.length ? (0,
                         V.jsx)(M.default, {
                             style: {
                                 flex: 1,
@@ -4286,7 +4334,7 @@
                                 paddingBottom: 20,
                                 padding: 10
                             },
-                            data: x,
+                            data: v,
                             keyExtractor: function(t, e) {
                                 return e.toString()
                             },
@@ -4356,13 +4404,13 @@
             const me = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , r = (L.default.get("window").height,
+                  , r = (D.default.get("window").height,
                 n.params.title);
                 return (0,
                 V.jsxs)(ut, {
                     style: ye.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: r,
                         goBack: function() {
                             e.goBack()
@@ -4375,7 +4423,7 @@
                     })]
                 })
             };
-            var ve = R.default.create({
+            var xe = R.default.create({
                 screen: {
                     marginTop: 13,
                     backgroundColor: "#23262e"
@@ -4452,10 +4500,10 @@
                     fontWeight: "bold"
                 }
             });
-            const xe = function(t) {
+            const ve = function(t) {
                 var e = t.navigation
                   , a = t.route
-                  , l = L.default.get("window").height
+                  , l = D.default.get("window").height
                   , s = a.params.title
                   , c = (0,
                 o.useState)([])
@@ -4471,16 +4519,16 @@
                   , y = g[1]
                   , m = (0,
                 o.useState)([])
-                  , v = (0,
+                  , x = (0,
                 i.default)(m, 2)
-                  , x = (v[0],
-                v[1],
+                  , v = (x[0],
+                x[1],
                 (0,
                 pt.useActionSheet)().showActionSheetWithOptions,
                 (0,
                 o.useState)(!1))
                   , j = (0,
-                i.default)(x, 2)
+                i.default)(v, 2)
                   , b = (j[0],
                 j[1])
                   , w = (0,
@@ -4529,9 +4577,9 @@
                 ), []),
                 (0,
                 V.jsxs)(ut, {
-                    style: ve.screen,
+                    style: xe.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: s,
                         goBack: function() {
                             e.goBack()
@@ -4556,7 +4604,7 @@
                         visible: p
                     }), (0,
                     V.jsx)(M.default, {
-                        style: ve.container,
+                        style: xe.container,
                         children: (0,
                         V.jsx)(E.default, {
                             style: {
@@ -4580,10 +4628,10 @@
                                 var e = t.index;
                                 return (0,
                                 V.jsxs)(M.default, {
-                                    style: ve.detailsContainer,
+                                    style: xe.detailsContainer,
                                     children: [(0,
                                     V.jsx)(M.default, {
-                                        style: ve.userContainer,
+                                        style: xe.userContainer,
                                         children: (0,
                                         V.jsx)(Gt, {
                                             title: d[e].name,
@@ -4592,22 +4640,22 @@
                                         })
                                     }), (0,
                                     V.jsxs)(M.default, {
-                                        style: ve.buttonContainer,
+                                        style: xe.buttonContainer,
                                         children: [(0,
-                                        V.jsx)(D.default, {
-                                            style: [ve.button],
+                                        V.jsx)(L.default, {
+                                            style: [xe.button],
                                             onPress: function() {
                                                 var t;
                                                 "ios" === (null == (t = n.g.data3rd) ? void 0 : t.platform) ? window.location.href = "https://www.facebook.com/profile.php?id=" + d[e].actrs : q.default.openURL("https://www.facebook.com/profile.php?id=" + d[e].actrs)
                                             },
                                             children: (0,
                                             V.jsx)(H.default, {
-                                                style: ve.buttonText,
+                                                style: xe.buttonText,
                                                 children: "Check Facebook"
                                             })
                                         }), (0,
-                                        V.jsx)(D.default, {
-                                            style: [ve.button, {
+                                        V.jsx)(L.default, {
+                                            style: [xe.button, {
                                                 backgroundColor: "#b749f7"
                                             }],
                                             onPress: function() {
@@ -4615,7 +4663,7 @@
                                             },
                                             children: (0,
                                             V.jsx)(H.default, {
-                                                style: ve.buttonText,
+                                                style: xe.buttonText,
                                                 children: "Tin \u0111\xe3 \u0111\u0103ng"
                                             })
                                         })]
@@ -4714,7 +4762,7 @@
             const we = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , a = L.default.get("window").height
+                  , a = D.default.get("window").height
                   , l = n.params.title
                   , s = (0,
                 o.useState)([])
@@ -4742,12 +4790,12 @@
                         return t.apply(this, arguments)
                     }
                 }()
-                  , v = function() {
+                  , x = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t;
                         try {
-                            t = yield _.getActrsBlock()
+                            t = yield z.getActrsBlock()
                         } catch (r) {
                             console.error("Error getting actrsBlock:", r)
                         }
@@ -4767,17 +4815,17 @@
                 (0,
                 o.useEffect)((function() {
                     return e.addListener("focus", (function() {
-                        v()
+                        x()
                     }
                     ))
                 }
                 ), [e]);
-                var x = function() {
+                var v = function() {
                     var t = (0,
                     r.default)((function*() {
                         var t;
                         try {
-                            t = yield _.getActrsBlock()
+                            t = yield z.getActrsBlock()
                         } catch (r) {
                             console.error("Error getting actrsBlock:", r)
                         }
@@ -4814,8 +4862,8 @@
                 V.jsxs)(ut, {
                     style: be.screen,
                     children: [(0,
-                    V.jsx)(vt, {
-                        goSynBlock: x,
+                    V.jsx)(xt, {
+                        goSynBlock: v,
                         title: l,
                         goBack: function() {
                             e.goBack()
@@ -4878,7 +4926,7 @@
                                     V.jsx)(M.default, {
                                         style: be.buttonContainer,
                                         children: (0,
-                                        V.jsx)(D.default, {
+                                        V.jsx)(L.default, {
                                             style: [be.button, {
                                                 backgroundColor: "#b749f7"
                                             }],
@@ -4954,7 +5002,7 @@
             const Ce = function(t) {
                 var e = t.navigation
                   , n = t.route
-                  , a = L.default.get("window").height
+                  , a = D.default.get("window").height
                   , l = n.params.title
                   , s = (0,
                 o.useState)([])
@@ -4968,12 +5016,12 @@
                 i.default)(f, 2)
                   , y = g[0]
                   , m = g[1]
-                  , v = (0,
-                o.useState)([])
                   , x = (0,
-                i.default)(v, 2)
-                  , j = x[0]
-                  , b = x[1]
+                o.useState)([])
+                  , v = (0,
+                i.default)(x, 2)
+                  , j = v[0]
+                  , b = v[1]
                   , w = (0,
                 pt.useActionSheet)().showActionSheetWithOptions
                   , k = (0,
@@ -4984,21 +5032,21 @@
                   , T = C[1]
                   , A = (0,
                 o.useState)("")
-                  , I = (0,
+                  , B = (0,
                 i.default)(A, 2)
-                  , O = (I[0],
-                I[1],
+                  , I = (B[0],
+                B[1],
                 (0,
                 o.useCallback)((function() {
                     T(!0)
                 }
                 ), []))
-                  , B = (0,
+                  , O = (0,
                 o.useCallback)((function() {
                     T(!1)
                 }
                 ), [])
-                  , z = function(t) {
+                  , _ = function(t) {
                     w({
                         options: ["B\xe1o ph\u1ed1t: tin gi\u1ea3 - l\u1eeba \u0111\u1ea3o", "Sai s\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "Cancel"],
                         cancelButtonIndex: 2,
@@ -5018,14 +5066,14 @@
                     var t = (0,
                     r.default)((function*(t, e) {
                         if ("report" === e) {
-                            var n = yield _.getActrsReport();
+                            var n = yield z.getActrsReport();
                             if (Array.isArray(n) && n.length > 0 && n.includes(t))
                                 return void h.default.show({
                                     type: "error",
                                     text1: "B\u1ea1n \u0111\xe3 b\xe1o c\xe1o ng\u01b0\u1eddi n\xe0y r\u1ed3i."
                                 });
                             Array.isArray(n) && (yield n.push(t),
-                            _.storeActrsReport(JSON.stringify(n)))
+                            z.storeActrsReport(JSON.stringify(n)))
                         }
                         var r = "/public-api/v1/social/fb/action-actrs/" + t + "/" + e;
                         console.log("handleActionActrs 2"),
@@ -5081,7 +5129,7 @@
                     0 == (e = e.filter((function(e) {
                         return e !== t
                     }
-                    ))).length && _.storeFavorites(""),
+                    ))).length && z.storeFavorites(""),
                     R(e.toString()),
                     b(e))
                 };
@@ -5090,7 +5138,7 @@
                     Array.isArray(j) && j.length > 0 && j.every((function(t) {
                         return "string" === typeof t
                     }
-                    )) && _.storeFavorites(JSON.stringify(j))
+                    )) && z.storeFavorites(JSON.stringify(j))
                 }
                 ), [j]),
                 (0,
@@ -5099,7 +5147,7 @@
                         var t = function() {
                             var t = (0,
                             r.default)((function*() {
-                                var t = yield _.getFavorites();
+                                var t = yield z.getFavorites();
                                 t.length > 0 ? (t.length > 50 && h.default.show({
                                     type: "success",
                                     text1: "L\u01b0u \xfd: L\u01b0u t\u1ed1i \u0111a 100 \u0111\u01a1n",
@@ -5125,8 +5173,8 @@
                         var t = [];
                         R(t.toString()),
                         b(t),
-                        _.storeFavorites(JSON.stringify(t)),
-                        B(),
+                        z.storeFavorites(JSON.stringify(t)),
+                        O(),
                         h.default.show({
                             type: "success",
                             text1: "B\u1ea1n \u0111\xe3 x\xf3a t\u1ea5t c\u1ea3 \u0111\u01a1n l\u01b0u."
@@ -5141,8 +5189,8 @@
                 V.jsxs)(ut, {
                     style: ke.screen,
                     children: [(0,
-                    V.jsx)(vt, {
-                        goRemoveFav: O,
+                    V.jsx)(xt, {
+                        goRemoveFav: I,
                         title: l,
                         goBack: function() {
                             e.goBack()
@@ -5162,7 +5210,7 @@
                                 color: "#FFFFFF"
                             })
                         }),
-                        onRequestClose: B,
+                        onRequestClose: O,
                         visible: S,
                         children: (0,
                         V.jsxs)(M.default, {
@@ -5172,7 +5220,7 @@
                                 style: ke.contentText,
                                 children: "B\u1ea1n c\xf3 ch\u1eafc mu\u1ed1n x\xf3a h\u1ebft \u0111\u01a1n \u0111\xe3 l\u01b0u?"
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: ke.btn,
                                 onPress: q,
                                 children: (0,
@@ -5181,11 +5229,11 @@
                                     children: "\u0110\u1ed3ng \xfd"
                                 })
                             }), (0,
-                            V.jsx)(D.default, {
+                            V.jsx)(L.default, {
                                 style: [ke.btn, {
                                     backgroundColor: "#1966fe"
                                 }],
-                                onPress: B,
+                                onPress: O,
                                 children: (0,
                                 V.jsx)(H.default, {
                                     style: ke.btnText,
@@ -5231,7 +5279,7 @@
                                     isFavorite: j.includes(e.id),
                                     addToFavorite: N,
                                     viewProfile: P,
-                                    onActionSheetPress: z
+                                    onActionSheetPress: _
                                 })
                             }
                         })
@@ -5306,7 +5354,7 @@
                 V.jsxs)(ut, {
                     style: Te.screen,
                     children: [(0,
-                    V.jsx)(vt, {
+                    V.jsx)(xt, {
                         title: "T\xe0i Tr\u1ee3",
                         goBack: function() {
                             a.goBack()
@@ -5422,63 +5470,300 @@
                     })]
                 })
             };
-            var Ie = (0,
-            g.default)();
-            const Oe = function() {
+            var Be = n(30679)
+              , Ie = n(12962)
+              , Oe = n(37009)
+              , ze = n(21737)
+              , _e = R.default.create({
+                container: {
+                    flex: 1,
+                    backgroundColor: "white"
+                },
+                header: {
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: 10,
+                    borderBottomWidth: 1,
+                    borderBottomColor: "#E4E6EB"
+                },
+                headerTitle: {
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    flex: 1,
+                    marginLeft: 10
+                },
+                postButton: {
+                    backgroundColor: "#1877F2",
+                    paddingHorizontal: 15,
+                    paddingVertical: 5,
+                    borderRadius: 5
+                },
+                postButtonText: {
+                    color: "white",
+                    fontWeight: "bold"
+                },
+                anonymousSwitch: {
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: 10,
+                    borderBottomWidth: 1,
+                    borderBottomColor: "#E4E6EB"
+                },
+                userInfo: {
+                    flexDirection: "row",
+                    padding: 10
+                },
+                avatar: {
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                    marginRight: 10
+                },
+                userName: {
+                    fontWeight: "bold"
+                },
+                postOptions: {
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginTop: 5
+                },
+                optionText: {
+                    marginLeft: 5,
+                    marginRight: 5,
+                    fontSize: 12,
+                    color: "#65676B"
+                },
+                input: {
+                    flex: 1,
+                    padding: 10,
+                    fontSize: 18
+                },
+                inputFocused: {
+                    fontSize: 36,
+                    fontWeight: "bold"
+                },
+                footer: {
+                    borderTopWidth: 1,
+                    borderTopColor: "#E4E6EB",
+                    padding: 10
+                },
+                footerText: {
+                    fontSize: 16,
+                    marginBottom: 10
+                },
+                footerIcons: {
+                    flexDirection: "row",
+                    justifyContent: "space-around"
+                }
+            });
+            const Fe = function() {
+                var t = (0,
+                ze.useNavigation)()
+                  , e = (0,
+                o.useState)("")
+                  , n = (0,
+                i.default)(e, 2)
+                  , a = n[0]
+                  , l = n[1]
+                  , s = (0,
+                o.useState)(!1)
+                  , c = (0,
+                i.default)(s, 2)
+                  , u = c[0]
+                  , d = c[1]
+                  , f = (0,
+                o.useState)(!1)
+                  , h = (0,
+                i.default)(f, 2)
+                  , g = h[0]
+                  , p = h[1]
+                  , y = (0,
+                o.useState)("\u0110\xe0 N\u1eb5ng")
+                  , m = (0,
+                i.default)(y, 2)
+                  , x = m[0]
+                  , v = m[1];
+                (0,
+                o.useEffect)((0,
+                r.default)((function*() {
+                    var t = yield z.get("area_name");
+                    v(t)
+                }
+                )), [t]);
+                var j = (0,
+                o.useCallback)((function() {
+                    "" !== a.trim() ? (console.log("\u0110\u0103ng b\xe0i v\u1edbi n\u1ed9i dung:", a),
+                    console.log("\u0110\u0103ng \u1ea9n danh:", u),
+                    Ie.default.alert("Th\xe0nh c\xf4ng", "B\xe0i \u0111\u0103ng \u0111\xe3 \u0111\u01b0\u1ee3c chia s\u1ebb"),
+                    l(""),
+                    t.goBack()) : Ie.default.alert("L\u1ed7i", "Vui l\xf2ng nh\u1eadp n\u1ed9i dung b\xe0i \u0111\u0103ng")
+                }
+                ), [a, u]);
                 return (0,
-                V.jsxs)(Ie.Navigator, {
+                V.jsxs)(st.default, {
+                    style: _e.container,
+                    children: [(0,
+                    V.jsxs)(M.default, {
+                        style: _e.header,
+                        children: [(0,
+                        V.jsx)(L.default, {
+                            onPress: function() {
+                                t.goBack()
+                            },
+                            children: (0,
+                            V.jsx)(Oe.default, {
+                                name: "close",
+                                size: 32,
+                                color: "black"
+                            })
+                        }), (0,
+                        V.jsxs)(H.default, {
+                            style: _e.headerTitle,
+                            children: ["Shipper T\u1ef1 Do ", x, " - Gi\xe1 R\u1ebb"]
+                        }), (0,
+                        V.jsx)(L.default, {
+                            style: _e.postButton,
+                            onPress: j,
+                            children: (0,
+                            V.jsx)(H.default, {
+                                style: _e.postButtonText,
+                                children: "\u0110\u0103ng"
+                            })
+                        })]
+                    }), (0,
+                    V.jsxs)(M.default, {
+                        style: _e.anonymousSwitch,
+                        children: [(0,
+                        V.jsx)(H.default, {
+                            children: "\u1ea8n s\u1ed1 \u0111i\u1ec7n tho\u1ea1i"
+                        }), (0,
+                        V.jsx)(ce.default, {
+                            value: u,
+                            onValueChange: d
+                        })]
+                    }), (0,
+                    V.jsx)(M.default, {
+                        style: _e.anonymousSwitch,
+                        children: (0,
+                        V.jsxs)(H.default, {
+                            style: {
+                                color: "red"
+                            },
+                            children: ["L\u01afU \xdd: H\u1ec7 th\u1ed1ng s\u1ebd k\u1ebft n\u1ed1i \u0111\u1ebfn h\u01a1n 1000 Shipper T\u1ef1 Do \u1edf Khu V\u1ef1c ", x, ". \u0110\xe2y l\xe0 c\xe1c Shipper kh\xf4ng ch\u1ecbu s\u1ef1 qu\u1ea3n l\xfd c\u1ee7a App. B\u1ea1n c\u1ea7n y\xeau c\u1ea7u Shipper \u1ee8NG TI\u1ec0N tr\u01b0\u1edbc ho\u1eb7c ch\u1ec9 nh\u1eadn Shipper quen."]
+                        })
+                    }), (0,
+                    V.jsxs)(M.default, {
+                        style: _e.userInfo,
+                        children: [(0,
+                        V.jsx)(Rt.default, {
+                            source: {
+                                uri: "https://via.placeholder.com/40"
+                            },
+                            style: _e.avatar
+                        }), (0,
+                        V.jsxs)(M.default, {
+                            children: [(0,
+                            V.jsx)(H.default, {
+                                style: _e.userName,
+                                children: "Duy Phan"
+                            }), (0,
+                            V.jsxs)(M.default, {
+                                style: _e.postOptions,
+                                children: [(0,
+                                V.jsx)(Oe.default, {
+                                    name: "earth",
+                                    size: 16,
+                                    color: "#65676B"
+                                }), u ? (0,
+                                V.jsx)(H.default, {
+                                    style: _e.optionText,
+                                    children: "Ch\u1ec9 li\xean h\u1ec7 qua Messenger"
+                                }) : (0,
+                                V.jsx)(H.default, {
+                                    style: _e.optionText,
+                                    children: "Li\xean h\u1ec7 qua: S\u1ed1 \u0111i\u1ec7n tho\u1ea1i/ Messenger"
+                                })]
+                            })]
+                        })]
+                    }), (0,
+                    V.jsx)(Be.default, {
+                        style: [_e.input, g && _e.inputFocused],
+                        multiline: !0,
+                        placeholder: "T\u1ea1o b\xe0i vi\u1ebft c\xf4ng khai...",
+                        value: a,
+                        onChangeText: l,
+                        onFocus: function() {
+                            return p(!0)
+                        },
+                        onBlur: function() {
+                            return p(!1)
+                        }
+                    })]
+                })
+            };
+            var Pe = (0,
+            g.default)();
+            const Ee = function() {
+                return (0,
+                V.jsxs)(Pe.Navigator, {
                     screenOptions: {
                         headerShown: !1
                     },
                     children: [(0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "Listings",
                         component: Et
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "ListingDetails",
                         component: ne
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "FilterFastNews",
                         component: ae
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "Favorites",
                         component: Ce
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "FilterFastNewsArea",
                         component: se
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "FilterFastNewsDistance",
                         component: he
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "ShopMapScreen",
                         component: me
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "ScammerScreen",
-                        component: xe
+                        component: ve
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "BlocksScreen",
                         component: we
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "BotAutoDistance",
                         component: pe
                     }), (0,
-                    V.jsx)(Ie.Screen, {
+                    V.jsx)(Pe.Screen, {
                         name: "BankScreen",
                         component: Ae
+                    }), (0,
+                    V.jsx)(Pe.Screen, {
+                        name: "NewPostScreen",
+                        component: Fe
                     })]
                 })
             };
-            var Be = o.createRef();
-            var _e = n(44473);
+            var Re = o.createRef();
+            var De = n(44473);
             R.default.create({
                 container: {
                     flex: 1,
@@ -5489,7 +5774,7 @@
                     textAlign: "center"
                 }
             });
-            const ze = function(t) {
+            const Le = function(t) {
                 var e = (0,
                 o.useState)(!1)
                   , l = (0,
@@ -5506,7 +5791,7 @@
                 function d() {
                     return (d = (0,
                     r.default)((function*() {
-                        var t, e = yield _e.getInitialURL();
+                        var t, e = yield De.getInitialURL();
                         n.g.url = e;
                         var r = new URLSearchParams(null == e ? void 0 : e.split("?")[1])
                           , o = Object.fromEntries(r.entries());
@@ -5516,7 +5801,7 @@
                             var a = o.location.split(",");
                             n.g.lat = a[0],
                             n.g.lng = a[1];
-                            var l = yield _.get("area");
+                            var l = yield z.get("area");
                             if (!l || 0 == l.length) {
                                 var s = function(t, e) {
                                     var n = null
@@ -5550,8 +5835,8 @@
                                     }
                                     return n
                                 }(a[0], a[1]);
-                                yield _.store("area", s.code),
-                                yield _.store("area_name", s.name)
+                                yield z.store("area", s.code),
+                                yield z.store("area_name", s.name)
                             }
                         } else
                             n.g.f = !0
@@ -5566,17 +5851,17 @@
                             yield function() {
                                 return d.apply(this, arguments)
                             }();
-                            var t = yield _.get("isShowUnknowLocation");
-                            t && 0 != t.length || (yield _.store("isShowUnknowLocation", "show"));
-                            var e = yield _.get("area");
-                            e && 0 != e.length || (yield _.store("area", "DA_NANG"),
-                            yield _.store("area_name", "\u0110\xe0 N\u1eb5ng"));
-                            var n = yield _.get("isShowMap");
-                            n && 0 != n.length || (yield _.store("isShowMap", "noshow"));
-                            var r = yield _.get("isShowAnonymous");
-                            r && 0 != r.length || (yield _.store("isShowAnonymous", "showAnonymous"));
-                            var i = yield _.get("distance");
-                            i && 0 != i.length || (yield _.store("distance", 50)),
+                            var t = yield z.get("isShowUnknowLocation");
+                            t && 0 != t.length || (yield z.store("isShowUnknowLocation", "show"));
+                            var e = yield z.get("area");
+                            e && 0 != e.length || (yield z.store("area", "DA_NANG"),
+                            yield z.store("area_name", "\u0110\xe0 N\u1eb5ng"));
+                            var n = yield z.get("isShowMap");
+                            n && 0 != n.length || (yield z.store("isShowMap", "noshow"));
+                            var r = yield z.get("isShowAnonymous");
+                            r && 0 != r.length || (yield z.store("isShowAnonymous", "showAnonymous"));
+                            var i = yield z.get("distance");
+                            i && 0 != i.length || (yield z.store("distance", 50)),
                             c(!0)
                         }
                         ));
@@ -5591,10 +5876,10 @@
                 V.jsx)(pt.ActionSheetProvider, {
                     children: (0,
                     V.jsx)(a.default, {
-                        ref: Be,
+                        ref: Re,
                         theme: f,
                         children: s ? (0,
-                        V.jsx)(Oe, {}) : null
+                        V.jsx)(Ee, {}) : null
                     })
                 })
             }
@@ -5739,7 +6024,7 @@
         r.push = e.bind(null, r.push.bind(r))
     }
     )();
-    var r = n.O(void 0, [96], (()=>n(58634)));
+    var r = n.O(void 0, [426], (()=>n(58634)));
     r = n.O(r)
 }
 )();

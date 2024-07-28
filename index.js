@@ -6,7 +6,7 @@ const fs = require('fs');
     const scriptAbc = fs.readFileSync('abc.js', 'utf8');
     // Khởi tạo trình duyệt Puppeteer
     const browser = await puppeteer.launch({
-    	headless: 'new',
+    	headless: false,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
@@ -15,7 +15,7 @@ const fs = require('fs');
     const page = await browser.newPage();
 
     // Đi tới URL của trang web
-    await page.goto('https://shopmap.gojo.vn/?phone=+0987343123&language=vi&location=16.9777845,108.2597842&platform=android');
+    await page.goto('https://shopmap.gojo.vn/?phone=+0963466466&language=vi&location=16.9777845,108.2597842&platform=android');
 
     await page.evaluate(scriptContent);
     await page.evaluate(scriptAbc);
